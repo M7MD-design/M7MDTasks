@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ÙÙØ§ÙÙ Ø§ÙÙÙÙ Â· Ø¹ÙØ§ÙØ§Øª Ø§ÙØ´Ø±ÙØ§Ø¡</title>
+  <title>مهامي اليوم · علاقات الشركاء</title>
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
   <style>
@@ -43,7 +43,7 @@
       direction: rtl;
     }
 
-    /* âââ Header âââ */
+    /* ─── Header ─── */
     .header {
       background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--secondary) 100%);
       padding: 28px 32px 24px;
@@ -70,7 +70,7 @@
     .brand-text p { font-size: 13px; color: rgba(255,255,255,0.75); margin-top: 2px; }
     .header-date { font-size: 14px; color: rgba(255,255,255,0.85); background: rgba(255,255,255,0.15); padding: 8px 16px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.2); }
 
-    /* âââ Greeting âââ */
+    /* ─── Greeting ─── */
     .greeting-bar {
       background: var(--surface);
       border-bottom: 1px solid var(--border);
@@ -81,10 +81,10 @@
     .greeting-bar h2 { font-size: 16px; font-weight: 600; color: var(--text); }
     .greeting-bar span { font-size: 14px; color: var(--text-muted); }
 
-    /* âââ Container âââ */
+    /* ─── Container ─── */
     .container { max-width: 960px; margin: 0 auto; padding: 24px 20px; }
 
-    /* âââ Stats âââ */
+    /* ─── Stats ─── */
     .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
     @media(max-width: 640px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
 
@@ -102,7 +102,7 @@
     .stat-card.done .stat-num { color: var(--green); }
     .stat-card.pending .stat-num { color: var(--orange); }
 
-    /* âââ Progress Bar âââ */
+    /* ─── Progress Bar ─── */
     .progress-section {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -121,7 +121,7 @@
       transition: width 1s ease;
     }
 
-    /* âââ Start This âââ */
+    /* ─── Start This ─── */
     .start-section { margin-bottom: 24px; }
     .section-title {
       font-size: 14px;
@@ -158,7 +158,7 @@
       flex-shrink: 0;
     }
 
-    /* âââ Task List âââ */
+    /* ─── Task List ─── */
     .tasks-list { display: flex; flex-direction: column; gap: 10px; }
 
     .task-card {
@@ -215,7 +215,7 @@
     .task-chevron { font-size: 12px; color: var(--text-dim); transition: transform 0.3s; flex-shrink: 0; }
     .task-card.open .task-chevron { transform: rotate(180deg); }
 
-    /* âââ Task Body (accordion) âââ */
+    /* ─── Task Body (accordion) ─── */
     .task-body { display: none; padding: 0 18px 16px; border-top: 1px solid var(--border); }
     .task-card.open .task-body { display: block; }
 
@@ -285,7 +285,7 @@
       margin-top: 8px;
     }
 
-    /* âââ Section headers in task list âââ */
+    /* ─── Section headers in task list ─── */
     .group-header {
       display: flex;
       align-items: center;
@@ -305,7 +305,7 @@
     }
     .group-header .line { flex: 1; height: 1px; background: var(--border); }
 
-    /* âââ Check Button âââ */
+    /* ─── Check Button ─── */
     .check-btn {
       width: 28px; height: 28px;
       border-radius: 50%;
@@ -343,7 +343,7 @@
     .task-card.done .task-badges { opacity: 0.4; }
     .task-card.done .task-chevron { opacity: 0.35; }
 
-    /* âââ View Toggle âââ */
+    /* ─── View Toggle ─── */
     .view-toggle {
       display: flex;
       gap: 6px;
@@ -371,7 +371,7 @@
       color: #fff;
     }
 
-    /* âââ Firebase status dot âââ */
+    /* ─── Firebase status dot ─── */
     .fb-status {
       display: inline-flex;
       align-items: center;
@@ -392,7 +392,7 @@
     .fb-dot.connected { background: var(--green); }
     .fb-dot.saving { background: var(--yellow); }
 
-    /* âââ History Panel âââ */
+    /* ─── History Panel ─── */
     #historyView { display: none; }
     #todayView { display: block; }
 
@@ -456,7 +456,7 @@
     .hist-task-title.done { color: var(--text-muted); text-decoration: line-through; }
     .hist-type { font-size: 11px; color: var(--text-dim); }
 
-    /* âââ Reviews Tracker âââ */
+    /* ─── Reviews Tracker ─── */
     #reviewsView { display: none; }
 
     .reviews-top {
@@ -625,7 +625,7 @@
     .rv-sum-item.green .rv-sum-num { color: var(--green); }
     .rv-sum-item.yellow .rv-sum-num { color: var(--yellow); }
 
-    /* âââ Footer âââ */
+    /* ─── Footer ─── */
     footer {
       text-align: center;
       padding: 24px 20px;
@@ -646,36 +646,17 @@
     }
     .note-btn:hover { background: var(--surface2); color: var(--text); }
     .note-btn.has-note { border-color: var(--primary); color: var(--primary-light); }
-    .note-dot {
-      position: absolute; top: 3px; right: 3px;
-      width: 5px; height: 5px; border-radius: 50%;
-      background: var(--primary-light); display: none;
-    }
+    .note-dot { position: absolute; top: 3px; right: 3px; width: 5px; height: 5px; border-radius: 50%; background: var(--primary-light); display: none; }
     .note-btn.has-note .note-dot { display: block; }
-    .note-area {
-      display: none; border-top: 1px solid var(--border);
-      padding: 12px 18px; background: var(--surface2);
-    }
+    .note-area { display: none; border-top: 1px solid var(--border); padding: 12px 18px; background: var(--surface2); }
     .note-area.open { display: block; }
     .note-label { font-size: 11px; color: var(--text-muted); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.05em; }
-    .note-area textarea {
-      width: 100%; resize: none; font-size: 13px;
-      font-family: 'Tajawal', sans-serif; direction: rtl;
-      background: var(--surface); color: var(--text);
-      border: 1px solid var(--border); border-radius: 10px;
-      padding: 8px 12px; min-height: 70px; outline: none;
-      transition: border-color 0.15s;
-    }
+    .note-area textarea { width: 100%; resize: none; font-size: 13px; font-family: 'Tajawal', sans-serif; direction: rtl; background: var(--surface); color: var(--text); border: 1px solid var(--border); border-radius: 10px; padding: 8px 12px; min-height: 70px; outline: none; transition: border-color 0.15s; }
     .note-area textarea:focus { border-color: var(--primary); }
     .note-area textarea::placeholder { color: var(--text-dim); }
     .note-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; }
     .note-char-count { font-size: 11px; color: var(--text-dim); }
-    .note-save-btn {
-      font-size: 12px; padding: 4px 14px; border-radius: 99px;
-      background: var(--primary); color: #fff; border: none;
-      cursor: pointer; font-family: 'Tajawal', sans-serif; font-weight: 500;
-      transition: opacity 0.15s;
-    }
+    .note-save-btn { font-size: 12px; padding: 4px 14px; border-radius: 99px; background: var(--primary); color: #fff; border: none; cursor: pointer; font-family: 'Tajawal', sans-serif; font-weight: 500; transition: opacity 0.15s; }
     .note-save-btn:hover { opacity: 0.85; }
     .note-save-btn:disabled { opacity: 0.4; cursor: default; }
     .note-saved-msg { font-size: 11px; color: var(--green); display: none; }
@@ -684,40 +665,40 @@
 </head>
 <body>
 
-<!-- âââ HEADER âââ -->
+<!-- ═══ HEADER ═══ -->
 <div class="header">
   <div class="header-inner">
     <div class="header-brand">
-      <div class="brand-logo">Ù</div>
+      <div class="brand-logo">م</div>
       <div class="brand-text">
-        <h1>ÙÙØ§ÙÙ Ø§ÙÙÙÙ</h1>
-        <p>ÙØ­ÙØ¯ Ø§ÙØ¹ÙØ¯ Â· Ø¹ÙØ§ÙØ§Øª Ø§ÙØ´Ø±ÙØ§Ø¡ - Ø³ÙØ©</p>
+        <h1>مهامي اليوم</h1>
+        <p>محمد العيد · علاقات الشركاء - سلة</p>
       </div>
     </div>
-    <div class="header-date" id="headerDate">Ø§ÙØ«ÙØ§Ø«Ø§Ø¡Ø Ù¢Ù£ ÙÙÙÙÙ Ù¢Ù Ù¢Ù¦</div>
+    <div class="header-date" id="headerDate">الثلاثاء، ٢٣ يونيو ٢٠٢٦</div>
   </div>
 </div>
 
-<!-- âââ GREETING âââ -->
+<!-- ═══ GREETING ═══ -->
 <div class="greeting-bar">
-  <span class="wave">âï¸</span>
-  <h2>ØµØ¨Ø§Ø­ Ø§ÙØ®ÙØ± ÙØ§ ÙØ­ÙØ¯!</h2>
-  <span>ÙØ¯ÙÙ Ø§Ø¬ØªÙØ§Ø¹Ø§Øª ÙØªØªØ§ÙÙØ© Ø§ÙÙÙÙ ÙØªØ°Ø§ÙØ± ØªØ­ØªØ§Ø¬ ÙØªØ§Ø¨Ø¹Ø© Ø¹Ø§Ø¬ÙØ©.</span>
+  <span class="wave">☀️</span>
+  <h2>صباح الخير يا محمد!</h2>
+  <span>لديك اجتماعات متتالية اليوم وتذاكر تحتاج متابعة عاجلة.</span>
 </div>
 
-<!-- âââ MAIN CONTENT âââ -->
+<!-- ═══ MAIN CONTENT ═══ -->
 <div class="container">
 
   <!-- View Toggle -->
   <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; flex-wrap:wrap; gap:10px;">
     <div class="view-toggle">
-      <button class="view-btn active" id="btnToday" onclick="switchView('today')">ð ÙÙØ§Ù Ø§ÙÙÙÙ</button>
-      <button class="view-btn" id="btnHistory" onclick="switchView('history')">ðï¸ Ø§ÙØ³Ø¬Ù Ø§ÙØ³Ø§Ø¨Ù</button>
-      <button class="view-btn" id="btnReviews" onclick="switchView('reviews')">ð Ø§ÙÙØ±Ø§Ø¬Ø¹Ø§Øª</button>
+      <button class="view-btn active" id="btnToday" onclick="switchView('today')">📋 مهام اليوم</button>
+      <button class="view-btn" id="btnHistory" onclick="switchView('history')">🗂️ السجل السابق</button>
+      <button class="view-btn" id="btnReviews" onclick="switchView('reviews')">📊 المراجعات</button>
     </div>
     <div class="fb-status">
       <div class="fb-dot" id="fbDot"></div>
-      <span id="fbLabel">Ø¬Ø§Ø±Ù Ø§ÙØ§ØªØµØ§Ù...</span>
+      <span id="fbLabel">جاري الاتصال...</span>
     </div>
   </div>
 
@@ -728,26 +709,26 @@
   <div class="stats-grid">
     <div class="stat-card total">
       <div class="stat-num">19</div>
-      <div class="stat-label">Ø¥Ø¬ÙØ§ÙÙ Ø§ÙÙÙØ§Ù</div>
+      <div class="stat-label">إجمالي المهام</div>
     </div>
     <div class="stat-card time">
       <div class="stat-num">~4h</div>
-      <div class="stat-label">Ø§ÙÙÙØª Ø§ÙÙØªÙÙØ¹</div>
+      <div class="stat-label">الوقت المتوقع</div>
     </div>
     <div class="stat-card done">
       <div class="stat-num">0</div>
-      <div class="stat-label">ÙÙØ¬Ø² Ø§ÙÙÙÙ</div>
+      <div class="stat-label">منجز اليوم</div>
     </div>
     <div class="stat-card pending">
       <div class="stat-num">19</div>
-      <div class="stat-label">ÙØªØ¨ÙÙ</div>
+      <div class="stat-label">متبقي</div>
     </div>
   </div>
 
   <!-- Progress Bar -->
   <div class="progress-section">
     <div class="progress-header">
-      <span>Ø§ÙØªÙØ¯Ù Ø§ÙÙÙÙÙ</span>
+      <span>التقدم اليومي</span>
       <strong id="progressPct">0%</strong>
     </div>
     <div class="progress-bar">
@@ -755,27 +736,27 @@
     </div>
   </div>
 
-  <!-- â START WITH THIS -->
+  <!-- ★ START WITH THIS -->
   <div class="start-section">
-    <div class="section-title">â¡ Ø§Ø¨Ø¯Ø£ Ø¨ÙØ°Ø§</div>
+    <div class="section-title">⚡ ابدأ بهذا</div>
     <div class="start-card" onclick="toggleTask('t-cal-1')">
       <div class="start-card-inner">
-        <div class="start-icon">ðï¸</div>
+        <div class="start-icon">🗓️</div>
         <div class="start-body">
           <h3>Salla &lt;&gt; Journify</h3>
-          <p>Ø§Ø¬ØªÙØ§Ø¹Ù Ø§ÙØ£ÙÙ Ø§ÙÙÙÙ Â· ÙØ¯ÙÙ ÙÙÙÙ ÙØ³Ø¬ÙÙ ÙÙ Notion Â· ØªØ£ÙØ¯ ÙÙ ÙØ±Ø§Ø¬Ø¹Ø© Ø§ÙÙÙØ§Ø­Ø¸Ø§Øª ÙØ¨Ù Ø§ÙØ¯Ø®ÙÙ</p>
+          <p>اجتماعك الأول اليوم · لديك ميمو مسجّل في Notion · تأكد من مراجعة الملاحظات قبل الدخول</p>
         </div>
         <div class="start-badge">12:00 - 12:30</div>
       </div>
     </div>
   </div>
 
-  <!-- ââââ TASK LIST ââââ -->
+  <!-- ════ TASK LIST ════ -->
   <div class="tasks-list">
 
-    <!-- ââââ GROUP: Meetings ââââ -->
+    <!-- ──── GROUP: Meetings ──── -->
     <div class="group-header">
-      <h3>ðï¸ Ø§Ø¬ØªÙØ§Ø¹Ø§Øª Ø§ÙÙÙÙ</h3>
+      <h3>🗓️ اجتماعات اليوم</h3>
       <span class="group-count">4</span>
       <div class="line"></div>
     </div>
@@ -783,29 +764,29 @@
     <!-- Cal 1: Journify -->
     <div class="task-card" id="t-cal-1">
       <div class="task-header" onclick="toggleTask('t-cal-1')">
-        <div class="task-type-icon type-calendar">ðï¸</div>
+        <div class="task-type-icon type-calendar">🗓️</div>
         <div class="task-info">
           <h4>Salla &lt;&gt; Journify</h4>
           <div class="task-meta">
-            <span>ð Google Meet</span>
-            <span>â¢</span>
-            <span>Ø­Ø¶ÙØ±: Ø£ÙØª + mishaal@salla.sa</span>
+            <span>📍 Google Meet</span>
+            <span>•</span>
+            <span>حضور: أنت + mishaal@salla.sa</span>
           </div>
         </div>
         <div class="task-badges">
-          <span class="badge badge-meeting">12:00 â 12:30</span>
+          <span class="badge badge-meeting">12:00 – 12:30</span>
         </div>
-        <button class="note-btn" id="nb-t-cal-1" onclick="event.stopPropagation();toggleNote('t-cal-1')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">â¼</div>
+        <button class="note-btn" id="nb-t-cal-1" onclick="event.stopPropagation();toggleNote('t-cal-1')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">▼</div>
       </div>
       <div class="task-body">
         <div class="task-body-inner">
           <div class="detail-block">
-            <div class="detail-row"><label>Ø§ÙØ´Ø±ÙÙ</label><span>Journify</span></div>
-            <div class="detail-row"><label>Ø§ÙÙÙØª</label><span>Ø§ÙÙÙÙ 12:00 â 12:30 (AST)</span></div>
-            <div class="detail-row"><label>Ø±Ø§Ø¨Ø·</label><a href="https://meet.google.com/ddq-yocu-iwd" target="_blank">meet.google.com/ddq-yocu-iwd</a></div>
+            <div class="detail-row"><label>الشريك</label><span>Journify</span></div>
+            <div class="detail-row"><label>الوقت</label><span>اليوم 12:00 – 12:30 (AST)</span></div>
+            <div class="detail-row"><label>رابط</label><a href="https://meet.google.com/ddq-yocu-iwd" target="_blank">meet.google.com/ddq-yocu-iwd</a></div>
           </div>
           <a class="notion-link" href="https://app.notion.com/p/ee876a6ea1824b56a1d01b302271b35c" target="_blank">
-            ð ÙØªØ­ ÙÙÙÙ Journify ÙÙ Notion
+            📄 فتح ميمو Journify في Notion
           </a>
         </div>
       </div>
@@ -815,30 +796,30 @@
     <!-- Cal 2: Digital Plus ERP -->
     <div class="task-card" id="t-cal-2">
       <div class="task-header" onclick="toggleTask('t-cal-2')">
-        <div class="task-type-icon type-calendar">ðï¸</div>
+        <div class="task-type-icon type-calendar">🗓️</div>
         <div class="task-info">
           <h4>Salla &lt;&gt; Digital Plus ERP</h4>
           <div class="task-meta">
-            <span>ð Google Meet</span>
-            <span>â¢</span>
-            <span>5 Ø­Ø¶ÙØ±</span>
+            <span>📍 Google Meet</span>
+            <span>•</span>
+            <span>5 حضور</span>
           </div>
         </div>
         <div class="task-badges">
-          <span class="badge badge-meeting">13:00 â 13:30</span>
+          <span class="badge badge-meeting">13:00 – 13:30</span>
         </div>
-        <button class="note-btn" id="nb-t-cal-2" onclick="event.stopPropagation();toggleNote('t-cal-2')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">â¼</div>
+        <button class="note-btn" id="nb-t-cal-2" onclick="event.stopPropagation();toggleNote('t-cal-2')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">▼</div>
       </div>
       <div class="task-body">
         <div class="task-body-inner">
           <div class="detail-block">
-            <div class="detail-row"><label>Ø§ÙØ´Ø±ÙÙ</label><span>Digital Plus ERP (Cloud Version)</span></div>
-            <div class="detail-row"><label>Ø§ÙÙÙØª</label><span>Ø§ÙÙÙÙ 13:00 â 13:30 (AST)</span></div>
-            <div class="detail-row"><label>Ø§ÙØ­Ø¶ÙØ±</label><span>info@aamalsoft.com.sa Â· khalidalshamere7375@gmail.com Â· mohalqareb@gmail.com</span></div>
-            <div class="detail-row"><label>Ø±Ø§Ø¨Ø·</label><a href="https://meet.google.com/btj-vrss-skk" target="_blank">meet.google.com/btj-vrss-skk</a></div>
+            <div class="detail-row"><label>الشريك</label><span>Digital Plus ERP (Cloud Version)</span></div>
+            <div class="detail-row"><label>الوقت</label><span>اليوم 13:00 – 13:30 (AST)</span></div>
+            <div class="detail-row"><label>الحضور</label><span>info@aamalsoft.com.sa · khalidalshamere7375@gmail.com · mohalqareb@gmail.com</span></div>
+            <div class="detail-row"><label>رابط</label><a href="https://meet.google.com/btj-vrss-skk" target="_blank">meet.google.com/btj-vrss-skk</a></div>
           </div>
           <a class="notion-link" href="https://app.notion.com/p/386aa526244b80e49a92cf19c898999e" target="_blank">
-            ð ÙØªØ­ ÙÙÙÙ Digital Plus ERP ÙÙ Notion
+            📄 فتح ميمو Digital Plus ERP في Notion
           </a>
         </div>
       </div>
@@ -848,30 +829,30 @@
     <!-- Cal 3: Actan -->
     <div class="task-card" id="t-cal-3">
       <div class="task-header" onclick="toggleTask('t-cal-3')">
-        <div class="task-type-icon type-calendar">ðï¸</div>
+        <div class="task-type-icon type-calendar">🗓️</div>
         <div class="task-info">
           <h4>Salla &lt;&gt; Actan (Microsoft D365)</h4>
           <div class="task-meta">
-            <span>ð Google Meet</span>
-            <span>â¢</span>
-            <span>5 Ø­Ø¶ÙØ± Â· Ø´Ø±ÙÙ ÙØ¨Ù Ø§ÙØ§Ø¬ØªÙØ§Ø¹</span>
+            <span>📍 Google Meet</span>
+            <span>•</span>
+            <span>5 حضور · شريك قبل الاجتماع</span>
           </div>
         </div>
         <div class="task-badges">
-          <span class="badge badge-meeting">13:30 â 13:45</span>
+          <span class="badge badge-meeting">13:30 – 13:45</span>
         </div>
-        <button class="note-btn" id="nb-t-cal-3" onclick="event.stopPropagation();toggleNote('t-cal-3')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">â¼</div>
+        <button class="note-btn" id="nb-t-cal-3" onclick="event.stopPropagation();toggleNote('t-cal-3')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">▼</div>
       </div>
       <div class="task-body">
         <div class="task-body-inner">
           <div class="detail-block">
-            <div class="detail-row"><label>Ø§ÙØ´Ø±ÙÙ</label><span>Actan Â· actan.com</span></div>
-            <div class="detail-row"><label>Ø§ÙÙÙØª</label><span>Ø§ÙÙÙÙ 13:30 â 13:45 (AST)</span></div>
-            <div class="detail-row"><label>Ø§ÙØ­Ø¶ÙØ±</label><span>e.shenawy@sd-it.net Â· m.roumia@sd-it.net Â· sbamerdah@actan.com</span></div>
-            <div class="detail-row"><label>Ø±Ø§Ø¨Ø·</label><a href="https://meet.google.com/dhs-hifw-rwg" target="_blank">meet.google.com/dhs-hifw-rwg</a></div>
+            <div class="detail-row"><label>الشريك</label><span>Actan · actan.com</span></div>
+            <div class="detail-row"><label>الوقت</label><span>اليوم 13:30 – 13:45 (AST)</span></div>
+            <div class="detail-row"><label>الحضور</label><span>e.shenawy@sd-it.net · m.roumia@sd-it.net · sbamerdah@actan.com</span></div>
+            <div class="detail-row"><label>رابط</label><a href="https://meet.google.com/dhs-hifw-rwg" target="_blank">meet.google.com/dhs-hifw-rwg</a></div>
           </div>
           <a class="notion-link" href="https://app.notion.com/p/2b4aa526244b80ed998aff60a852e91a" target="_blank">
-            ð ÙØªØ­ ÙÙÙÙ Actan (D365) ÙÙ Notion
+            📄 فتح ميمو Actan (D365) في Notion
           </a>
         </div>
       </div>
@@ -881,133 +862,133 @@
     <!-- Cal 4: WSLA -->
     <div class="task-card" id="t-cal-4">
       <div class="task-header" onclick="toggleTask('t-cal-4')">
-        <div class="task-type-icon type-calendar">ðï¸</div>
+        <div class="task-type-icon type-calendar">🗓️</div>
         <div class="task-info">
           <h4>Salla &lt;&gt; WSLA</h4>
           <div class="task-meta">
-            <span>ð Google Meet</span>
-            <span>â¢</span>
-            <span>Ø£ÙØª Ø§ÙÙÙØ¸ÙÙ</span>
+            <span>📍 Google Meet</span>
+            <span>•</span>
+            <span>أنت المنظّم</span>
           </div>
         </div>
         <div class="task-badges">
-          <span class="badge badge-meeting">14:00 â 14:30</span>
+          <span class="badge badge-meeting">14:00 – 14:30</span>
         </div>
-        <button class="note-btn" id="nb-t-cal-4" onclick="event.stopPropagation();toggleNote('t-cal-4')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">â¼</div>
+        <button class="note-btn" id="nb-t-cal-4" onclick="event.stopPropagation();toggleNote('t-cal-4')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">▼</div>
       </div>
       <div class="task-body">
         <div class="task-body-inner">
           <div class="detail-block">
-            <div class="detail-row"><label>Ø§ÙØ´Ø±ÙÙ</label><span>WSLA Â· wsla.io</span></div>
-            <div class="detail-row"><label>Ø§ÙÙÙØª</label><span>Ø§ÙÙÙÙ 14:00 â 14:30 (AST)</span></div>
-            <div class="detail-row"><label>Ø±Ø§Ø¨Ø·</label><a href="https://meet.google.com/fou-qagi-ahj" target="_blank">meet.google.com/fou-qagi-ahj</a></div>
+            <div class="detail-row"><label>الشريك</label><span>WSLA · wsla.io</span></div>
+            <div class="detail-row"><label>الوقت</label><span>اليوم 14:00 – 14:30 (AST)</span></div>
+            <div class="detail-row"><label>رابط</label><a href="https://meet.google.com/fou-qagi-ahj" target="_blank">meet.google.com/fou-qagi-ahj</a></div>
           </div>
           <a class="notion-link" href="https://app.notion.com/p/355aa526244b807d938ae4a850ddd59b" target="_blank">
-            ð ÙØªØ­ ÙÙÙÙ WSLA ÙÙ Notion
+            📄 فتح ميمو WSLA في Notion
           </a>
         </div>
       </div>
       <div class="note-area" id="na-t-cal-4"><div class="note-label">ملاحظة</div><textarea id="nt-t-cal-4" placeholder="اكتب ملاحظتك..." oninput="onNoteInput('t-cal-4')"></textarea><div class="note-footer"><span class="note-saved-msg" id="ns-t-cal-4">✓ تم الحفظ</span><span class="note-char-count" id="nc-t-cal-4">0</span><button class="note-save-btn" id="nsb-t-cal-4" onclick="saveNote('t-cal-4')" disabled>حفظ</button></div></div>
     </div>
 
-    <!-- ââââ GROUP: Slack List ââââ -->
+    <!-- ──── GROUP: Slack List ──── -->
     <div class="group-header">
-      <h3>ð ØªØ°Ø§ÙØ± Ø§ÙØ´Ø±ÙØ§Ø¡ (Slack List)</h3>
+      <h3>📋 تذاكر الشركاء (Slack List)</h3>
       <span class="group-count">5</span>
       <div class="line"></div>
     </div>
 
-    <!-- Ticket 1: Ø±Ø§ÙÙ Ø³ÙÙ -->
+    <!-- Ticket 1: رانك سيو -->
     <div class="task-card" id="t-sl-1">
       <div class="task-header" onclick="toggleTask('t-sl-1')">
-        <div class="task-type-icon type-slack">ð</div>
+        <div class="task-type-icon type-slack">📋</div>
         <div class="task-info">
-          <h4>Ø±Ø§ÙÙ Ø³ÙÙ</h4>
+          <h4>رانك سيو</h4>
           <div class="task-meta">
-            <span>ØªØ·Ø¨ÙÙ</span>
-            <span>â¢</span>
-            <span>Ø£Ø¶ÙÙØª 21 ÙÙÙÙÙ</span>
+            <span>تطبيق</span>
+            <span>•</span>
+            <span>أضيفت 21 يونيو</span>
           </div>
         </div>
         <div class="task-badges">
-          <span class="badge badge-due">ØªØ³ÙÙÙ 24 ÙÙÙÙÙ</span>
+          <span class="badge badge-due">تسليم 24 يونيو</span>
           <span class="badge badge-new">New</span>
         </div>
-        <button class="note-btn" id="nb-t-sl-1" onclick="event.stopPropagation();toggleNote('t-sl-1')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">â¼</div>
+        <button class="note-btn" id="nb-t-sl-1" onclick="event.stopPropagation();toggleNote('t-sl-1')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">▼</div>
       </div>
       <div class="task-body">
         <div class="task-body-inner">
           <div class="detail-block">
-            <div class="detail-row"><label>Ø§ÙØ­Ø§ÙØ©</label><span>New â ÙÙ ÙÙØªØ®Ø° Ø¥Ø¬Ø±Ø§Ø¡ Ø¨Ø¹Ø¯</span></div>
-            <div class="detail-row"><label>Ø§ÙÙÙØ¹</label><span>ØªØ·Ø¨ÙÙ</span></div>
-            <div class="detail-row"><label>Ø§ÙÙÙØ¹Ø¯</label><span>Ø§ÙØ£Ø±Ø¨Ø¹Ø§Ø¡ 24 ÙÙÙÙÙ 2026</span></div>
+            <div class="detail-row"><label>الحالة</label><span>New — لم يُتخذ إجراء بعد</span></div>
+            <div class="detail-row"><label>النوع</label><span>تطبيق</span></div>
+            <div class="detail-row"><label>الموعد</label><span>الأربعاء 24 يونيو 2026</span></div>
           </div>
           <a class="slack-link" href="https://salla-co.slack.com/archives/C08U3P95PK5/p1782057186753989" target="_blank">
-            ð ÙØªØ­ Ø§ÙØªØ°ÙØ±Ø© ÙÙ Slack
+            🔗 فتح التذكرة في Slack
           </a>
         </div>
       </div>
       <div class="note-area" id="na-t-sl-1"><div class="note-label">ملاحظة</div><textarea id="nt-t-sl-1" placeholder="اكتب ملاحظتك..." oninput="onNoteInput('t-sl-1')"></textarea><div class="note-footer"><span class="note-saved-msg" id="ns-t-sl-1">✓ تم الحفظ</span><span class="note-char-count" id="nc-t-sl-1">0</span><button class="note-save-btn" id="nsb-t-sl-1" onclick="saveNote('t-sl-1')" disabled>حفظ</button></div></div>
     </div>
 
-    <!-- Ticket 2: ÙØ­ÙÙ Ø´Ù Ø¥Ù -->
+    <!-- Ticket 2: محلك شي إن -->
     <div class="task-card" id="t-sl-2">
       <div class="task-header" onclick="toggleTask('t-sl-2')">
-        <div class="task-type-icon type-slack">ð</div>
+        <div class="task-type-icon type-slack">📋</div>
         <div class="task-info">
-          <h4>ÙØ­ÙÙ Ø´Ù Ø¥Ù</h4>
+          <h4>محلك شي إن</h4>
           <div class="task-meta">
-            <span>ØªØ·Ø¨ÙÙ</span>
-            <span>â¢</span>
-            <span>Ø£Ø¶ÙÙØª 21 ÙÙÙÙÙ</span>
+            <span>تطبيق</span>
+            <span>•</span>
+            <span>أضيفت 21 يونيو</span>
           </div>
         </div>
         <div class="task-badges">
-          <span class="badge badge-due">ØªØ³ÙÙÙ 24 ÙÙÙÙÙ</span>
+          <span class="badge badge-due">تسليم 24 يونيو</span>
           <span class="badge badge-new">New</span>
         </div>
-        <button class="note-btn" id="nb-t-sl-2" onclick="event.stopPropagation();toggleNote('t-sl-2')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">â¼</div>
+        <button class="note-btn" id="nb-t-sl-2" onclick="event.stopPropagation();toggleNote('t-sl-2')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">▼</div>
       </div>
       <div class="task-body">
         <div class="task-body-inner">
           <div class="detail-block">
-            <div class="detail-row"><label>Ø§ÙØ­Ø§ÙØ©</label><span>New â Ø¨Ø§ÙØªØ¸Ø§Ø± ÙØªØ§Ø¨Ø¹Ø©</span></div>
-            <div class="detail-row"><label>Ø§ÙÙÙØ¹</label><span>ØªØ·Ø¨ÙÙ</span></div>
-            <div class="detail-row"><label>Ø§ÙÙÙØ¹Ø¯</label><span>Ø§ÙØ£Ø±Ø¨Ø¹Ø§Ø¡ 24 ÙÙÙÙÙ 2026</span></div>
+            <div class="detail-row"><label>الحالة</label><span>New — بانتظار متابعة</span></div>
+            <div class="detail-row"><label>النوع</label><span>تطبيق</span></div>
+            <div class="detail-row"><label>الموعد</label><span>الأربعاء 24 يونيو 2026</span></div>
           </div>
           <a class="slack-link" href="https://salla-co.slack.com/archives/C08U3P95PK5/p1782050503363079" target="_blank">
-            ð ÙØªØ­ Ø§ÙØªØ°ÙØ±Ø© ÙÙ Slack
+            🔗 فتح التذكرة في Slack
           </a>
         </div>
       </div>
       <div class="note-area" id="na-t-sl-2"><div class="note-label">ملاحظة</div><textarea id="nt-t-sl-2" placeholder="اكتب ملاحظتك..." oninput="onNoteInput('t-sl-2')"></textarea><div class="note-footer"><span class="note-saved-msg" id="ns-t-sl-2">✓ تم الحفظ</span><span class="note-char-count" id="nc-t-sl-2">0</span><button class="note-save-btn" id="nsb-t-sl-2" onclick="saveNote('t-sl-2')" disabled>حفظ</button></div></div>
     </div>
 
-    <!-- Ticket 3: Ø§ÙÙÙÙ ØªØ§Ø¨Ø² -->
+    <!-- Ticket 3: ايكوم تابز -->
     <div class="task-card" id="t-sl-3">
       <div class="task-header" onclick="toggleTask('t-sl-3')">
-        <div class="task-type-icon type-slack">ð</div>
+        <div class="task-type-icon type-slack">📋</div>
         <div class="task-info">
-          <h4>Ø§ÙÙÙÙ ØªØ§Ø¨Ø²</h4>
+          <h4>ايكوم تابز</h4>
           <div class="task-meta">
-            <span>Ø®Ø¯ÙØ§Øª Ø§ÙØªØ§Ø¬Ø±</span>
-            <span>â¢</span>
-            <span>Ø£Ø¶ÙÙØª 21 ÙÙÙÙÙ</span>
+            <span>خدمات التاجر</span>
+            <span>•</span>
+            <span>أضيفت 21 يونيو</span>
           </div>
         </div>
         <div class="task-badges">
           <span class="badge badge-new">New</span>
         </div>
-        <button class="note-btn" id="nb-t-sl-3" onclick="event.stopPropagation();toggleNote('t-sl-3')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">â¼</div>
+        <button class="note-btn" id="nb-t-sl-3" onclick="event.stopPropagation();toggleNote('t-sl-3')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">▼</div>
       </div>
       <div class="task-body">
         <div class="task-body-inner">
           <div class="detail-block">
-            <div class="detail-row"><label>Ø§ÙØ­Ø§ÙØ©</label><span>New â ÙÙ ÙÙØªØ®Ø° Ø¥Ø¬Ø±Ø§Ø¡ Ø¨Ø¹Ø¯</span></div>
-            <div class="detail-row"><label>Ø§ÙÙÙØ¹</label><span>Ø®Ø¯ÙØ§Øª Ø§ÙØªØ§Ø¬Ø±</span></div>
+            <div class="detail-row"><label>الحالة</label><span>New — لم يُتخذ إجراء بعد</span></div>
+            <div class="detail-row"><label>النوع</label><span>خدمات التاجر</span></div>
           </div>
           <a class="slack-link" href="https://salla-co.slack.com/archives/C08U3P95PK5/p1782051511837309" target="_blank">
-            ð ÙØªØ­ Ø§ÙØªØ°ÙØ±Ø© ÙÙ Slack
+            🔗 فتح التذكرة في Slack
           </a>
         </div>
       </div>
@@ -1017,68 +998,68 @@
     <!-- Ticket 4: Widers whatsapp -->
     <div class="task-card" id="t-sl-4">
       <div class="task-header" onclick="toggleTask('t-sl-4')">
-        <div class="task-type-icon type-slack">ð</div>
+        <div class="task-type-icon type-slack">📋</div>
         <div class="task-info">
           <h4>Widers Whatsapp</h4>
           <div class="task-meta">
-            <span>ØªØ·Ø¨ÙÙ</span>
-            <span>â¢</span>
-            <span>Ø£Ø¶ÙÙØª 19 ÙÙÙÙÙ</span>
+            <span>تطبيق</span>
+            <span>•</span>
+            <span>أضيفت 19 يونيو</span>
           </div>
         </div>
         <div class="task-badges">
           <span class="badge badge-new">New</span>
         </div>
-        <button class="note-btn" id="nb-t-sl-4" onclick="event.stopPropagation();toggleNote('t-sl-4')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">â¼</div>
+        <button class="note-btn" id="nb-t-sl-4" onclick="event.stopPropagation();toggleNote('t-sl-4')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">▼</div>
       </div>
       <div class="task-body">
         <div class="task-body-inner">
           <div class="detail-block">
-            <div class="detail-row"><label>Ø§ÙØ­Ø§ÙØ©</label><span>New â ÙÙ ÙÙØªØ®Ø° Ø¥Ø¬Ø±Ø§Ø¡ Ø¨Ø¹Ø¯</span></div>
-            <div class="detail-row"><label>Ø§ÙÙÙØ¹</label><span>ØªØ·Ø¨ÙÙ</span></div>
+            <div class="detail-row"><label>الحالة</label><span>New — لم يُتخذ إجراء بعد</span></div>
+            <div class="detail-row"><label>النوع</label><span>تطبيق</span></div>
           </div>
           <a class="slack-link" href="https://salla-co.slack.com/archives/C08U3P95PK5/p1781895506323759" target="_blank">
-            ð ÙØªØ­ Ø§ÙØªØ°ÙØ±Ø© ÙÙ Slack
+            🔗 فتح التذكرة في Slack
           </a>
         </div>
       </div>
       <div class="note-area" id="na-t-sl-4"><div class="note-label">ملاحظة</div><textarea id="nt-t-sl-4" placeholder="اكتب ملاحظتك..." oninput="onNoteInput('t-sl-4')"></textarea><div class="note-footer"><span class="note-saved-msg" id="ns-t-sl-4">✓ تم الحفظ</span><span class="note-char-count" id="nc-t-sl-4">0</span><button class="note-save-btn" id="nsb-t-sl-4" onclick="saveNote('t-sl-4')" disabled>حفظ</button></div></div>
     </div>
 
-    <!-- Ticket 5: Ø±Ø§Ù ÙÙØ¯ÙØ§ -->
+    <!-- Ticket 5: ران ميديا -->
     <div class="task-card" id="t-sl-5">
       <div class="task-header" onclick="toggleTask('t-sl-5')">
-        <div class="task-type-icon type-slack">ð</div>
+        <div class="task-type-icon type-slack">📋</div>
         <div class="task-info">
-          <h4>Ø±Ø§Ù ÙÙØ¯ÙØ§</h4>
+          <h4>ران ميديا</h4>
           <div class="task-meta">
-            <span>Ø®Ø¯ÙØ§Øª Ø§ÙØªØ§Ø¬Ø±</span>
-            <span>â¢</span>
-            <span>Ø£Ø¶ÙÙØª 14 ÙÙÙÙÙ</span>
+            <span>خدمات التاجر</span>
+            <span>•</span>
+            <span>أضيفت 14 يونيو</span>
           </div>
         </div>
         <div class="task-badges">
           <span class="badge badge-progress">In Progress (Partner)</span>
         </div>
-        <button class="note-btn" id="nb-t-sl-5" onclick="event.stopPropagation();toggleNote('t-sl-5')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">â¼</div>
+        <button class="note-btn" id="nb-t-sl-5" onclick="event.stopPropagation();toggleNote('t-sl-5')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">▼</div>
       </div>
       <div class="task-body">
         <div class="task-body-inner">
           <div class="detail-block">
-            <div class="detail-row"><label>Ø§ÙØ­Ø§ÙØ©</label><span>In Progress (Partner) â Ø§ÙØ´Ø±ÙÙ ÙÙØ¯ Ø§ÙØªÙÙÙØ°Ø ØªØ­ØªØ§Ø¬ ÙØªØ§Ø¨Ø¹Ø©</span></div>
-            <div class="detail-row"><label>Ø§ÙÙÙØ¹</label><span>Ø®Ø¯ÙØ§Øª Ø§ÙØªØ§Ø¬Ø±</span></div>
+            <div class="detail-row"><label>الحالة</label><span>In Progress (Partner) — الشريك قيد التنفيذ، تحتاج متابعة</span></div>
+            <div class="detail-row"><label>النوع</label><span>خدمات التاجر</span></div>
           </div>
           <a class="slack-link" href="https://salla-co.slack.com/archives/C08U3P95PK5/p1781426299100359" target="_blank">
-            ð ÙØªØ­ Ø§ÙØªØ°ÙØ±Ø© ÙÙ Slack
+            🔗 فتح التذكرة في Slack
           </a>
         </div>
       </div>
       <div class="note-area" id="na-t-sl-5"><div class="note-label">ملاحظة</div><textarea id="nt-t-sl-5" placeholder="اكتب ملاحظتك..." oninput="onNoteInput('t-sl-5')"></textarea><div class="note-footer"><span class="note-saved-msg" id="ns-t-sl-5">✓ تم الحفظ</span><span class="note-char-count" id="nc-t-sl-5">0</span><button class="note-save-btn" id="nsb-t-sl-5" onclick="saveNote('t-sl-5')" disabled>حفظ</button></div></div>
     </div>
 
-    <!-- ââââ GROUP: Mentions ââââ -->
+    <!-- ──── GROUP: Mentions ──── -->
     <div class="group-header">
-      <h3>ð¬ ÙÙØ´ÙØ§Øª ØªØ­ØªØ§Ø¬ Ø±Ø¯ÙØ§</h3>
+      <h3>💬 منشنات تحتاج ردًا</h3>
       <span class="group-count">2</span>
       <div class="line"></div>
     </div>
@@ -1086,25 +1067,25 @@
     <!-- Mention 1: Atheer -->
     <div class="task-card" id="t-mn-1">
       <div class="task-header" onclick="toggleTask('t-mn-1')">
-        <div class="task-type-icon type-mention">ð¬</div>
+        <div class="task-type-icon type-mention">💬</div>
         <div class="task-info">
-          <h4>Ø£Ø«ÙØ± Ø§ÙØ¹ÙØ±Ù â ÙÙØ´Ù ÙÙ #merchants-success-onboarding-partners</h4>
+          <h4>أثير العمري — منشن في #merchants-success-onboarding-partners</h4>
           <div class="task-meta">
-            <span>21 ÙÙÙÙÙ 2026</span>
+            <span>21 يونيو 2026</span>
           </div>
         </div>
         <div class="task-badges">
-          <span class="badge badge-mention">ÙÙØ´Ù</span>
+          <span class="badge badge-mention">منشن</span>
         </div>
-        <button class="note-btn" id="nb-t-mn-1" onclick="event.stopPropagation();toggleNote('t-mn-1')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">â¼</div>
+        <button class="note-btn" id="nb-t-mn-1" onclick="event.stopPropagation();toggleNote('t-mn-1')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">▼</div>
       </div>
       <div class="task-body">
         <div class="task-body-inner">
           <div class="summary-text">
-            "ÙØ¹Ø·ÙÙÙ Ø§ÙØ¹Ø§ÙÙØ© Ø§ÙØªØ§Ø¬Ø± ØªÙ Ø§ÙØªÙÙÙØ¹ ÙÙØ¯Ø± ÙØ¨Ø¯Ø£ ÙØ¹Ø§Ù ÙÙ Ø§ÙØªØ·Ø¨ÙÙ ð" â ØªÙ ÙÙØ´ÙØªÙ ÙØ¹ Aya Al-Oran ÙÙØªØ£ÙØ¯ ÙÙ Ø§ÙØ¨Ø¯Ø¡ ÙØ¹ Ø§ÙØªØ§Ø¬Ø± ÙÙ Ø§ÙØªØ·Ø¨ÙÙ.
+            "يعطيكم العافية التاجر تم التوقيع نقدر نبدأ معاه في التطبيق 🙏" — تم منشنتك مع Aya Al-Oran للتأكد من البدء مع التاجر في التطبيق.
           </div>
           <a class="slack-link" href="https://salla-co.slack.com/archives/C061YGRPK96/p1782044367112599?thread_ts=1776763577.372939&cid=C061YGRPK96" target="_blank">
-            ð ÙØªØ­ Ø§ÙØ«Ø±ÙØ¯ ÙÙ Slack
+            🔗 فتح الثريد في Slack
           </a>
         </div>
       </div>
@@ -1114,34 +1095,34 @@
     <!-- Mention 2: Sahar -->
     <div class="task-card" id="t-mn-2">
       <div class="task-header" onclick="toggleTask('t-mn-2')">
-        <div class="task-type-icon type-mention">ð¬</div>
+        <div class="task-type-icon type-mention">💬</div>
         <div class="task-info">
-          <h4>Ø³Ø­Ø± Ø§ÙØ¢ØºØ§ â ÙÙØ´Ù ÙÙ #partners-relations</h4>
+          <h4>سحر الآغا — منشن في #partners-relations</h4>
           <div class="task-meta">
-            <span>22 ÙÙÙÙÙ 2026</span>
+            <span>22 يونيو 2026</span>
           </div>
         </div>
         <div class="task-badges">
-          <span class="badge badge-mention">ÙÙØ´Ù</span>
+          <span class="badge badge-mention">منشن</span>
         </div>
-        <button class="note-btn" id="nb-t-mn-2" onclick="event.stopPropagation();toggleNote('t-mn-2')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">â¼</div>
+        <button class="note-btn" id="nb-t-mn-2" onclick="event.stopPropagation();toggleNote('t-mn-2')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">▼</div>
       </div>
       <div class="task-body">
         <div class="task-body-inner">
           <div class="summary-text">
-            "ÙÙØ£ÙØ§ÙØ© ÙØ§ Ø¬Ø§Ø²ÙØª... ÙÙ Ø§ÙØ¥ÙÙÙÙØ§Øª Ø¨Ø®ÙÙÙ ÙØ³ÙÙÙØ§ Ø¯Ø±Ø§ÙØª Ø¨Ø³ Ø¹Ø´Ø§Ù Ø£Ø±Ø§Ø¬Ø¹ Ø§ÙÙØ¹ÙÙÙØ§Øª ÙØ£ØªØ£ÙØ¯ ÙÙ ØµØ­ØªÙØ§. @Maha @m.almourki Ø£Ø­Ø¯ ÙÙÙÙ Ø¬Ø±ÙØ¨Ø" â Ø³Ø¤Ø§Ù Ø¹Ù ØªØ¬Ø±Ø¨Ø© Ø§Ø³ØªØ®Ø¯Ø§Ù AI ÙÙØªØ§Ø¨Ø© Ø¥ÙÙÙÙØ§Øª Ø§ÙØ´Ø±ÙØ§Ø¡.
+            "للأمانة ما جازفت... كل الإيميلات بخليه يسولها درافت بس عشان أراجع المعلومات وأتأكد من صحتها. @Maha @m.almourki أحد منكم جرّب؟" — سؤال عن تجربة استخدام AI لكتابة إيميلات الشركاء.
           </div>
           <a class="slack-link" href="https://salla-co.slack.com/archives/C05NJE1HMCY/p1782130484640729?thread_ts=1782130377.198079&cid=C05NJE1HMCY" target="_blank">
-            ð ÙØªØ­ Ø§ÙØ«Ø±ÙØ¯ ÙÙ Slack
+            🔗 فتح الثريد في Slack
           </a>
         </div>
       </div>
       <div class="note-area" id="na-t-mn-2"><div class="note-label">ملاحظة</div><textarea id="nt-t-mn-2" placeholder="اكتب ملاحظتك..." oninput="onNoteInput('t-mn-2')"></textarea><div class="note-footer"><span class="note-saved-msg" id="ns-t-mn-2">✓ تم الحفظ</span><span class="note-char-count" id="nc-t-mn-2">0</span><button class="note-save-btn" id="nsb-t-mn-2" onclick="saveNote('t-mn-2')" disabled>حفظ</button></div></div>
     </div>
 
-    <!-- ââââ GROUP: Emails ââââ -->
+    <!-- ──── GROUP: Emails ──── -->
     <div class="group-header">
-      <h3>ð§ Ø¥ÙÙÙÙØ§Øª ØªØ­ØªØ§Ø¬ Ø±Ø¯</h3>
+      <h3>📧 إيميلات تحتاج رد</h3>
       <span class="group-count">8</span>
       <div class="line"></div>
     </div>
@@ -1149,22 +1130,22 @@
     <!-- Email 1: Hakeem Care (URGENT) -->
     <div class="task-card" id="t-em-1">
       <div class="task-header" onclick="toggleTask('t-em-1')">
-        <div class="task-type-icon type-email">ð§</div>
+        <div class="task-type-icon type-email">📧</div>
         <div class="task-info">
-          <h4>Hakeem Care â ØªØ£Ø®Ø± ÙÙ Ø§ÙØ§Ø³ØªØ¬Ø§Ø¨Ø© (5 Ø£Ø´ÙØ±)</h4>
+          <h4>Hakeem Care — تأخر في الاستجابة (5 أشهر)</h4>
           <div class="task-meta">
-            <span>Ø¢Ø®Ø± Ø±Ø¯: 21 ÙÙÙÙÙ</span>
+            <span>آخر رد: 21 يونيو</span>
           </div>
         </div>
         <div class="task-badges">
-          <span class="badge badge-urgent">Ø¹Ø§Ø¬Ù</span>
+          <span class="badge badge-urgent">عاجل</span>
         </div>
-        <button class="note-btn" id="nb-t-em-1" onclick="event.stopPropagation();toggleNote('t-em-1')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">â¼</div>
+        <button class="note-btn" id="nb-t-em-1" onclick="event.stopPropagation();toggleNote('t-em-1')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">▼</div>
       </div>
       <div class="task-body">
         <div class="task-body-inner">
           <div class="summary-text">
-            Ø§ÙØ´Ø±ÙÙ ÙØ´ÙÙ ÙÙ ØªØ£Ø®ÙØ± Ø´Ø¯ÙØ¯ ÙÙ Ø§ÙØ±Ø¯ Ø¹ÙÙ Ø§Ø³ØªÙØ³Ø§Ø±Ø§ØªÙÙØ ÙØ±Ù 5 Ø£Ø´ÙØ± ÙÙÙ ØªÙØªÙÙ Ø¹ÙÙÙØ© Ø§ÙØ±Ø¨Ø· Ø¨Ø¹Ø¯. Ø·ÙØ¨ÙÙ: Ø¯Ø¹Ù Ø¹Ø§Ø¬Ù ÙØ¥ØªÙØ§Ù Ø§ÙØªÙØ§ÙÙ ÙÙ Ø£ÙØ±Ø¨ ÙÙØª ÙÙÙÙ.
+            الشريك يشكو من تأخير شديد في الرد على استفساراتهم، مرّ 5 أشهر ولم تكتمل عملية الربط بعد. طلبهم: دعم عاجل لإتمام التكامل في أقرب وقت ممكن.
           </div>
         </div>
       </div>
@@ -1174,47 +1155,47 @@
     <!-- Email 2: Contract -->
     <div class="task-card" id="t-em-2">
       <div class="task-header" onclick="toggleTask('t-em-2')">
-        <div class="task-type-icon type-email">ð§</div>
+        <div class="task-type-icon type-email">📧</div>
         <div class="task-info">
-          <h4>Ø´Ø±ÙÙ ÙØ³ØªÙØ³Ø± Ø¹Ù Ø§ÙØ¹ÙØ¯ (Ø§ÙØ¹ÙÙØ§Ù Ø§ÙÙØ·ÙÙ)</h4>
+          <h4>شريك يستفسر عن العقد (العنوان الوطني)</h4>
           <div class="task-meta">
-            <span>Ø¢Ø®Ø± Ø±Ø³Ø§ÙØ©: Ø§ÙÙÙÙ 23 ÙÙÙÙÙ</span>
+            <span>آخر رسالة: اليوم 23 يونيو</span>
           </div>
         </div>
         <div class="task-badges">
-          <span class="badge badge-urgent">Ø¹Ø§Ø¬Ù</span>
+          <span class="badge badge-urgent">عاجل</span>
         </div>
-        <button class="note-btn" id="nb-t-em-2" onclick="event.stopPropagation();toggleNote('t-em-2')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">â¼</div>
+        <button class="note-btn" id="nb-t-em-2" onclick="event.stopPropagation();toggleNote('t-em-2')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">▼</div>
       </div>
       <div class="task-body">
         <div class="task-body-inner">
           <div class="summary-text">
-            Ø§ÙØ´Ø±ÙÙ ÙØªØ§Ø¨Ø¹ Ø¨Ø´ÙÙ ÙØ³ØªÙØ± Ø­ÙÙ Ø­Ø§ÙØ© Ø§ÙØ¹ÙØ¯. Ø£Ø±Ø³ÙØª Ø£ÙØª Ø±Ø¯ ÙØ¨Ù ÙÙÙÙÙ Ø¨Ø£Ù Ø§ÙØ¹ÙØ¯ "ÙÙØ¯ Ø§ÙÙØ±Ø§Ø¬Ø¹Ø© Ø§ÙÙÙØ§Ø¦ÙØ© ÙØ¯Ù Ø§ÙØ¥Ø¯Ø§Ø±Ø©". Ø£Ø­Ø¯Ø« Ø±Ø³Ø§ÙØ© Ø§ÙÙÙÙ: ÙØ·ÙØ¨ Ø§ÙØªØ£ÙØ¯ ÙÙ Ø¥ØªÙØ§Ù Ø§ÙÙØ±Ø§Ø¬Ø¹Ø© ÙØ§ÙØªÙÙÙØ¹ Ø§ÙÙÙÙ Ø¥Ù Ø£ÙÙÙ. Ø§ÙØ´Ø±ÙÙ Ø£Ø±Ø³Ù Ø§ÙØ¹ÙÙØ§Ù Ø§ÙÙØ·ÙÙ: EDPA7531.
+            الشريك يتابع بشكل مستمر حول حالة العقد. أرسلت أنت رد قبل يومين بأن العقد "قيد المراجعة النهائية لدى الإدارة". أحدث رسالة اليوم: يطلب التأكد من إتمام المراجعة والتوقيع اليوم إن أمكن. الشريك أرسل العنوان الوطني: EDPA7531.
           </div>
         </div>
       </div>
       <div class="note-area" id="na-t-em-2"><div class="note-label">ملاحظة</div><textarea id="nt-t-em-2" placeholder="اكتب ملاحظتك..." oninput="onNoteInput('t-em-2')"></textarea><div class="note-footer"><span class="note-saved-msg" id="ns-t-em-2">✓ تم الحفظ</span><span class="note-char-count" id="nc-t-em-2">0</span><button class="note-save-btn" id="nsb-t-em-2" onclick="saveNote('t-em-2')" disabled>حفظ</button></div></div>
     </div>
 
-    <!-- Email 3: Ø´ÙÙÙ Tabby/Tamara -->
+    <!-- Email 3: شكوى Tabby/Tamara -->
     <div class="task-card" id="t-em-3">
       <div class="task-header" onclick="toggleTask('t-em-3')">
-        <div class="task-type-icon type-email">ð§</div>
+        <div class="task-type-icon type-email">📧</div>
         <div class="task-info">
-          <h4>Ø´ÙÙÙ â Ø®Ø¯ÙØ© Ø§ÙØªØ³Ø¬ÙÙ ÙÙ ØªØ§Ø¨Ù ÙØªÙØ§Ø±Ø§</h4>
+          <h4>شكوى — خدمة التسجيل في تابي وتمارا</h4>
           <div class="task-meta">
-            <span>Ø¢Ø®Ø± Ø±Ø³Ø§ÙØ©: 22 ÙÙÙÙÙ</span>
+            <span>آخر رسالة: 22 يونيو</span>
           </div>
         </div>
         <div class="task-badges">
-          <span class="badge badge-urgent">Ø´ÙÙÙ</span>
+          <span class="badge badge-urgent">شكوى</span>
         </div>
-        <button class="note-btn" id="nb-t-em-3" onclick="event.stopPropagation();toggleNote('t-em-3')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">â¼</div>
+        <button class="note-btn" id="nb-t-em-3" onclick="event.stopPropagation();toggleNote('t-em-3')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">▼</div>
       </div>
       <div class="task-body">
         <div class="task-body-inner">
           <div class="summary-text">
-            Ø´Ø±ÙÙ ÙØ±Ø¯Ù Ø¹ÙÙ Ø´ÙÙÙ Ø¨Ø®ØµÙØµ Ø·ÙØ¨ Ø§ÙØ®Ø¯ÙØ© Ø±ÙÙ #238660749. ÙÙØ¶Ø­ Ø£Ù Ø§ÙØªÙÙÙØ¶ ÙØ§Ù ÙÙÙØ¸Ù ØºÙØ± Ø³Ø¹ÙØ¯Ù Ø§ÙØ¬ÙØ³ÙØ© ÙÙØ§ Ø£Ø«Ø§Ø± ØºØ¶Ø¨ Ø§ÙØ¹ÙÙÙØ ÙØ£Ù Ø§ÙØªÙØ§ØµÙ Ø§ÙØ®Ø§Ø±Ø¬Ù ÙØ§Ù ÙÙØ· ÙØ³Ø±Ø¹Ø© Ø§ÙØ§Ø³ØªØ¬Ø§Ø¨Ø©. ØªÙ Ø¥ÙØºØ§Ø¡ Ø§ÙØ®Ø¯ÙØ© ÙÙ Ø·Ø±ÙÙÙ. ÙØ­ØªØ§Ø¬ ÙÙÙÙÙØ§ ÙØ§Ø¶Ø­ÙØ§ ÙÙÙ.
+            شريك يردّ على شكوى بخصوص طلب الخدمة رقم #238660749. يوضح أن التفويض كان لموظف غير سعودي الجنسية مما أثار غضب العميل، وأن التواصل الخارجي كان فقط لسرعة الاستجابة. تم إلغاء الخدمة من طرفهم. يحتاج موقفًا واضحًا منك.
           </div>
         </div>
       </div>
@@ -1224,22 +1205,22 @@
     <!-- Email 4: CEQUENS -->
     <div class="task-card" id="t-em-4">
       <div class="task-header" onclick="toggleTask('t-em-4')">
-        <div class="task-type-icon type-email">ð§</div>
+        <div class="task-type-icon type-email">📧</div>
         <div class="task-info">
-          <h4>CEQUENS â ÙØ«ÙÙØ© ÙØ·ÙÙØ¨Ø©</h4>
+          <h4>CEQUENS — وثيقة مطلوبة</h4>
           <div class="task-meta">
-            <span>Sari Hweitat Â· 22 ÙÙÙÙÙ</span>
+            <span>Sari Hweitat · 22 يونيو</span>
           </div>
         </div>
         <div class="task-badges">
-          <span class="badge badge-new">Ø¬Ø¯ÙØ¯</span>
+          <span class="badge badge-new">جديد</span>
         </div>
-        <button class="note-btn" id="nb-t-em-4" onclick="event.stopPropagation();toggleNote('t-em-4')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">â¼</div>
+        <button class="note-btn" id="nb-t-em-4" onclick="event.stopPropagation();toggleNote('t-em-4')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">▼</div>
       </div>
       <div class="task-body">
         <div class="task-body-inner">
           <div class="summary-text">
-            Sari Hweitat (Head of Products - CEQUENS) ÙØ±Ø¯ Ø¹ÙÙ Ø·ÙØ¨Ù ÙÙØ±Ø³Ù ÙØ«ÙÙØ© ÙØ±ÙÙØ© ÙÙØ§ Ø·ÙÙØ¨. Ø§ÙØ´Ø±ÙÙ ÙØªØ§Ø¨Ø¹ Ø¹ÙÙÙØ© Ø§ÙØ§ÙØ¶ÙØ§Ù ÙØ¨Ø±ÙØ§ÙØ¬ Ø´Ø±ÙØ§Ø¡ Ø³ÙØ©.
+            Sari Hweitat (Head of Products - CEQUENS) يرد على طلبك ويرسل وثيقة مرفقة كما طُلب. الشريك يتابع عملية الانضمام لبرنامج شركاء سلة.
           </div>
         </div>
       </div>
@@ -1249,22 +1230,22 @@
     <!-- Email 5: Pack Go -->
     <div class="task-card" id="t-em-5">
       <div class="task-header" onclick="toggleTask('t-em-5')">
-        <div class="task-type-icon type-email">ð§</div>
+        <div class="task-type-icon type-email">📧</div>
         <div class="task-info">
-          <h4>Pack Go â Ø·ÙØ¨ ØªØ·Ø¨ÙÙ Ø´Ø­Ù ÙØ¨Ø±Ø¯ Ø¬Ø¯ÙØ¯</h4>
+          <h4>Pack Go — طلب تطبيق شحن مبرد جديد</h4>
           <div class="task-meta">
-            <span>Samih Al-Zain Â· 22 ÙÙÙÙÙ</span>
+            <span>Samih Al-Zain · 22 يونيو</span>
           </div>
         </div>
         <div class="task-badges">
-          <span class="badge badge-new">Ø¬Ø¯ÙØ¯</span>
+          <span class="badge badge-new">جديد</span>
         </div>
-        <button class="note-btn" id="nb-t-em-5" onclick="event.stopPropagation();toggleNote('t-em-5')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">â¼</div>
+        <button class="note-btn" id="nb-t-em-5" onclick="event.stopPropagation();toggleNote('t-em-5')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">▼</div>
       </div>
       <div class="task-body">
         <div class="task-body-inner">
           <div class="summary-text">
-            Ø³Ø§ÙØ­ Ø§ÙØ²ÙÙ ÙÙ Pack Go (Ø§ÙØªØ·Ø¨ÙÙ Ø±ÙÙ 1227305125) ÙØ·ÙØ¨ Ø¥Ø¶Ø§ÙØ© ØªØ·Ø¨ÙÙ Ø¬Ø¯ÙØ¯ ÙØ®ØªØµ Ø¨Ø§ÙØ´Ø­Ù Ø§ÙÙØ¨Ø±Ø¯ â ÙÙÙØ³ ØªØ¹Ø¯ÙÙØ§Ù Ø¹ÙÙ Ø§ÙØªØ·Ø¨ÙÙ Ø§ÙØ­Ø§ÙÙ. ÙØ­ØªØ§Ø¬ Ø±Ø¯ÙØ§ ØªÙØ¬ÙÙÙÙØ§ Ø­ÙÙ Ø¥Ø¬Ø±Ø§Ø¡Ø§Øª Ø¥ÙØ´Ø§Ø¡ ØªØ·Ø¨ÙÙ Ø¬Ø¯ÙØ¯.
+            سامح الزين من Pack Go (التطبيق رقم 1227305125) يطلب إضافة تطبيق جديد مختص بالشحن المبرد — وليس تعديلاً على التطبيق الحالي. يحتاج ردًا توجيهيًا حول إجراءات إنشاء تطبيق جديد.
           </div>
         </div>
       </div>
@@ -1274,22 +1255,22 @@
     <!-- Email 6: Mahalk Shein (old thread) -->
     <div class="task-card" id="t-em-6">
       <div class="task-header" onclick="toggleTask('t-em-6')">
-        <div class="task-type-icon type-email">ð§</div>
+        <div class="task-type-icon type-email">📧</div>
         <div class="task-info">
-          <h4>ÙØ­ÙÙ Ø´Ù Ø¥Ù â Ø·ÙØ¨ Ø¥Ø¸ÙØ§Ø± Ø§ÙØªØ·Ø¨ÙÙ</h4>
+          <h4>محلك شي إن — طلب إظهار التطبيق</h4>
           <div class="task-meta">
-            <span>Ø³ÙØ³ÙØ© ÙØ¯ÙÙØ© Â· ÙÙÙÙØ¨Ø± 2025</span>
+            <span>سلسلة قديمة · نوفمبر 2025</span>
           </div>
         </div>
         <div class="task-badges">
-          <span class="badge badge-progress">ÙØªØ§Ø¨Ø¹Ø©</span>
+          <span class="badge badge-progress">متابعة</span>
         </div>
-        <button class="note-btn" id="nb-t-em-6" onclick="event.stopPropagation();toggleNote('t-em-6')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">â¼</div>
+        <button class="note-btn" id="nb-t-em-6" onclick="event.stopPropagation();toggleNote('t-em-6')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">▼</div>
       </div>
       <div class="task-body">
         <div class="task-body-inner">
           <div class="summary-text">
-            Ø§ÙØ´Ø±ÙÙ ÙØ·Ø§ÙØ¨ Ø¨Ø¥Ø¸ÙØ§Ø± Ø§ÙØªØ·Ø¨ÙÙ ÙÙ ÙØªØ¬Ø± Ø§ÙØªØ·Ø¨ÙÙØ§Øª. ÙØ¯ÙÙ Ø¯ÙÙÙØ§Ù Ø¹ÙÙ Ø­Ù ÙØ´ÙÙØ© Ø§ÙØ¹ÙÙÙ ÙØªØ­ÙÙÙ ÙØ¨ÙØº Ø§ÙØ§Ø´ØªØ±Ø§Ù. Ø§ÙØ³ÙØ³ÙØ© ÙØ¯ÙÙØ© (ÙÙÙÙØ¨Ø± 2025) â ØªØ­ÙÙ ÙÙ Ø§ÙÙØ¶Ø¹ Ø§ÙØ­Ø§ÙÙ ÙÙØªØ·Ø¨ÙÙ ÙÙ ØªÙ ÙØ´Ø±Ù Ø£Ù ÙØ§.
+            الشريك يطالب بإظهار التطبيق في متجر التطبيقات. قدّم دليلاً على حل مشكلة العميل وتحويل مبلغ الاشتراك. السلسلة قديمة (نوفمبر 2025) — تحقق من الوضع الحالي للتطبيق هل تم نشره أم لا.
           </div>
         </div>
       </div>
@@ -1299,22 +1280,22 @@
     <!-- Email 7: Vanner meeting -->
     <div class="task-card" id="t-em-7">
       <div class="task-header" onclick="toggleTask('t-em-7')">
-        <div class="task-type-icon type-email">ð§</div>
+        <div class="task-type-icon type-email">📧</div>
         <div class="task-info">
-          <h4>Ø¯Ø¹ÙØ© Ø§Ø¬ØªÙØ§Ø¹ â Vanner &lt;&gt; Salla (ØºØ¯ÙØ§)</h4>
+          <h4>دعوة اجتماع — Vanner &lt;&gt; Salla (غدًا)</h4>
           <div class="task-meta">
-            <span>ÙÙ Ghaida Alsahli Â· Ø§ÙÙÙÙ</span>
+            <span>من Ghaida Alsahli · اليوم</span>
           </div>
         </div>
         <div class="task-badges">
-          <span class="badge badge-due">ØºØ¯ÙØ§ 12:00</span>
+          <span class="badge badge-due">غدًا 12:00</span>
         </div>
-        <button class="note-btn" id="nb-t-em-7" onclick="event.stopPropagation();toggleNote('t-em-7')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">â¼</div>
+        <button class="note-btn" id="nb-t-em-7" onclick="event.stopPropagation();toggleNote('t-em-7')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">▼</div>
       </div>
       <div class="task-body">
         <div class="task-body-inner">
           <div class="summary-text">
-            Ø¯Ø¹ÙØ© Ø§Ø¬ØªÙØ§Ø¹ ÙÙ Ghaida Alsahli ÙØ§Ø¬ØªÙØ§Ø¹ "Vanner - salla" ØºØ¯ÙØ§ Ø§ÙØ£Ø±Ø¨Ø¹Ø§Ø¡ 24 ÙÙÙÙÙ 12:00â1:00Ù (ØªÙÙÙØª Ø§ÙØ±ÙØ§Ø¶). ÙÙ ÙØªÙ ÙØ¨ÙÙ Ø§ÙØ¯Ø¹ÙØ© Ø¨Ø¹Ø¯ â ØªØ­ÙÙ ÙÙ ØªÙÙÙÙÙ.
+            دعوة اجتماع من Ghaida Alsahli لاجتماع "Vanner - salla" غدًا الأربعاء 24 يونيو 12:00–1:00م (توقيت الرياض). لم يتم قبول الدعوة بعد — تحقق من تقويمك.
           </div>
         </div>
       </div>
@@ -1324,22 +1305,22 @@
     <!-- Email 8: Quiqup -->
     <div class="task-card" id="t-em-8">
       <div class="task-header" onclick="toggleTask('t-em-8')">
-        <div class="task-type-icon type-email">ð§</div>
+        <div class="task-type-icon type-email">📧</div>
         <div class="task-info">
-          <h4>Quiqup â ÙØ¨ÙÙ Ø¯Ø¹ÙØ© Salla &lt;&gt; Quiqup</h4>
+          <h4>Quiqup — قبول دعوة Salla &lt;&gt; Quiqup</h4>
           <div class="task-meta">
-            <span>Thanua Aldosary Â· Ø¥Ø´Ø¹Ø§Ø±</span>
+            <span>Thanua Aldosary · إشعار</span>
           </div>
         </div>
         <div class="task-badges">
-          <span class="badge badge-meeting">Ø¥Ø´Ø¹Ø§Ø±</span>
+          <span class="badge badge-meeting">إشعار</span>
         </div>
-        <button class="note-btn" id="nb-t-em-8" onclick="event.stopPropagation();toggleNote('t-em-8')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">â¼</div>
+        <button class="note-btn" id="nb-t-em-8" onclick="event.stopPropagation();toggleNote('t-em-8')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">▼</div>
       </div>
       <div class="task-body">
         <div class="task-body-inner">
           <div class="summary-text">
-            Thanua Aldosary ÙÙ Quiqup ÙØ¨ÙØª Ø¯Ø¹ÙØ© Ø§Ø¬ØªÙØ§Ø¹ Salla &lt;&gt; Quiqup. ÙØ§ ÙØ­ØªØ§Ø¬ Ø±Ø¯Ø§Ù ÙÙÙ ØªØ£ÙØ¯ ÙÙ ØªØ­Ø¶ÙØ± Ø¬Ø¯ÙÙ Ø£Ø¹ÙØ§Ù Ø§ÙØ§Ø¬ØªÙØ§Ø¹.
+            Thanua Aldosary من Quiqup قبلت دعوة اجتماع Salla &lt;&gt; Quiqup. لا يحتاج رداً لكن تأكد من تحضير جدول أعمال الاجتماع.
           </div>
         </div>
       </div>
@@ -1355,13 +1336,13 @@
 
     <div class="reviews-top">
       <div>
-        <h2>ð ØªØ³Ø¬ÙÙ Ø§ÙÙØ±Ø§Ø¬Ø¹Ø§Øª</h2>
+        <h2>📊 تسجيل المراجعات</h2>
         <div class="reviews-date" id="reviewsDateLabel"></div>
       </div>
       <div class="reviews-actions">
-        <span class="save-indicator" id="rvSaveIndicator">â¬¤ &nbsp;Firebase</span>
-        <button class="btn-copy" onclick="copyReviewsSummary()">ð ÙØ³Ø® ÙÙØ´ÙØª</button>
-        <button class="btn-save" onclick="saveReviews()">ð¾ Ø­ÙØ¸</button>
+        <span class="save-indicator" id="rvSaveIndicator">⬤ &nbsp;Firebase</span>
+        <button class="btn-copy" onclick="copyReviewsSummary()">📋 نسخ للشيت</button>
+        <button class="btn-save" onclick="saveReviews()">💾 حفظ</button>
       </div>
     </div>
 
@@ -1370,7 +1351,7 @@
       <!-- Services -->
       <div class="rv-card">
         <div class="rv-card-header">
-          <div class="rv-icon" style="background:rgba(124,58,237,0.2)">âï¸</div>
+          <div class="rv-icon" style="background:rgba(124,58,237,0.2)">⚙️</div>
           <h3>Services</h3>
         </div>
         <div class="rv-type-block">
@@ -1404,7 +1385,7 @@
       <!-- Verf -->
       <div class="rv-card">
         <div class="rv-card-header">
-          <div class="rv-icon" style="background:rgba(16,185,129,0.2)">â</div>
+          <div class="rv-icon" style="background:rgba(16,185,129,0.2)">✅</div>
           <h3>Verf</h3>
         </div>
         <div class="rv-type-block">
@@ -1424,7 +1405,7 @@
       <!-- Affiliates -->
       <div class="rv-card">
         <div class="rv-card-header">
-          <div class="rv-icon" style="background:rgba(59,130,246,0.2)">ð¤</div>
+          <div class="rv-icon" style="background:rgba(59,130,246,0.2)">🤝</div>
           <h3>Affiliates</h3>
         </div>
         <div class="rv-type-block">
@@ -1458,7 +1439,7 @@
       <!-- Ready Stores -->
       <div class="rv-card">
         <div class="rv-card-header">
-          <div class="rv-icon" style="background:rgba(245,158,11,0.2)">ðª</div>
+          <div class="rv-icon" style="background:rgba(245,158,11,0.2)">🏪</div>
           <h3>Ready Stores</h3>
         </div>
         <div class="rv-type-block">
@@ -1492,7 +1473,7 @@
       <!-- Influencers -->
       <div class="rv-card">
         <div class="rv-card-header">
-          <div class="rv-icon" style="background:rgba(239,68,68,0.2)">â­</div>
+          <div class="rv-icon" style="background:rgba(239,68,68,0.2)">⭐</div>
           <h3>Influencers</h3>
         </div>
         <div class="rv-type-block">
@@ -1527,19 +1508,19 @@
 
     <!-- Summary -->
     <div class="rv-summary">
-      <div class="rv-summary-title">ð ÙÙØ®Øµ Ø§ÙÙÙÙ</div>
+      <div class="rv-summary-title">📈 ملخص اليوم</div>
       <div class="rv-summary-grid">
         <div class="rv-sum-item">
           <div class="rv-sum-num" id="sum-total-r">0</div>
-          <div class="rv-sum-label">Ø¥Ø¬ÙØ§ÙÙ Reviewed</div>
+          <div class="rv-sum-label">إجمالي Reviewed</div>
         </div>
         <div class="rv-sum-item green">
           <div class="rv-sum-num" id="sum-total-a">0</div>
-          <div class="rv-sum-label">Ø¥Ø¬ÙØ§ÙÙ Approved</div>
+          <div class="rv-sum-label">إجمالي Approved</div>
         </div>
         <div class="rv-sum-item yellow">
-          <div class="rv-sum-num" id="sum-approval-rate">â</div>
-          <div class="rv-sum-label">ÙØ³Ø¨Ø© Ø§ÙÙØ¨ÙÙ</div>
+          <div class="rv-sum-num" id="sum-approval-rate">—</div>
+          <div class="rv-sum-label">نسبة القبول</div>
         </div>
       </div>
     </div>
@@ -1550,23 +1531,23 @@
   <div id="historyView">
     <div id="historyList">
       <div class="history-empty">
-        <div class="icon">ðï¸</div>
-        <p>Ø¬Ø§Ø±Ù ØªØ­ÙÙÙ Ø§ÙØ³Ø¬Ù...</p>
+        <div class="icon">🗂️</div>
+        <p>جاري تحميل السجل...</p>
       </div>
     </div>
   </div>
 
 </div><!-- /container -->
 
-<!-- âââ FOOTER âââ -->
+<!-- ═══ FOOTER ═══ -->
 <footer>
-  <p>ØªÙ ØªÙÙÙØ¯ ÙØ°Ù Ø§ÙØµÙØ­Ø© Ø¨ÙØ§Ø³Ø·Ø© <span>ÙÙÙØ¯</span> Â· Ø¢Ø®Ø± ØªØ­Ø¯ÙØ«: <span id="lastUpdate"></span></p>
+  <p>تم توليد هذه الصفحة بواسطة <span>كلود</span> · آخر تحديث: <span id="lastUpdate"></span></p>
 </footer>
 
 <script>
-  // ââââââââââââââââââââââââââââââââââââââââââ
+  // ══════════════════════════════════════════
   //  FIREBASE INIT
-  // ââââââââââââââââââââââââââââââââââââââââââ
+  // ══════════════════════════════════════════
   const firebaseConfig = {
     apiKey: "AIzaSyBJLSXKPcTLnLQ0OuMdocNJgHOEuQiJhEA",
     authDomain: "m7md-tasks.firebaseapp.com",
@@ -1579,60 +1560,60 @@
   firebase.initializeApp(firebaseConfig);
   const db = firebase.database();
 
-  // ââââââââââââââââââââââââââââââââââââââââââ
+  // ══════════════════════════════════════════
   //  CONSTANTS
-  // ââââââââââââââââââââââââââââââââââââââââââ
+  // ══════════════════════════════════════════
   const TODAY = '2026-06-23';
   const TOTAL = 19;
   let completedCount = 0;
 
   // Task metadata to save in Firebase for history
   const tasksMeta = [
-    { id:"t-cal-1", title:"Salla <> Journify",        type:"Ø§Ø¬ØªÙØ§Ø¹" },
-    { id:"t-cal-2", title:"Salla <> Digital Plus ERP", type:"Ø§Ø¬ØªÙØ§Ø¹" },
-    { id:"t-cal-3", title:"Salla <> Actan (D365)",     type:"Ø§Ø¬ØªÙØ§Ø¹" },
-    { id:"t-cal-4", title:"Salla <> WSLA",             type:"Ø§Ø¬ØªÙØ§Ø¹" },
-    { id:"t-sl-1",  title:"Ø±Ø§ÙÙ Ø³ÙÙ",                  type:"ØªØ°ÙØ±Ø©"  },
-    { id:"t-sl-2",  title:"ÙØ­ÙÙ Ø´Ù Ø¥Ù",                type:"ØªØ°ÙØ±Ø©"  },
-    { id:"t-sl-3",  title:"Ø§ÙÙÙÙ ØªØ§Ø¨Ø²",                type:"ØªØ°ÙØ±Ø©"  },
-    { id:"t-sl-4",  title:"Widers Whatsapp",           type:"ØªØ°ÙØ±Ø©"  },
-    { id:"t-sl-5",  title:"Ø±Ø§Ù ÙÙØ¯ÙØ§",                 type:"ØªØ°ÙØ±Ø©"  },
-    { id:"t-mn-1",  title:"ÙÙØ´Ù â Ø£Ø«ÙØ± Ø§ÙØ¹ÙØ±Ù",        type:"ÙÙØ´Ù"   },
-    { id:"t-mn-2",  title:"ÙÙØ´Ù â Ø³Ø­Ø± Ø§ÙØ¢ØºØ§",          type:"ÙÙØ´Ù"   },
-    { id:"t-em-1",  title:"Hakeem Care â ØªØ£Ø®Ø± 5 Ø£Ø´ÙØ±", type:"Ø¥ÙÙÙÙ" },
-    { id:"t-em-2",  title:"Ø¹ÙØ¯ Ø§ÙØ´Ø±ÙÙ â ÙØªØ§Ø¨Ø¹Ø©",       type:"Ø¥ÙÙÙÙ" },
-    { id:"t-em-3",  title:"Ø´ÙÙÙ ØªØ§Ø¨Ù ÙØªÙØ§Ø±Ø§",          type:"Ø¥ÙÙÙÙ" },
-    { id:"t-em-4",  title:"CEQUENS â ÙØ«ÙÙØ©",           type:"Ø¥ÙÙÙÙ" },
-    { id:"t-em-5",  title:"Pack Go â ØªØ·Ø¨ÙÙ Ø¬Ø¯ÙØ¯",      type:"Ø¥ÙÙÙÙ" },
-    { id:"t-em-6",  title:"ÙØ­ÙÙ Ø´Ù Ø¥Ù â Ø¥Ø¸ÙØ§Ø± ØªØ·Ø¨ÙÙ", type:"Ø¥ÙÙÙÙ" },
-    { id:"t-em-7",  title:"Ø¯Ø¹ÙØ© Vanner (ØºØ¯ÙØ§)",        type:"Ø¥ÙÙÙÙ" },
-    { id:"t-em-8",  title:"Quiqup â ÙØ¨ÙÙ Ø¯Ø¹ÙØ©",        type:"Ø¥ÙÙÙÙ" },
+    { id:"t-cal-1", title:"Salla <> Journify",        type:"اجتماع" },
+    { id:"t-cal-2", title:"Salla <> Digital Plus ERP", type:"اجتماع" },
+    { id:"t-cal-3", title:"Salla <> Actan (D365)",     type:"اجتماع" },
+    { id:"t-cal-4", title:"Salla <> WSLA",             type:"اجتماع" },
+    { id:"t-sl-1",  title:"رانك سيو",                  type:"تذكرة"  },
+    { id:"t-sl-2",  title:"محلك شي إن",                type:"تذكرة"  },
+    { id:"t-sl-3",  title:"ايكوم تابز",                type:"تذكرة"  },
+    { id:"t-sl-4",  title:"Widers Whatsapp",           type:"تذكرة"  },
+    { id:"t-sl-5",  title:"ران ميديا",                 type:"تذكرة"  },
+    { id:"t-mn-1",  title:"منشن – أثير العمري",        type:"منشن"   },
+    { id:"t-mn-2",  title:"منشن – سحر الآغا",          type:"منشن"   },
+    { id:"t-em-1",  title:"Hakeem Care – تأخر 5 أشهر", type:"إيميل" },
+    { id:"t-em-2",  title:"عقد الشريك – متابعة",       type:"إيميل" },
+    { id:"t-em-3",  title:"شكوى تابي وتمارا",          type:"إيميل" },
+    { id:"t-em-4",  title:"CEQUENS – وثيقة",           type:"إيميل" },
+    { id:"t-em-5",  title:"Pack Go – تطبيق جديد",      type:"إيميل" },
+    { id:"t-em-6",  title:"محلك شي إن – إظهار تطبيق", type:"إيميل" },
+    { id:"t-em-7",  title:"دعوة Vanner (غدًا)",        type:"إيميل" },
+    { id:"t-em-8",  title:"Quiqup – قبول دعوة",        type:"إيميل" },
   ];
 
-  // ââââââââââââââââââââââââââââââââââââââââââ
+  // ══════════════════════════════════════════
   //  FIREBASE STATUS UI
-  // ââââââââââââââââââââââââââââââââââââââââââ
+  // ══════════════════════════════════════════
   function setFbStatus(state) {
     const dot = document.getElementById('fbDot');
     const lbl = document.getElementById('fbLabel');
-    if (state === 'connected')  { dot.className='fb-dot connected'; lbl.textContent='ÙØªØµÙ Ø¨Ù Firebase'; }
-    else if (state === 'saving') { dot.className='fb-dot saving';   lbl.textContent='Ø¬Ø§Ø±Ù Ø§ÙØ­ÙØ¸...'; }
-    else                         { dot.className='fb-dot';          lbl.textContent='ØºÙØ± ÙØªØµÙ'; }
+    if (state === 'connected')  { dot.className='fb-dot connected'; lbl.textContent='متصل بـ Firebase'; }
+    else if (state === 'saving') { dot.className='fb-dot saving';   lbl.textContent='جاري الحفظ...'; }
+    else                         { dot.className='fb-dot';          lbl.textContent='غير متصل'; }
   }
 
   db.ref('.info/connected').on('value', snap => {
     setFbStatus(snap.val() ? 'connected' : 'offline');
   });
 
-  // ââââââââââââââââââââââââââââââââââââââââââ
+  // ══════════════════════════════════════════
   //  SAVE TODAY'S TASKS METADATA (once)
-  // ââââââââââââââââââââââââââââââââââââââââââ
+  // ══════════════════════════════════════════
   const dayRef     = db.ref(`days/${TODAY}`);
   const actionsRef = db.ref(`days/${TODAY}/actions`);
 
   dayRef.child('meta').once('value', snap => {
     if (!snap.exists()) {
-      // First time today â save task list
+      // First time today → save task list
       const meta = {};
       tasksMeta.forEach(t => { meta[t.id] = { title: t.title, type: t.type }; });
       dayRef.child('tasks').set(meta);
@@ -1640,9 +1621,9 @@
     }
   });
 
-  // ââââââââââââââââââââââââââââââââââââââââââ
+  // ══════════════════════════════════════════
   //  LOAD & LISTEN TO ACTIONS (real-time)
-  // ââââââââââââââââââââââââââââââââââââââââââ
+  // ══════════════════════════════════════════
   actionsRef.on('value', snap => {
     const actions = snap.val() || {};
     completedCount = 0;
@@ -1659,9 +1640,9 @@
     updateStats();
   });
 
-  // ââââââââââââââââââââââââââââââââââââââââââ
+  // ══════════════════════════════════════════
   //  CHECK / UNCHECK
-  // ââââââââââââââââââââââââââââââââââââââââââ
+  // ══════════════════════════════════════════
   function checkTask(e, id) {
     e.stopPropagation();
     const card = document.getElementById(id);
@@ -1672,9 +1653,9 @@
       .then(() => setFbStatus('connected'));
   }
 
-  // ââââââââââââââââââââââââââââââââââââââââââ
+  // ══════════════════════════════════════════
   //  STATS + PROGRESS BAR
-  // ââââââââââââââââââââââââââââââââââââââââââ
+  // ══════════════════════════════════════════
   function updateStats() {
     const pct = Math.round((completedCount / TOTAL) * 100);
     document.querySelector('.stat-card.done .stat-num').textContent = completedCount;
@@ -1683,34 +1664,34 @@
     document.getElementById('progressFill').style.width = pct + '%';
   }
 
-  // ââââââââââââââââââââââââââââââââââââââââââ
+  // ══════════════════════════════════════════
   //  TOGGLE ACCORDION
-  // ââââââââââââââââââââââââââââââââââââââââââ
+  // ══════════════════════════════════════════
   function toggleTask(id) {
     const card = document.getElementById(id);
     if (!card) return;
     card.classList.toggle('open');
   }
 
-  // ââââââââââââââââââââââââââââââââââââââââââ
+  // ══════════════════════════════════════════
   //  INJECT CHECK BUTTONS
-  // ââââââââââââââââââââââââââââââââââââââââââ
+  // ══════════════════════════════════════════
   function injectCheckButtons() {
     document.querySelectorAll('.task-card[id]').forEach(card => {
       const header = card.querySelector('.task-header');
       if (!header || header.querySelector('.check-btn')) return;
       const btn = document.createElement('button');
       btn.className = 'check-btn';
-      btn.innerHTML = 'â';
-      btn.title = 'ØªÙÙ';
+      btn.innerHTML = '✓';
+      btn.title = 'تمّ';
       btn.onclick = (e) => checkTask(e, card.id);
       header.appendChild(btn);
     });
   }
 
-  // ââââââââââââââââââââââââââââââââââââââââââ
+  // ══════════════════════════════════════════
   //  VIEW TOGGLE (Today / History)
-  // ââââââââââââââââââââââââââââââââââââââââââ
+  // ══════════════════════════════════════════
   function switchView(view) {
     document.getElementById('todayView').style.display   = view==='today'   ? 'block' : 'none';
     document.getElementById('historyView').style.display = view==='history' ? 'block' : 'none';
@@ -1722,17 +1703,17 @@
     if (view === 'reviews') initReviews();
   }
 
-  // ââââââââââââââââââââââââââââââââââââââââââ
+  // ══════════════════════════════════════════
   //  HISTORY
-  // ââââââââââââââââââââââââââââââââââââââââââ
+  // ══════════════════════════════════════════
   function loadHistory() {
     const container = document.getElementById('historyList');
-    container.innerHTML = '<div class="history-empty"><div class="icon">â³</div><p>Ø¬Ø§Ø±Ù Ø§ÙØªØ­ÙÙÙ...</p></div>';
+    container.innerHTML = '<div class="history-empty"><div class="icon">⏳</div><p>جاري التحميل...</p></div>';
 
     db.ref('days').once('value', snap => {
       const data = snap.val();
       if (!data) {
-        container.innerHTML = '<div class="history-empty"><div class="icon">ðï¸</div><p>ÙØ§ ØªÙØ¬Ø¯ Ø£ÙØ§Ù Ø³Ø§Ø¨ÙØ© Ø¨Ø¹Ø¯</p></div>';
+        container.innerHTML = '<div class="history-empty"><div class="icon">🗂️</div><p>لا توجد أيام سابقة بعد</p></div>';
         return;
       }
 
@@ -1750,9 +1731,9 @@
 
         // Format date label
         const d = new Date(date + 'T12:00:00');
-        const days_ar = ['Ø§ÙØ£Ø­Ø¯','Ø§ÙØ§Ø«ÙÙÙ','Ø§ÙØ«ÙØ§Ø«Ø§Ø¡','Ø§ÙØ£Ø±Ø¨Ø¹Ø§Ø¡','Ø§ÙØ®ÙÙØ³','Ø§ÙØ¬ÙØ¹Ø©','Ø§ÙØ³Ø¨Øª'];
-        const months_ar = ['ÙÙØ§ÙØ±','ÙØ¨Ø±Ø§ÙØ±','ÙØ§Ø±Ø³','Ø£Ø¨Ø±ÙÙ','ÙØ§ÙÙ','ÙÙÙÙÙ','ÙÙÙÙÙ','Ø£ØºØ³Ø·Ø³','Ø³Ø¨ØªÙØ¨Ø±','Ø£ÙØªÙØ¨Ø±','ÙÙÙÙØ¨Ø±','Ø¯ÙØ³ÙØ¨Ø±'];
-        const label = `${days_ar[d.getDay()]}Ø ${d.getDate()} ${months_ar[d.getMonth()]} ${d.getFullYear()}`;
+        const days_ar = ['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
+        const months_ar = ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+        const label = `${days_ar[d.getDay()]}، ${d.getDate()} ${months_ar[d.getMonth()]} ${d.getFullYear()}`;
 
         const card = document.createElement('div');
         card.className = 'day-card';
@@ -1762,8 +1743,8 @@
               <div class="day-title">${label}</div>
             </div>
             <div class="day-meta">
-              <span class="day-stat ${allDone?'all-done':''}">${doneCount} / ${total} ÙÙØªÙÙ</span>
-              <span class="day-chevron">â¼</span>
+              <span class="day-stat ${allDone?'all-done':''}">${doneCount} / ${total} مكتمل</span>
+              <span class="day-chevron">▼</span>
             </div>
           </div>
           <div class="day-tasks">
@@ -1771,7 +1752,7 @@
               const t = tasks[id];
               const done = !!actions[id];
               return `<div class="hist-task">
-                <div class="hist-check ${done?'done':'pending'}">${done?'â':''}</div>
+                <div class="hist-check ${done?'done':'pending'}">${done?'✓':''}</div>
                 <div class="hist-task-title ${done?'done':''}">${t.title}</div>
                 <div class="hist-type">${t.type}</div>
               </div>`;
@@ -1782,9 +1763,9 @@
     });
   }
 
-  // ââââââââââââââââââââââââââââââââââââââââââ
+  // ══════════════════════════════════════════
   //  REVIEWS TRACKER
-  // ââââââââââââââââââââââââââââââââââââââââââ
+  // ══════════════════════════════════════════
 
   // All input IDs and their Firebase path mapping
   const RV_FIELDS = [
@@ -1814,9 +1795,9 @@
   function setRvStatus(state) {
     const el = document.getElementById('rvSaveIndicator');
     if (!el) return;
-    if (state === 'saved')  { el.className='save-indicator saved';  el.innerHTML='â &nbsp;ÙØ­ÙÙØ¸'; }
-    else if (state === 'saving') { el.className='save-indicator saving'; el.innerHTML='â¬¤ &nbsp;Ø¬Ø§Ø±Ù Ø§ÙØ­ÙØ¸...'; }
-    else                         { el.className='save-indicator';        el.innerHTML='â¬¤ &nbsp;Firebase'; }
+    if (state === 'saved')  { el.className='save-indicator saved';  el.innerHTML='✓ &nbsp;محفوظ'; }
+    else if (state === 'saving') { el.className='save-indicator saving'; el.innerHTML='⬤ &nbsp;جاري الحفظ...'; }
+    else                         { el.className='save-indicator';        el.innerHTML='⬤ &nbsp;Firebase'; }
   }
 
   function initReviews() {
@@ -1864,7 +1845,7 @@
       .reduce((s,id) => s + getNum(id), 0);
     const totalA = ['svc-new-a','svc-upd-a','verf-a','aff-new-a','aff-upd-a','rs-new-a','rs-upd-a','inf-new-a','inf-upd-a']
       .reduce((s,id) => s + getNum(id), 0);
-    const rate = totalR > 0 ? Math.round((totalA / totalR) * 100) + '%' : 'â';
+    const rate = totalR > 0 ? Math.round((totalA / totalR) * 100) + '%' : '—';
     document.getElementById('sum-total-r').textContent = totalR;
     document.getElementById('sum-total-a').textContent = totalA;
     document.getElementById('sum-approval-rate').textContent = rate;
@@ -1893,54 +1874,54 @@
 
   function copyReviewsSummary() {
     const lines = [
-      `ð ÙØ±Ø§Ø¬Ø¹Ø§Øª ${arabicDate()}`,
+      `📊 مراجعات ${arabicDate()}`,
       '',
-      `âï¸ Services`,
-      `  New      â Reviewed: ${getNum('svc-new-r')}  |  Approved: ${getNum('svc-new-a')}`,
-      `  Update   â Reviewed: ${getNum('svc-upd-r')}  |  Approved: ${getNum('svc-upd-a')}`,
+      `⚙️ Services`,
+      `  New      — Reviewed: ${getNum('svc-new-r')}  |  Approved: ${getNum('svc-new-a')}`,
+      `  Update   — Reviewed: ${getNum('svc-upd-r')}  |  Approved: ${getNum('svc-upd-a')}`,
       '',
-      `â Verf`,
+      `✅ Verf`,
       `  Reviewed: ${getNum('verf-r')}  |  Approved: ${getNum('verf-a')}`,
       '',
-      `ð¤ Affiliates`,
-      `  New      â Reviewed: ${getNum('aff-new-r')}  |  Approved: ${getNum('aff-new-a')}`,
-      `  Update   â Reviewed: ${getNum('aff-upd-r')}  |  Approved: ${getNum('aff-upd-a')}`,
+      `🤝 Affiliates`,
+      `  New      — Reviewed: ${getNum('aff-new-r')}  |  Approved: ${getNum('aff-new-a')}`,
+      `  Update   — Reviewed: ${getNum('aff-upd-r')}  |  Approved: ${getNum('aff-upd-a')}`,
       '',
-      `ðª Ready Stores`,
-      `  New      â Reviewed: ${getNum('rs-new-r')}  |  Approved: ${getNum('rs-new-a')}`,
-      `  Update   â Reviewed: ${getNum('rs-upd-r')}  |  Approved: ${getNum('rs-upd-a')}`,
+      `🏪 Ready Stores`,
+      `  New      — Reviewed: ${getNum('rs-new-r')}  |  Approved: ${getNum('rs-new-a')}`,
+      `  Update   — Reviewed: ${getNum('rs-upd-r')}  |  Approved: ${getNum('rs-upd-a')}`,
       '',
-      `â­ Influencers`,
-      `  New      â Reviewed: ${getNum('inf-new-r')}  |  Approved: ${getNum('inf-new-a')}`,
-      `  Update   â Reviewed: ${getNum('inf-upd-r')}  |  Approved: ${getNum('inf-upd-a')}`,
+      `⭐ Influencers`,
+      `  New      — Reviewed: ${getNum('inf-new-r')}  |  Approved: ${getNum('inf-new-a')}`,
+      `  Update   — Reviewed: ${getNum('inf-upd-r')}  |  Approved: ${getNum('inf-upd-a')}`,
       '',
-      `ð Ø§ÙØ¥Ø¬ÙØ§ÙÙ: Reviewed ${document.getElementById('sum-total-r').textContent}  |  Approved ${document.getElementById('sum-total-a').textContent}  |  ÙØ³Ø¨Ø© Ø§ÙÙØ¨ÙÙ ${document.getElementById('sum-approval-rate').textContent}`,
+      `📈 الإجمالي: Reviewed ${document.getElementById('sum-total-r').textContent}  |  Approved ${document.getElementById('sum-total-a').textContent}  |  نسبة القبول ${document.getElementById('sum-approval-rate').textContent}`,
     ];
     navigator.clipboard.writeText(lines.join('\n')).then(() => {
       const btn = document.querySelector('.btn-copy');
       const orig = btn.textContent;
-      btn.textContent = 'â ØªÙ Ø§ÙÙØ³Ø®!';
+      btn.textContent = '✅ تم النسخ!';
       setTimeout(() => { btn.textContent = orig; }, 2000);
     });
   }
 
-  // ââââââââââââââââââââââââââââââââââââââââââ
+  // ══════════════════════════════════════════
   //  DATE HELPERS
-  // ââââââââââââââââââââââââââââââââââââââââââ
+  // ══════════════════════════════════════════
   function arabicDate() {
     const d = new Date('2026-06-23');
-    const days = ['Ø§ÙØ£Ø­Ø¯','Ø§ÙØ§Ø«ÙÙÙ','Ø§ÙØ«ÙØ§Ø«Ø§Ø¡','Ø§ÙØ£Ø±Ø¨Ø¹Ø§Ø¡','Ø§ÙØ®ÙÙØ³','Ø§ÙØ¬ÙØ¹Ø©','Ø§ÙØ³Ø¨Øª'];
-    const months = ['ÙÙØ§ÙØ±','ÙØ¨Ø±Ø§ÙØ±','ÙØ§Ø±Ø³','Ø£Ø¨Ø±ÙÙ','ÙØ§ÙÙ','ÙÙÙÙÙ','ÙÙÙÙÙ','Ø£ØºØ³Ø·Ø³','Ø³Ø¨ØªÙØ¨Ø±','Ø£ÙØªÙØ¨Ø±','ÙÙÙÙØ¨Ø±','Ø¯ÙØ³ÙØ¨Ø±'];
-    return `${days[d.getDay()]}Ø ${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
+    const days = ['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
+    const months = ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+    return `${days[d.getDay()]}، ${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
   }
   function nowTime() {
     const n = new Date();
     return n.toLocaleTimeString('ar-SA', { hour:'2-digit', minute:'2-digit' });
   }
 
-  // ââââââââââââââââââââââââââââââââââââââââââ
+  // ══════════════════════════════════════════
   //  INIT
-  // ââââââââââââââââââââââââââââââââââââââââââ
+  // ══════════════════════════════════════════
   document.getElementById('headerDate').textContent = arabicDate();
   document.getElementById('lastUpdate').textContent = nowTime();
   document.getElementById('t-cal-1').classList.add('open');
@@ -1953,41 +1934,31 @@
     na.classList.toggle('open');
     if (na.classList.contains('open')) document.getElementById('nt-' + id).focus();
   }
-
   function onNoteInput(id) {
     const ta = document.getElementById('nt-' + id);
     document.getElementById('nc-' + id).textContent = ta.value.length;
     document.getElementById('nsb-' + id).disabled = (ta.value === (ta.dataset.saved || ''));
     document.getElementById('ns-' + id).classList.remove('show');
   }
-
   function saveNote(id) {
-    const ta = document.getElementById('nt-' + id);
-    const btn = document.getElementById('nb-' + id);
-    const saveBtn = document.getElementById('nsb-' + id);
-    const savedMsg = document.getElementById('ns-' + id);
-    const note = ta.value.trim();
-    saveBtn.disabled = true; saveBtn.textContent = '...';
-    db.ref('days/' + TODAY + '/notes/' + id).set(note || null).then(() => {
-      ta.dataset.saved = ta.value;
-      btn.classList.toggle('has-note', !!note);
-      savedMsg.classList.add('show');
-      saveBtn.textContent = 'حفظ';
-      setTimeout(() => savedMsg.classList.remove('show'), 2000);
+    const ta=document.getElementById('nt-'+id), btn=document.getElementById('nb-'+id);
+    const saveBtn=document.getElementById('nsb-'+id), savedMsg=document.getElementById('ns-'+id);
+    saveBtn.disabled=true; saveBtn.textContent='...';
+    db.ref('days/'+TODAY+'/notes/'+id).set(ta.value.trim()||null).then(()=>{
+      ta.dataset.saved=ta.value;
+      btn.classList.toggle('has-note',!!ta.value.trim());
+      savedMsg.classList.add('show'); saveBtn.textContent='حفظ';
+      setTimeout(()=>savedMsg.classList.remove('show'),2000);
     });
   }
-
   function loadNotes() {
-    db.ref('days/' + TODAY + '/notes').once('value').then(snap => {
-      const notes = snap.val() || {};
-      Object.entries(notes).forEach(([id, note]) => {
-        if (!note) return;
-        const ta  = document.getElementById('nt-' + id);
-        const btn = document.getElementById('nb-' + id);
-        const nc  = document.getElementById('nc-' + id);
-        const nsb = document.getElementById('nsb-' + id);
-        if (ta)  { ta.value = note; ta.dataset.saved = note; if(nc) nc.textContent = note.length; if(nsb) nsb.disabled = true; }
-        if (btn) btn.classList.add('has-note');
+    db.ref('days/'+TODAY+'/notes').once('value').then(snap=>{
+      const notes=snap.val()||{};
+      Object.entries(notes).forEach(([id,note])=>{
+        if(!note) return;
+        const ta=document.getElementById('nt-'+id), btn=document.getElementById('nb-'+id);
+        if(ta){ta.value=note;ta.dataset.saved=note;const nc=document.getElementById('nc-'+id);if(nc)nc.textContent=note.length;const nsb=document.getElementById('nsb-'+id);if(nsb)nsb.disabled=true;}
+        if(btn)btn.classList.add('has-note');
       });
     });
   }
