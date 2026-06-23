@@ -696,22 +696,35 @@
     .pt-del { background: transparent; border: none; color: var(--text-dim); cursor: pointer; font-size: 15px; padding: 2px 6px; border-radius: 6px; transition: all 0.15s; }
     .pt-del:hover { background: rgba(239,68,68,0.15); color: var(--red); }
     .pt-comment { font-size: 12px; color: var(--text-muted); margin-top: 6px; padding-top: 6px; border-top: 1px solid var(--border); }
-    /* Links */
-    .ref-cat { margin-bottom: 16px; }
-    .ref-cat-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
-    .ref-cat-name { font-size: 13px; font-weight: 600; color: var(--primary-light); text-transform: uppercase; letter-spacing: 0.05em; flex: 1; background: transparent; border: none; color: var(--primary-light); font-family: 'Tajawal', sans-serif; outline: none; padding: 2px 4px; border-radius: 4px; }
-    .ref-cat-name:focus { background: var(--surface2); }
-    .ref-cat-del { background: transparent; border: none; color: var(--text-dim); cursor: pointer; font-size: 13px; padding: 2px 6px; border-radius: 4px; }
-    .ref-cat-del:hover { color: var(--red); }
-    .ref-link-row { display: flex; align-items: center; gap: 8px; padding: 6px 0; border-bottom: 1px solid var(--border); }
-    .ref-link-row:last-child { border-bottom: none; }
-    .ref-link-name { flex: 1; background: transparent; border: none; color: var(--text); font-size: 13px; font-family: 'Tajawal', sans-serif; outline: none; padding: 2px 4px; border-radius: 4px; direction: rtl; }
-    .ref-link-name:focus { background: var(--surface2); }
-    .ref-link-open { background: transparent; border: none; color: var(--primary-light); cursor: pointer; font-size: 13px; padding: 2px 6px; text-decoration: none; }
-    .ref-link-del { background: transparent; border: none; color: var(--text-dim); cursor: pointer; font-size: 13px; padding: 2px 6px; border-radius: 4px; }
-    .ref-link-del:hover { color: var(--red); }
-    .ref-link-add { display: block; width: 100%; background: transparent; border: 1px dashed var(--border); border-radius: 8px; padding: 6px; color: var(--text-dim); font-size: 12px; font-family: 'Tajawal', sans-serif; cursor: pointer; margin-top: 6px; text-align: center; }
-    .ref-link-add:hover { border-color: var(--primary); color: var(--primary-light); }
+    /* Links – Notion-style */
+    .ref-cat { margin-bottom: 20px; }
+    .ref-cat-header { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+    .ref-cat-name-input { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; flex: 1; background: transparent; border: none; color: var(--primary-light); font-family: 'Tajawal', sans-serif; outline: none; padding: 2px 4px; border-radius: 4px; }
+    .ref-cat-name-input:focus { background: var(--surface2); }
+    .ref-cat-del { background: transparent; border: none; color: transparent; cursor: pointer; font-size: 12px; padding: 2px 6px; border-radius: 4px; }
+    .ref-cat-header:hover .ref-cat-del { color: var(--text-dim); }
+    .ref-cat-del:hover { color: var(--red) !important; }
+    .ref-link-item { position: relative; display: flex; align-items: center; gap: 6px; padding: 5px 4px; border-radius: 6px; group: true; }
+    .ref-link-item:hover { background: var(--surface2); }
+    .ref-link-bullet { color: var(--text-dim); font-size: 11px; flex-shrink: 0; width: 12px; }
+    .ref-link-anchor { flex: 1; color: var(--text); font-size: 13px; text-decoration: none; font-family: 'Tajawal', sans-serif; }
+    .ref-link-anchor[href]:not([href=""]) { color: var(--primary-light); text-decoration: underline; text-decoration-color: transparent; }
+    .ref-link-anchor[href]:not([href=""]):hover { text-decoration-color: var(--primary-light); }
+    .ref-link-anchor[href^="http"]:hover { cursor: pointer; }
+    .ref-link-actions { display: none; align-items: center; gap: 2px; }
+    .ref-link-item:hover .ref-link-actions { display: flex; }
+    .ref-link-edit-btn { background: transparent; border: 1px solid var(--border); color: var(--text-dim); cursor: pointer; font-size: 11px; padding: 2px 7px; border-radius: 4px; font-family: 'Tajawal', sans-serif; white-space: nowrap; }
+    .ref-link-edit-btn:hover { border-color: var(--primary); color: var(--primary-light); }
+    .ref-link-del-btn { background: transparent; border: none; color: var(--text-dim); cursor: pointer; font-size: 13px; padding: 2px 5px; border-radius: 4px; }
+    .ref-link-del-btn:hover { color: var(--red); }
+    .ref-link-edit-form { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; margin: 4px 0 6px; display: none; }
+    .ref-link-edit-form.open { display: block; }
+    .ref-edit-row { display: flex; gap: 6px; margin-bottom: 8px; }
+    .ref-edit-row input { flex: 1; background: var(--surface); color: var(--text); border: 1px solid var(--border); border-radius: 6px; padding: 6px 10px; font-size: 12px; font-family: 'Tajawal', sans-serif; outline: none; direction: rtl; }
+    .ref-edit-row input:focus { border-color: var(--primary); }
+    .ref-edit-actions { display: flex; gap: 6px; justify-content: flex-end; }
+    .ref-link-add { display: flex; align-items: center; gap: 6px; padding: 4px 4px; color: var(--text-dim); font-size: 12px; font-family: 'Tajawal', sans-serif; cursor: pointer; background: transparent; border: none; border-radius: 6px; width: 100%; }
+    .ref-link-add:hover { background: var(--surface2); color: var(--text); }
   </style>
 </head>
 <body>
@@ -756,6 +769,31 @@
 
   <!-- TODAY VIEW -->
   <div id="todayView">
+    <!-- Personal Tasks -->
+    <div class="card" style="margin-bottom:20px">
+      <div class="card-header" style="justify-content:space-between">
+        <span class="section-title">📋 مهامي الشخصية</span>
+        <button class="ref-add-btn" onclick="toggleAddTaskForm()" style="font-size:12px;padding:4px 12px">+ مهمة</button>
+      </div>
+      <div id="addTaskForm" class="ref-add-form" style="display:none;margin:12px 0 4px">
+        <input type="text" id="ptTitle" class="ref-input" placeholder="عنوان المهمة...">
+        <div class="ref-form-row">
+          <select id="ptStatus" class="ref-select">
+            <option value="new">🔵 New</option>
+            <option value="progress">🟠 In Progress</option>
+            <option value="blocked">🔴 Blocked</option>
+            <option value="done">🟢 Done</option>
+          </select>
+          <input type="date" id="ptDate" class="ref-input ref-date">
+        </div>
+        <textarea id="ptComment" class="ref-textarea" placeholder="تعليق (اختياري)..."></textarea>
+        <div class="ref-form-actions">
+          <button class="ref-cancel-btn" onclick="toggleAddTaskForm()">إلغاء</button>
+          <button class="ref-save-btn" onclick="addPersonalTask()">حفظ</button>
+        </div>
+      </div>
+      <div id="personalTasksList"><div class="ref-empty" style="padding:10px 0 4px">لا توجد مهام شخصية</div></div>
+    </div>
 
   <!-- Stats -->
   <div class="stats-grid">
@@ -1582,31 +1620,7 @@
 
   <!-- REF VIEW -->
   <div id="refView" style="display:none">
-    <!-- Personal Tasks -->
-    <div class="ref-block">
-      <div class="ref-header">
-        <span class="section-title">📋 مهامي الشخصية</span>
-        <button class="ref-add-btn" onclick="toggleAddTaskForm()">+ مهمة جديدة</button>
-      </div>
-      <div id="addTaskForm" class="ref-add-form" style="display:none">
-        <input type="text" id="ptTitle" class="ref-input" placeholder="عنوان المهمة...">
-        <div class="ref-form-row">
-          <select id="ptStatus" class="ref-select">
-            <option value="new">🔵 New</option>
-            <option value="progress">🟠 In Progress</option>
-            <option value="blocked">🔴 Blocked</option>
-            <option value="done">🟢 Done</option>
-          </select>
-          <input type="date" id="ptDate" class="ref-input ref-date">
-        </div>
-        <textarea id="ptComment" class="ref-textarea" placeholder="تعليق (اختياري)..."></textarea>
-        <div class="ref-form-actions">
-          <button class="ref-cancel-btn" onclick="toggleAddTaskForm()">إلغاء</button>
-          <button class="ref-save-btn" onclick="addPersonalTask()">حفظ المهمة</button>
-        </div>
-      </div>
-      <div id="personalTasksList"><div class="ref-empty">لا توجد مهام بعد</div></div>
-    </div>
+
     <!-- Links -->
     <div class="ref-block">
       <div class="ref-header">
@@ -1794,7 +1808,8 @@
       document.getElementById('btnRef').classList.add('active');
       initRef();
       return;
-    }
+   
+    const _rv = document.getElementById('refView'); if(_rv) _rv.style.display = 'none'; }
     document.getElementById('todayView').style.display   = view==='today'   ? 'block' : 'none';
     document.getElementById('historyView').style.display = view==='history' ? 'block' : 'none';
     document.getElementById('reviewsView').style.display = view==='reviews' ? 'block' : 'none';
@@ -2029,6 +2044,7 @@
   document.getElementById('t-cal-1').classList.add('open');
   injectCheckButtons();
   loadNotes();
+    loadPersonalTasks();
 
   // ─── Notes ───
   function toggleNote(id) {
@@ -2073,7 +2089,6 @@
   function initRef() {
     if (_refLoaded) return;
     _refLoaded = true;
-    loadPersonalTasks();
     loadRefLinks();
   }
 
@@ -2226,20 +2241,47 @@
     el.innerHTML = cats.map(cat => `
       <div class="ref-cat" id="cat-${cat.id}">
         <div class="ref-cat-header">
-          <input class="ref-cat-name" value="${cat.name}" onblur="saveCatName('${cat.id}',this.value)" onkeydown="if(event.key==='Enter')this.blur()">
-          <button class="ref-cat-del" onclick="deleteCategory('${cat.id}')" title="حذف التصنيف">🗑</button>
+          <input class="ref-cat-name-input" value="${cat.name}" onblur="saveCatName('${cat.id}',this.value)" onkeydown="if(event.key==='Enter')this.blur()">
+          <button class="ref-cat-del" onclick="deleteCategory('${cat.id}')" title="حذف">🗑</button>
         </div>
         ${cat.items.map(it => `
-          <div class="ref-link-row" id="lrow-${it.id}">
-            <input class="ref-link-name" value="${it.name}" onblur="saveLinkName('${cat.id}','${it.id}',this.value)" onkeydown="if(event.key==='Enter')this.blur()">
-            <input class="ref-link-name" value="${it.url}" placeholder="https://..." style="color:var(--text-dim);font-size:11px;flex:1.5" onblur="saveLinkUrl('${cat.id}','${it.id}',this.value)" onkeydown="if(event.key==='Enter')this.blur()">
-            ${it.url ? `<a class="ref-link-open" href="${it.url}" target="_blank" title="فتح">↗</a>` : '<span style="width:24px"></span>'}
-            <button class="ref-link-del" onclick="deleteLink('${cat.id}','${it.id}')" title="حذف">✕</button>
+          <div id="li-${cat.id}-${it.id}">
+            <div class="ref-link-item">
+              <span class="ref-link-bullet">•</span>
+              ${it.url ? `<a class="ref-link-anchor" href="${it.url}" target="_blank">${it.name}</a>`
+                        : `<span class="ref-link-anchor">${it.name}</span>`}
+              <div class="ref-link-actions">
+                <button class="ref-link-edit-btn" onclick="toggleLinkEdit('${cat.id}','${it.id}')">تعديل</button>
+                <button class="ref-link-del-btn" onclick="deleteLink('${cat.id}','${it.id}')">✕</button>
+              </div>
+            </div>
+            <div class="ref-link-edit-form" id="lef-${cat.id}-${it.id}">
+              <div class="ref-edit-row">
+                <input id="len-${cat.id}-${it.id}" value="${it.name}" placeholder="اسم الرابط...">
+                <input id="leu-${cat.id}-${it.id}" value="${it.url}" placeholder="https://...">
+              </div>
+              <div class="ref-edit-actions">
+                <button class="ref-cancel-btn" onclick="toggleLinkEdit('${cat.id}','${it.id}')">إلغاء</button>
+                <button class="ref-save-btn" onclick="saveLinkEdit('${cat.id}','${it.id}')">حفظ</button>
+              </div>
+            </div>
           </div>
         `).join('')}
-        <button class="ref-link-add" onclick="addRefLink('${cat.id}')">+ رابط جديد</button>
+        <button class="ref-link-add" onclick="addRefLink('${cat.id}')">＋ رابط جديد</button>
       </div>
     `).join('');
+  }
+
+  function toggleLinkEdit(catId, linkId) {
+    const form = document.getElementById('lef-'+catId+'-'+linkId);
+    form.classList.toggle('open');
+  }
+
+  function saveLinkEdit(catId, linkId) {
+    const name = document.getElementById('len-'+catId+'-'+linkId).value.trim();
+    const url = document.getElementById('leu-'+catId+'-'+linkId).value.trim();
+    if (!name) return;
+    db.ref('reference/links/'+catId+'/items/'+linkId).update({ name, url }).then(() => loadRefLinks());
   }
 
   function saveCatName(catId, name) {
