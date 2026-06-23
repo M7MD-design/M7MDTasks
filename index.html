@@ -1783,6 +1783,18 @@
   //  VIEW TOGGLE (Today / History)
   // ══════════════════════════════════════════
   function switchView(view) {
+    if (view === 'ref') {
+      ['todayView','historyView','reviewsView','refView'].forEach(id => {
+        const el = document.getElementById(id); if (el) el.style.display = 'none';
+      });
+      ['btnToday','btnHistory','btnReviews','btnRef'].forEach(id => {
+        const el = document.getElementById(id); if (el) el.classList.remove('active');
+      });
+      document.getElementById('refView').style.display = 'block';
+      document.getElementById('btnRef').classList.add('active');
+      initRef();
+      return;
+    }
     document.getElementById('todayView').style.display   = view==='today'   ? 'block' : 'none';
     document.getElementById('historyView').style.display = view==='history' ? 'block' : 'none';
     document.getElementById('reviewsView').style.display = view==='reviews' ? 'block' : 'none';
