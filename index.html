@@ -456,6 +456,175 @@
     .hist-task-title.done { color: var(--text-muted); text-decoration: line-through; }
     .hist-type { font-size: 11px; color: var(--text-dim); }
 
+    /* ─── Reviews Tracker ─── */
+    #reviewsView { display: none; }
+
+    .reviews-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .reviews-top h2 { font-size: 16px; font-weight: 700; color: var(--text); }
+    .reviews-top .reviews-date { font-size: 13px; color: var(--text-muted); }
+
+    .reviews-actions { display: flex; gap: 8px; }
+    .btn-save {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 9px 20px;
+      font-family: 'Tajawal', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-save:hover { background: var(--primary-dark); transform: translateY(-1px); }
+    .btn-save:active { transform: translateY(0); }
+    .btn-copy {
+      background: var(--surface2);
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 9px 16px;
+      font-family: 'Tajawal', sans-serif;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-copy:hover { border-color: var(--primary-light); color: var(--primary-light); }
+
+    .reviews-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+    @media(max-width: 640px) { .reviews-grid { grid-template-columns: 1fr; } }
+
+    .rv-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+      transition: border-color 0.2s;
+    }
+    .rv-card:hover { border-color: rgba(167,139,250,0.35); }
+
+    .rv-card-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .rv-icon {
+      width: 34px; height: 34px;
+      border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .rv-card-header h3 { font-size: 15px; font-weight: 700; color: var(--text); }
+
+    .rv-type-block { margin-bottom: 14px; }
+    .rv-type-block:last-child { margin-bottom: 0; }
+    .rv-type-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 8px;
+    }
+    .rv-inputs-row { display: flex; gap: 10px; }
+    .rv-input-group { flex: 1; }
+    .rv-input-group label {
+      display: block;
+      font-size: 11px;
+      color: var(--text-dim);
+      margin-bottom: 4px;
+    }
+    .rv-input-group input {
+      width: 100%;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 10px;
+      font-family: 'Tajawal', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+      text-align: center;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+      -moz-appearance: textfield;
+    }
+    .rv-input-group input::-webkit-outer-spin-button,
+    .rv-input-group input::-webkit-inner-spin-button { -webkit-appearance: none; }
+    .rv-input-group input:focus {
+      border-color: var(--primary);
+      background: var(--surface3);
+    }
+    .rv-input-group input.changed { border-color: var(--yellow); }
+
+    /* Save indicator */
+    .save-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      padding: 4px 12px;
+      border-radius: 99px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+      transition: all 0.3s;
+    }
+    .save-indicator.saved { border-color: rgba(16,185,129,0.4); color: var(--green); }
+    .save-indicator.saving { border-color: rgba(245,158,11,0.4); color: var(--yellow); }
+
+    /* Summary card */
+    .rv-summary {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+    }
+    .rv-summary-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .rv-summary-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    @media(max-width: 480px) { .rv-summary-grid { grid-template-columns: repeat(2, 1fr); } }
+    .rv-sum-item {
+      background: var(--surface2);
+      border-radius: 10px;
+      padding: 12px;
+      text-align: center;
+    }
+    .rv-sum-item .rv-sum-num {
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--primary-light);
+      line-height: 1;
+    }
+    .rv-sum-item .rv-sum-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 5px;
+    }
+    .rv-sum-item.green .rv-sum-num { color: var(--green); }
+    .rv-sum-item.yellow .rv-sum-num { color: var(--yellow); }
+
     /* ─── Footer ─── */
     footer {
       text-align: center;
@@ -499,6 +668,7 @@
     <div class="view-toggle">
       <button class="view-btn active" id="btnToday" onclick="switchView('today')">📋 مهام اليوم</button>
       <button class="view-btn" id="btnHistory" onclick="switchView('history')">🗂️ السجل السابق</button>
+      <button class="view-btn" id="btnReviews" onclick="switchView('reviews')">📊 المراجعات</button>
     </div>
     <div class="fb-status">
       <div class="fb-dot" id="fbDot"></div>
@@ -1116,6 +1286,202 @@
 
   </div><!-- /todayView -->
 
+  <!-- REVIEWS VIEW -->
+  <div id="reviewsView">
+
+    <div class="reviews-top">
+      <div>
+        <h2>📊 تسجيل المراجعات</h2>
+        <div class="reviews-date" id="reviewsDateLabel"></div>
+      </div>
+      <div class="reviews-actions">
+        <span class="save-indicator" id="rvSaveIndicator">⬤ &nbsp;Firebase</span>
+        <button class="btn-copy" onclick="copyReviewsSummary()">📋 نسخ للشيت</button>
+        <button class="btn-save" onclick="saveReviews()">💾 حفظ</button>
+      </div>
+    </div>
+
+    <div class="reviews-grid">
+
+      <!-- Services -->
+      <div class="rv-card">
+        <div class="rv-card-header">
+          <div class="rv-icon" style="background:rgba(124,58,237,0.2)">⚙️</div>
+          <h3>Services</h3>
+        </div>
+        <div class="rv-type-block">
+          <div class="rv-type-label">New</div>
+          <div class="rv-inputs-row">
+            <div class="rv-input-group">
+              <label>Reviewed</label>
+              <input type="number" id="svc-new-r" min="0" placeholder="0" oninput="onRvChange(this)">
+            </div>
+            <div class="rv-input-group">
+              <label>Approved</label>
+              <input type="number" id="svc-new-a" min="0" placeholder="0" oninput="onRvChange(this)">
+            </div>
+          </div>
+        </div>
+        <div class="rv-type-block">
+          <div class="rv-type-label">Update</div>
+          <div class="rv-inputs-row">
+            <div class="rv-input-group">
+              <label>Reviewed</label>
+              <input type="number" id="svc-upd-r" min="0" placeholder="0" oninput="onRvChange(this)">
+            </div>
+            <div class="rv-input-group">
+              <label>Approved</label>
+              <input type="number" id="svc-upd-a" min="0" placeholder="0" oninput="onRvChange(this)">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Verf -->
+      <div class="rv-card">
+        <div class="rv-card-header">
+          <div class="rv-icon" style="background:rgba(16,185,129,0.2)">✅</div>
+          <h3>Verf</h3>
+        </div>
+        <div class="rv-type-block">
+          <div class="rv-inputs-row">
+            <div class="rv-input-group">
+              <label>Reviewed</label>
+              <input type="number" id="verf-r" min="0" placeholder="0" oninput="onRvChange(this)">
+            </div>
+            <div class="rv-input-group">
+              <label>Approved</label>
+              <input type="number" id="verf-a" min="0" placeholder="0" oninput="onRvChange(this)">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Affiliates -->
+      <div class="rv-card">
+        <div class="rv-card-header">
+          <div class="rv-icon" style="background:rgba(59,130,246,0.2)">🤝</div>
+          <h3>Affiliates</h3>
+        </div>
+        <div class="rv-type-block">
+          <div class="rv-type-label">New</div>
+          <div class="rv-inputs-row">
+            <div class="rv-input-group">
+              <label>Reviewed</label>
+              <input type="number" id="aff-new-r" min="0" placeholder="0" oninput="onRvChange(this)">
+            </div>
+            <div class="rv-input-group">
+              <label>Approved</label>
+              <input type="number" id="aff-new-a" min="0" placeholder="0" oninput="onRvChange(this)">
+            </div>
+          </div>
+        </div>
+        <div class="rv-type-block">
+          <div class="rv-type-label">Update</div>
+          <div class="rv-inputs-row">
+            <div class="rv-input-group">
+              <label>Reviewed</label>
+              <input type="number" id="aff-upd-r" min="0" placeholder="0" oninput="onRvChange(this)">
+            </div>
+            <div class="rv-input-group">
+              <label>Approved</label>
+              <input type="number" id="aff-upd-a" min="0" placeholder="0" oninput="onRvChange(this)">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ready Stores -->
+      <div class="rv-card">
+        <div class="rv-card-header">
+          <div class="rv-icon" style="background:rgba(245,158,11,0.2)">🏪</div>
+          <h3>Ready Stores</h3>
+        </div>
+        <div class="rv-type-block">
+          <div class="rv-type-label">New</div>
+          <div class="rv-inputs-row">
+            <div class="rv-input-group">
+              <label>Reviewed</label>
+              <input type="number" id="rs-new-r" min="0" placeholder="0" oninput="onRvChange(this)">
+            </div>
+            <div class="rv-input-group">
+              <label>Approved</label>
+              <input type="number" id="rs-new-a" min="0" placeholder="0" oninput="onRvChange(this)">
+            </div>
+          </div>
+        </div>
+        <div class="rv-type-block">
+          <div class="rv-type-label">Update</div>
+          <div class="rv-inputs-row">
+            <div class="rv-input-group">
+              <label>Reviewed</label>
+              <input type="number" id="rs-upd-r" min="0" placeholder="0" oninput="onRvChange(this)">
+            </div>
+            <div class="rv-input-group">
+              <label>Approved</label>
+              <input type="number" id="rs-upd-a" min="0" placeholder="0" oninput="onRvChange(this)">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Influencers -->
+      <div class="rv-card">
+        <div class="rv-card-header">
+          <div class="rv-icon" style="background:rgba(239,68,68,0.2)">⭐</div>
+          <h3>Influencers</h3>
+        </div>
+        <div class="rv-type-block">
+          <div class="rv-type-label">New</div>
+          <div class="rv-inputs-row">
+            <div class="rv-input-group">
+              <label>Reviewed</label>
+              <input type="number" id="inf-new-r" min="0" placeholder="0" oninput="onRvChange(this)">
+            </div>
+            <div class="rv-input-group">
+              <label>Approved</label>
+              <input type="number" id="inf-new-a" min="0" placeholder="0" oninput="onRvChange(this)">
+            </div>
+          </div>
+        </div>
+        <div class="rv-type-block">
+          <div class="rv-type-label">Update</div>
+          <div class="rv-inputs-row">
+            <div class="rv-input-group">
+              <label>Reviewed</label>
+              <input type="number" id="inf-upd-r" min="0" placeholder="0" oninput="onRvChange(this)">
+            </div>
+            <div class="rv-input-group">
+              <label>Approved</label>
+              <input type="number" id="inf-upd-a" min="0" placeholder="0" oninput="onRvChange(this)">
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /reviews-grid -->
+
+    <!-- Summary -->
+    <div class="rv-summary">
+      <div class="rv-summary-title">📈 ملخص اليوم</div>
+      <div class="rv-summary-grid">
+        <div class="rv-sum-item">
+          <div class="rv-sum-num" id="sum-total-r">0</div>
+          <div class="rv-sum-label">إجمالي Reviewed</div>
+        </div>
+        <div class="rv-sum-item green">
+          <div class="rv-sum-num" id="sum-total-a">0</div>
+          <div class="rv-sum-label">إجمالي Approved</div>
+        </div>
+        <div class="rv-sum-item yellow">
+          <div class="rv-sum-num" id="sum-approval-rate">—</div>
+          <div class="rv-sum-label">نسبة القبول</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /reviewsView -->
+
   <!-- HISTORY VIEW -->
   <div id="historyView">
     <div id="historyList">
@@ -1284,9 +1650,12 @@
   function switchView(view) {
     document.getElementById('todayView').style.display   = view==='today'   ? 'block' : 'none';
     document.getElementById('historyView').style.display = view==='history' ? 'block' : 'none';
+    document.getElementById('reviewsView').style.display = view==='reviews' ? 'block' : 'none';
     document.getElementById('btnToday').classList.toggle('active',   view==='today');
     document.getElementById('btnHistory').classList.toggle('active', view==='history');
+    document.getElementById('btnReviews').classList.toggle('active', view==='reviews');
     if (view === 'history') loadHistory();
+    if (view === 'reviews') initReviews();
   }
 
   // ══════════════════════════════════════════
@@ -1346,6 +1715,148 @@
           </div>`;
         container.appendChild(card);
       });
+    });
+  }
+
+  // ══════════════════════════════════════════
+  //  REVIEWS TRACKER
+  // ══════════════════════════════════════════
+
+  // All input IDs and their Firebase path mapping
+  const RV_FIELDS = [
+    { id: 'svc-new-r', path: 'services/new/r', label: 'Services New Reviewed' },
+    { id: 'svc-new-a', path: 'services/new/a', label: 'Services New Approved' },
+    { id: 'svc-upd-r', path: 'services/upd/r', label: 'Services Update Reviewed' },
+    { id: 'svc-upd-a', path: 'services/upd/a', label: 'Services Update Approved' },
+    { id: 'verf-r',    path: 'verf/r',          label: 'Verf Reviewed' },
+    { id: 'verf-a',    path: 'verf/a',           label: 'Verf Approved' },
+    { id: 'aff-new-r', path: 'affiliates/new/r', label: 'Affiliates New Reviewed' },
+    { id: 'aff-new-a', path: 'affiliates/new/a', label: 'Affiliates New Approved' },
+    { id: 'aff-upd-r', path: 'affiliates/upd/r', label: 'Affiliates Update Reviewed' },
+    { id: 'aff-upd-a', path: 'affiliates/upd/a', label: 'Affiliates Update Approved' },
+    { id: 'rs-new-r',  path: 'readyStores/new/r', label: 'Ready Stores New Reviewed' },
+    { id: 'rs-new-a',  path: 'readyStores/new/a', label: 'Ready Stores New Approved' },
+    { id: 'rs-upd-r',  path: 'readyStores/upd/r', label: 'Ready Stores Update Reviewed' },
+    { id: 'rs-upd-a',  path: 'readyStores/upd/a', label: 'Ready Stores Update Approved' },
+    { id: 'inf-new-r', path: 'influencers/new/r', label: 'Influencers New Reviewed' },
+    { id: 'inf-new-a', path: 'influencers/new/a', label: 'Influencers New Approved' },
+    { id: 'inf-upd-r', path: 'influencers/upd/r', label: 'Influencers Update Reviewed' },
+    { id: 'inf-upd-a', path: 'influencers/upd/a', label: 'Influencers Update Approved' },
+  ];
+
+  const rvRef = db.ref(`days/${TODAY}/reviews`);
+  let rvLoaded = false;
+
+  function setRvStatus(state) {
+    const el = document.getElementById('rvSaveIndicator');
+    if (!el) return;
+    if (state === 'saved')  { el.className='save-indicator saved';  el.innerHTML='✓ &nbsp;محفوظ'; }
+    else if (state === 'saving') { el.className='save-indicator saving'; el.innerHTML='⬤ &nbsp;جاري الحفظ...'; }
+    else                         { el.className='save-indicator';        el.innerHTML='⬤ &nbsp;Firebase'; }
+  }
+
+  function initReviews() {
+    // Set date label
+    const el = document.getElementById('reviewsDateLabel');
+    if (el) el.textContent = arabicDate();
+
+    if (rvLoaded) { updateRvSummary(); return; }
+
+    // Load from Firebase
+    rvRef.once('value', snap => {
+      const data = snap.val();
+      if (data) {
+        RV_FIELDS.forEach(f => {
+          const inp = document.getElementById(f.id);
+          if (!inp) return;
+          // Navigate nested path
+          const parts = f.path.split('/');
+          let val = data;
+          for (const p of parts) val = val?.[p];
+          if (val !== undefined && val !== null) {
+            inp.value = val;
+            inp.classList.remove('changed');
+          }
+        });
+      }
+      rvLoaded = true;
+      updateRvSummary();
+      setRvStatus('saved');
+    });
+  }
+
+  function onRvChange(input) {
+    input.classList.add('changed');
+    updateRvSummary();
+    setRvStatus('');
+  }
+
+  function getNum(id) {
+    return parseInt(document.getElementById(id)?.value || '0', 10) || 0;
+  }
+
+  function updateRvSummary() {
+    const totalR = ['svc-new-r','svc-upd-r','verf-r','aff-new-r','aff-upd-r','rs-new-r','rs-upd-r','inf-new-r','inf-upd-r']
+      .reduce((s,id) => s + getNum(id), 0);
+    const totalA = ['svc-new-a','svc-upd-a','verf-a','aff-new-a','aff-upd-a','rs-new-a','rs-upd-a','inf-new-a','inf-upd-a']
+      .reduce((s,id) => s + getNum(id), 0);
+    const rate = totalR > 0 ? Math.round((totalA / totalR) * 100) + '%' : '—';
+    document.getElementById('sum-total-r').textContent = totalR;
+    document.getElementById('sum-total-a').textContent = totalA;
+    document.getElementById('sum-approval-rate').textContent = rate;
+  }
+
+  function saveReviews() {
+    setRvStatus('saving');
+    // Build nested object from flat fields
+    const payload = {};
+    RV_FIELDS.forEach(f => {
+      const val = getNum(f.id);
+      const parts = f.path.split('/');
+      let cur = payload;
+      for (let i = 0; i < parts.length - 1; i++) {
+        cur[parts[i]] = cur[parts[i]] || {};
+        cur = cur[parts[i]];
+      }
+      cur[parts[parts.length - 1]] = val;
+    });
+    rvRef.set(payload).then(() => {
+      setRvStatus('saved');
+      // Remove changed highlight from all inputs
+      RV_FIELDS.forEach(f => document.getElementById(f.id)?.classList.remove('changed'));
+    }).catch(() => setRvStatus(''));
+  }
+
+  function copyReviewsSummary() {
+    const lines = [
+      `📊 مراجعات ${arabicDate()}`,
+      '',
+      `⚙️ Services`,
+      `  New      — Reviewed: ${getNum('svc-new-r')}  |  Approved: ${getNum('svc-new-a')}`,
+      `  Update   — Reviewed: ${getNum('svc-upd-r')}  |  Approved: ${getNum('svc-upd-a')}`,
+      '',
+      `✅ Verf`,
+      `  Reviewed: ${getNum('verf-r')}  |  Approved: ${getNum('verf-a')}`,
+      '',
+      `🤝 Affiliates`,
+      `  New      — Reviewed: ${getNum('aff-new-r')}  |  Approved: ${getNum('aff-new-a')}`,
+      `  Update   — Reviewed: ${getNum('aff-upd-r')}  |  Approved: ${getNum('aff-upd-a')}`,
+      '',
+      `🏪 Ready Stores`,
+      `  New      — Reviewed: ${getNum('rs-new-r')}  |  Approved: ${getNum('rs-new-a')}`,
+      `  Update   — Reviewed: ${getNum('rs-upd-r')}  |  Approved: ${getNum('rs-upd-a')}`,
+      '',
+      `⭐ Influencers`,
+      `  New      — Reviewed: ${getNum('inf-new-r')}  |  Approved: ${getNum('inf-new-a')}`,
+      `  Update   — Reviewed: ${getNum('inf-upd-r')}  |  Approved: ${getNum('inf-upd-a')}`,
+      '',
+      `📈 الإجمالي: Reviewed ${document.getElementById('sum-total-r').textContent}  |  Approved ${document.getElementById('sum-total-a').textContent}  |  نسبة القبول ${document.getElementById('sum-approval-rate').textContent}`,
+    ];
+    navigator.clipboard.writeText(lines.join('\n')).then(() => {
+      const btn = document.querySelector('.btn-copy');
+      const orig = btn.textContent;
+      btn.textContent = '✅ تم النسخ!';
+      setTimeout(() => { btn.textContent = orig; }, 2000);
     });
   }
 
