@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>مهامي اليوم · علاقات الشركاء</title>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;600;700;800&display=swap');
 
@@ -341,6 +343,119 @@
     .task-card.done .task-badges { opacity: 0.4; }
     .task-card.done .task-chevron { opacity: 0.35; }
 
+    /* ─── View Toggle ─── */
+    .view-toggle {
+      display: flex;
+      gap: 6px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 5px;
+      margin-bottom: 24px;
+    }
+    .view-btn {
+      flex: 1;
+      padding: 9px 0;
+      border: none;
+      border-radius: 8px;
+      background: transparent;
+      color: var(--text-muted);
+      font-family: 'Tajawal', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .view-btn.active {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    /* ─── Firebase status dot ─── */
+    .fb-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--text-dim);
+      padding: 4px 10px;
+      border-radius: 99px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+    }
+    .fb-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--text-dim);
+      transition: background 0.3s;
+    }
+    .fb-dot.connected { background: var(--green); }
+    .fb-dot.saving { background: var(--yellow); }
+
+    /* ─── History Panel ─── */
+    #historyView { display: none; }
+    #todayView { display: block; }
+
+    .history-empty {
+      text-align: center;
+      padding: 48px 20px;
+      color: var(--text-dim);
+      font-size: 14px;
+    }
+    .history-empty .icon { font-size: 36px; margin-bottom: 12px; }
+
+    .day-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 10px;
+      overflow: hidden;
+    }
+    .day-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 18px;
+      cursor: pointer;
+    }
+    .day-header:hover { background: rgba(167,139,250,0.05); }
+    .day-title { font-size: 15px; font-weight: 700; color: var(--text); }
+    .day-meta { display: flex; align-items: center; gap: 10px; }
+    .day-stat {
+      font-size: 12px;
+      padding: 3px 10px;
+      border-radius: 99px;
+      background: var(--surface2);
+      color: var(--text-muted);
+    }
+    .day-stat.all-done { background: rgba(16,185,129,0.15); color: #6EE7B7; }
+    .day-tasks { display: none; padding: 0 16px 14px; border-top: 1px solid var(--border); }
+    .day-card.open .day-tasks { display: block; }
+    .day-card.open .day-header .day-chevron { transform: rotate(180deg); }
+    .day-chevron { font-size: 11px; color: var(--text-dim); transition: transform 0.3s; }
+
+    .hist-task {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 4px;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+    }
+    .hist-task:last-child { border-bottom: none; }
+    .hist-check {
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px;
+    }
+    .hist-check.done { background: var(--green); color: #fff; }
+    .hist-check.pending { border: 2px solid var(--border); }
+    .hist-task-title { flex: 1; color: var(--text); }
+    .hist-task-title.done { color: var(--text-muted); text-decoration: line-through; }
+    .hist-type { font-size: 11px; color: var(--text-dim); }
+
     /* ─── Footer ─── */
     footer {
       text-align: center;
@@ -378,6 +493,21 @@
 
 <!-- ═══ MAIN CONTENT ═══ -->
 <div class="container">
+
+  <!-- View Toggle -->
+  <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; flex-wrap:wrap; gap:10px;">
+    <div class="view-toggle">
+      <button class="view-btn active" id="btnToday" onclick="switchView('today')">📋 مهام اليوم</button>
+      <button class="view-btn" id="btnHistory" onclick="switchView('history')">🗂️ السجل السابق</button>
+    </div>
+    <div class="fb-status">
+      <div class="fb-dot" id="fbDot"></div>
+      <span id="fbLabel">جاري الاتصال...</span>
+    </div>
+  </div>
+
+  <!-- TODAY VIEW -->
+  <div id="todayView">
 
   <!-- Stats -->
   <div class="stats-grid">
@@ -983,6 +1113,19 @@
     </div>
 
   </div><!-- /tasks-list -->
+
+  </div><!-- /todayView -->
+
+  <!-- HISTORY VIEW -->
+  <div id="historyView">
+    <div id="historyList">
+      <div class="history-empty">
+        <div class="icon">🗂️</div>
+        <p>جاري تحميل السجل...</p>
+      </div>
+    </div>
+  </div>
+
 </div><!-- /container -->
 
 <!-- ═══ FOOTER ═══ -->
@@ -991,28 +1134,117 @@
 </footer>
 
 <script>
+  // ══════════════════════════════════════════
+  //  FIREBASE INIT
+  // ══════════════════════════════════════════
+  const firebaseConfig = {
+    apiKey: "AIzaSyBJLSXKPcTLnLQ0OuMdocNJgHOEuQiJhEA",
+    authDomain: "m7md-tasks.firebaseapp.com",
+    databaseURL: "https://m7md-tasks-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "m7md-tasks",
+    storageBucket: "m7md-tasks.firebasestorage.app",
+    messagingSenderId: "437955681954",
+    appId: "1:437955681954:web:7e5c888a9a812aa6cc01fb"
+  };
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.database();
+
+  // ══════════════════════════════════════════
+  //  CONSTANTS
+  // ══════════════════════════════════════════
+  const TODAY = '2026-06-23';
   const TOTAL = 19;
   let completedCount = 0;
 
-  // ─── Toggle accordion ─────────────────────────────────
-  function toggleTask(id) {
-    const card = document.getElementById(id);
-    if (!card) return;
-    card.classList.toggle('open');
+  // Task metadata to save in Firebase for history
+  const tasksMeta = [
+    { id:"t-cal-1", title:"Salla <> Journify",        type:"اجتماع" },
+    { id:"t-cal-2", title:"Salla <> Digital Plus ERP", type:"اجتماع" },
+    { id:"t-cal-3", title:"Salla <> Actan (D365)",     type:"اجتماع" },
+    { id:"t-cal-4", title:"Salla <> WSLA",             type:"اجتماع" },
+    { id:"t-sl-1",  title:"رانك سيو",                  type:"تذكرة"  },
+    { id:"t-sl-2",  title:"محلك شي إن",                type:"تذكرة"  },
+    { id:"t-sl-3",  title:"ايكوم تابز",                type:"تذكرة"  },
+    { id:"t-sl-4",  title:"Widers Whatsapp",           type:"تذكرة"  },
+    { id:"t-sl-5",  title:"ران ميديا",                 type:"تذكرة"  },
+    { id:"t-mn-1",  title:"منشن – أثير العمري",        type:"منشن"   },
+    { id:"t-mn-2",  title:"منشن – سحر الآغا",          type:"منشن"   },
+    { id:"t-em-1",  title:"Hakeem Care – تأخر 5 أشهر", type:"إيميل" },
+    { id:"t-em-2",  title:"عقد الشريك – متابعة",       type:"إيميل" },
+    { id:"t-em-3",  title:"شكوى تابي وتمارا",          type:"إيميل" },
+    { id:"t-em-4",  title:"CEQUENS – وثيقة",           type:"إيميل" },
+    { id:"t-em-5",  title:"Pack Go – تطبيق جديد",      type:"إيميل" },
+    { id:"t-em-6",  title:"محلك شي إن – إظهار تطبيق", type:"إيميل" },
+    { id:"t-em-7",  title:"دعوة Vanner (غدًا)",        type:"إيميل" },
+    { id:"t-em-8",  title:"Quiqup – قبول دعوة",        type:"إيميل" },
+  ];
+
+  // ══════════════════════════════════════════
+  //  FIREBASE STATUS UI
+  // ══════════════════════════════════════════
+  function setFbStatus(state) {
+    const dot = document.getElementById('fbDot');
+    const lbl = document.getElementById('fbLabel');
+    if (state === 'connected')  { dot.className='fb-dot connected'; lbl.textContent='متصل بـ Firebase'; }
+    else if (state === 'saving') { dot.className='fb-dot saving';   lbl.textContent='جاري الحفظ...'; }
+    else                         { dot.className='fb-dot';          lbl.textContent='غير متصل'; }
   }
 
-  // ─── Check / Uncheck a task ───────────────────────────
+  db.ref('.info/connected').on('value', snap => {
+    setFbStatus(snap.val() ? 'connected' : 'offline');
+  });
+
+  // ══════════════════════════════════════════
+  //  SAVE TODAY'S TASKS METADATA (once)
+  // ══════════════════════════════════════════
+  const dayRef     = db.ref(`days/${TODAY}`);
+  const actionsRef = db.ref(`days/${TODAY}/actions`);
+
+  dayRef.child('meta').once('value', snap => {
+    if (!snap.exists()) {
+      // First time today → save task list
+      const meta = {};
+      tasksMeta.forEach(t => { meta[t.id] = { title: t.title, type: t.type }; });
+      dayRef.child('tasks').set(meta);
+      dayRef.child('meta').set({ date: TODAY, generatedAt: new Date().toISOString() });
+    }
+  });
+
+  // ══════════════════════════════════════════
+  //  LOAD & LISTEN TO ACTIONS (real-time)
+  // ══════════════════════════════════════════
+  actionsRef.on('value', snap => {
+    const actions = snap.val() || {};
+    completedCount = 0;
+    tasksMeta.forEach(t => {
+      const card = document.getElementById(t.id);
+      if (!card) return;
+      if (actions[t.id]) {
+        card.classList.add('done');
+        completedCount++;
+      } else {
+        card.classList.remove('done');
+      }
+    });
+    updateStats();
+  });
+
+  // ══════════════════════════════════════════
+  //  CHECK / UNCHECK
+  // ══════════════════════════════════════════
   function checkTask(e, id) {
     e.stopPropagation();
     const card = document.getElementById(id);
     if (!card) return;
-    const wasDone = card.classList.contains('done');
-    card.classList.toggle('done');
-    completedCount += wasDone ? -1 : 1;
-    updateStats();
+    setFbStatus('saving');
+    const nowDone = !card.classList.contains('done');
+    actionsRef.child(id).set(nowDone ? true : null)
+      .then(() => setFbStatus('connected'));
   }
 
-  // ─── Update stats + progress bar ─────────────────────
+  // ══════════════════════════════════════════
+  //  STATS + PROGRESS BAR
+  // ══════════════════════════════════════════
   function updateStats() {
     const pct = Math.round((completedCount / TOTAL) * 100);
     document.querySelector('.stat-card.done .stat-num').textContent = completedCount;
@@ -1021,7 +1253,18 @@
     document.getElementById('progressFill').style.width = pct + '%';
   }
 
-  // ─── Inject check buttons into every task card ────────
+  // ══════════════════════════════════════════
+  //  TOGGLE ACCORDION
+  // ══════════════════════════════════════════
+  function toggleTask(id) {
+    const card = document.getElementById(id);
+    if (!card) return;
+    card.classList.toggle('open');
+  }
+
+  // ══════════════════════════════════════════
+  //  INJECT CHECK BUTTONS
+  // ══════════════════════════════════════════
   function injectCheckButtons() {
     document.querySelectorAll('.task-card[id]').forEach(card => {
       const header = card.querySelector('.task-header');
@@ -1031,25 +1274,98 @@
       btn.innerHTML = '✓';
       btn.title = 'تمّ';
       btn.onclick = (e) => checkTask(e, card.id);
-      // Append last → appears on LEFT in RTL layout
       header.appendChild(btn);
     });
   }
 
-  // ─── Date helpers ─────────────────────────────────────
+  // ══════════════════════════════════════════
+  //  VIEW TOGGLE (Today / History)
+  // ══════════════════════════════════════════
+  function switchView(view) {
+    document.getElementById('todayView').style.display   = view==='today'   ? 'block' : 'none';
+    document.getElementById('historyView').style.display = view==='history' ? 'block' : 'none';
+    document.getElementById('btnToday').classList.toggle('active',   view==='today');
+    document.getElementById('btnHistory').classList.toggle('active', view==='history');
+    if (view === 'history') loadHistory();
+  }
+
+  // ══════════════════════════════════════════
+  //  HISTORY
+  // ══════════════════════════════════════════
+  function loadHistory() {
+    const container = document.getElementById('historyList');
+    container.innerHTML = '<div class="history-empty"><div class="icon">⏳</div><p>جاري التحميل...</p></div>';
+
+    db.ref('days').once('value', snap => {
+      const data = snap.val();
+      if (!data) {
+        container.innerHTML = '<div class="history-empty"><div class="icon">🗂️</div><p>لا توجد أيام سابقة بعد</p></div>';
+        return;
+      }
+
+      const days = Object.keys(data).sort().reverse(); // newest first
+      container.innerHTML = '';
+
+      days.forEach(date => {
+        const dayData = data[date];
+        const tasks   = dayData.tasks   || {};
+        const actions = dayData.actions || {};
+        const ids     = Object.keys(tasks);
+        const doneCount = ids.filter(id => actions[id]).length;
+        const total     = ids.length;
+        const allDone   = total > 0 && doneCount === total;
+
+        // Format date label
+        const d = new Date(date + 'T12:00:00');
+        const days_ar = ['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
+        const months_ar = ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+        const label = `${days_ar[d.getDay()]}، ${d.getDate()} ${months_ar[d.getMonth()]} ${d.getFullYear()}`;
+
+        const card = document.createElement('div');
+        card.className = 'day-card';
+        card.innerHTML = `
+          <div class="day-header" onclick="this.parentElement.classList.toggle('open')">
+            <div>
+              <div class="day-title">${label}</div>
+            </div>
+            <div class="day-meta">
+              <span class="day-stat ${allDone?'all-done':''}">${doneCount} / ${total} مكتمل</span>
+              <span class="day-chevron">▼</span>
+            </div>
+          </div>
+          <div class="day-tasks">
+            ${ids.map(id => {
+              const t = tasks[id];
+              const done = !!actions[id];
+              return `<div class="hist-task">
+                <div class="hist-check ${done?'done':'pending'}">${done?'✓':''}</div>
+                <div class="hist-task-title ${done?'done':''}">${t.title}</div>
+                <div class="hist-type">${t.type}</div>
+              </div>`;
+            }).join('')}
+          </div>`;
+        container.appendChild(card);
+      });
+    });
+  }
+
+  // ══════════════════════════════════════════
+  //  DATE HELPERS
+  // ══════════════════════════════════════════
   function arabicDate() {
     const d = new Date('2026-06-23');
     const days = ['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
     const months = ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
     return `${days[d.getDay()]}، ${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
   }
-
   function nowTime() {
     const n = new Date();
-    return n.toLocaleTimeString('ar-SA', { hour: '2-digit', minute: '2-digit' });
+    return n.toLocaleTimeString('ar-SA', { hour:'2-digit', minute:'2-digit' });
   }
 
-  // ─── Init ─────────────────────────────────────────────
+  // ══════════════════════════════════════════
+  //  INIT
+  // ══════════════════════════════════════════
   document.getElementById('headerDate').textContent = arabicDate();
   document.getElementById('lastUpdate').textContent = nowTime();
   document.getElementById('t-cal-1').classList.add('open');
