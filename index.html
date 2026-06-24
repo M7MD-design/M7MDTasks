@@ -1667,7 +1667,7 @@
   // ══════════════════════════════════════════
   //  CONSTANTS
   // ══════════════════════════════════════════
-  const TODAY = '2026-06-23';
+  const TODAY = (() => { const d = new Date(); return new Date(d.getTime() + 3*3600000).toISOString().slice(0,10); })();
   const TOTAL = 19;
   let completedCount = 0;
 
