@@ -827,597 +827,10 @@
   </div>
 
   <!-- ★ START WITH THIS -->
-  <div class="start-section">
-    <div class="section-title">⚡ ابدأ بهذا</div>
-    <div class="start-card" onclick="toggleTask('t-cal-1')">
-      <div class="start-card-inner">
-        <div class="start-icon">🗓️</div>
-        <div class="start-body">
-          <h3>Salla &lt;&gt; Journify</h3>
-          <p>اجتماعك الأول اليوم · لديك ميمو مسجّل في Notion · تأكد من مراجعة الملاحظات قبل الدخول</p>
-        </div>
-        <div class="start-badge">12:00 - 12:30</div>
-      </div>
-    </div>
-  </div>
+  <div class="start-section"></div>
 
   <!-- ════ TASK LIST ════ -->
-  <div class="tasks-list">
-
-    <!-- ──── GROUP: Meetings ──── -->
-    <div class="group-header">
-      <h3>🗓️ اجتماعات اليوم</h3>
-      <span class="group-count">4</span>
-      <div class="line"></div>
-    </div>
-
-    <!-- Cal 1: Journify -->
-    <div class="task-card" id="t-cal-1">
-      <div class="task-header" onclick="toggleTask('t-cal-1')">
-        <div class="task-type-icon type-calendar">🗓️</div>
-        <div class="task-info">
-          <h4>Salla &lt;&gt; Journify</h4>
-          <div class="task-meta">
-            <span>📍 Google Meet</span>
-            <span>•</span>
-            <span>حضور: أنت + mishaal@salla.sa</span>
-          </div>
-        </div>
-        <div class="task-badges">
-          <span class="badge badge-meeting">12:00 – 12:30</span>
-        </div>
-        <button class="note-btn" id="nb-t-cal-1" onclick="event.stopPropagation();toggleNote('t-cal-1')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">▼</div>
-      </div>
-      <div class="task-body">
-        <div class="task-body-inner">
-          <div class="detail-block">
-            <div class="detail-row"><label>الشريك</label><span>Journify</span></div>
-            <div class="detail-row"><label>الوقت</label><span>اليوم 12:00 – 12:30 (AST)</span></div>
-            <div class="detail-row"><label>رابط</label><a href="https://meet.google.com/ddq-yocu-iwd" target="_blank">meet.google.com/ddq-yocu-iwd</a></div>
-          </div>
-          <a class="notion-link" href="https://app.notion.com/p/ee876a6ea1824b56a1d01b302271b35c" target="_blank">
-            📄 فتح ميمو Journify في Notion
-          </a>
-        </div>
-      </div>
-      <div class="note-area" id="na-t-cal-1"><div class="note-label">ملاحظة</div><textarea id="nt-t-cal-1" placeholder="اكتب ملاحظتك..." oninput="onNoteInput('t-cal-1')"></textarea><div class="note-footer"><span class="note-saved-msg" id="ns-t-cal-1">✓ تم الحفظ</span><span class="note-char-count" id="nc-t-cal-1">0</span><button class="note-save-btn" id="nsb-t-cal-1" onclick="saveNote('t-cal-1')" disabled>حفظ</button></div></div>
-    </div>
-
-    <!-- Cal 2: Digital Plus ERP -->
-    <div class="task-card" id="t-cal-2">
-      <div class="task-header" onclick="toggleTask('t-cal-2')">
-        <div class="task-type-icon type-calendar">🗓️</div>
-        <div class="task-info">
-          <h4>Salla &lt;&gt; Digital Plus ERP</h4>
-          <div class="task-meta">
-            <span>📍 Google Meet</span>
-            <span>•</span>
-            <span>5 حضور</span>
-          </div>
-        </div>
-        <div class="task-badges">
-          <span class="badge badge-meeting">13:00 – 13:30</span>
-        </div>
-        <button class="note-btn" id="nb-t-cal-2" onclick="event.stopPropagation();toggleNote('t-cal-2')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">▼</div>
-      </div>
-      <div class="task-body">
-        <div class="task-body-inner">
-          <div class="detail-block">
-            <div class="detail-row"><label>الشريك</label><span>Digital Plus ERP (Cloud Version)</span></div>
-            <div class="detail-row"><label>الوقت</label><span>اليوم 13:00 – 13:30 (AST)</span></div>
-            <div class="detail-row"><label>الحضور</label><span>info@aamalsoft.com.sa · khalidalshamere7375@gmail.com · mohalqareb@gmail.com</span></div>
-            <div class="detail-row"><label>رابط</label><a href="https://meet.google.com/btj-vrss-skk" target="_blank">meet.google.com/btj-vrss-skk</a></div>
-          </div>
-          <a class="notion-link" href="https://app.notion.com/p/386aa526244b80e49a92cf19c898999e" target="_blank">
-            📄 فتح ميمو Digital Plus ERP في Notion
-          </a>
-        </div>
-      </div>
-      <div class="note-area" id="na-t-cal-2"><div class="note-label">ملاحظة</div><textarea id="nt-t-cal-2" placeholder="اكتب ملاحظتك..." oninput="onNoteInput('t-cal-2')"></textarea><div class="note-footer"><span class="note-saved-msg" id="ns-t-cal-2">✓ تم الحفظ</span><span class="note-char-count" id="nc-t-cal-2">0</span><button class="note-save-btn" id="nsb-t-cal-2" onclick="saveNote('t-cal-2')" disabled>حفظ</button></div></div>
-    </div>
-
-    <!-- Cal 3: Actan -->
-    <div class="task-card" id="t-cal-3">
-      <div class="task-header" onclick="toggleTask('t-cal-3')">
-        <div class="task-type-icon type-calendar">🗓️</div>
-        <div class="task-info">
-          <h4>Salla &lt;&gt; Actan (Microsoft D365)</h4>
-          <div class="task-meta">
-            <span>📍 Google Meet</span>
-            <span>•</span>
-            <span>5 حضور · شريك قبل الاجتماع</span>
-          </div>
-        </div>
-        <div class="task-badges">
-          <span class="badge badge-meeting">13:30 – 13:45</span>
-        </div>
-        <button class="note-btn" id="nb-t-cal-3" onclick="event.stopPropagation();toggleNote('t-cal-3')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">▼</div>
-      </div>
-      <div class="task-body">
-        <div class="task-body-inner">
-          <div class="detail-block">
-            <div class="detail-row"><label>الشريك</label><span>Actan · actan.com</span></div>
-            <div class="detail-row"><label>الوقت</label><span>اليوم 13:30 – 13:45 (AST)</span></div>
-            <div class="detail-row"><label>الحضور</label><span>e.shenawy@sd-it.net · m.roumia@sd-it.net · sbamerdah@actan.com</span></div>
-            <div class="detail-row"><label>رابط</label><a href="https://meet.google.com/dhs-hifw-rwg" target="_blank">meet.google.com/dhs-hifw-rwg</a></div>
-          </div>
-          <a class="notion-link" href="https://app.notion.com/p/2b4aa526244b80ed998aff60a852e91a" target="_blank">
-            📄 فتح ميمو Actan (D365) في Notion
-          </a>
-        </div>
-      </div>
-      <div class="note-area" id="na-t-cal-3"><div class="note-label">ملاحظة</div><textarea id="nt-t-cal-3" placeholder="اكتب ملاحظتك..." oninput="onNoteInput('t-cal-3')"></textarea><div class="note-footer"><span class="note-saved-msg" id="ns-t-cal-3">✓ تم الحفظ</span><span class="note-char-count" id="nc-t-cal-3">0</span><button class="note-save-btn" id="nsb-t-cal-3" onclick="saveNote('t-cal-3')" disabled>حفظ</button></div></div>
-    </div>
-
-    <!-- Cal 4: WSLA -->
-    <div class="task-card" id="t-cal-4">
-      <div class="task-header" onclick="toggleTask('t-cal-4')">
-        <div class="task-type-icon type-calendar">🗓️</div>
-        <div class="task-info">
-          <h4>Salla &lt;&gt; WSLA</h4>
-          <div class="task-meta">
-            <span>📍 Google Meet</span>
-            <span>•</span>
-            <span>أنت المنظّم</span>
-          </div>
-        </div>
-        <div class="task-badges">
-          <span class="badge badge-meeting">14:00 – 14:30</span>
-        </div>
-        <button class="note-btn" id="nb-t-cal-4" onclick="event.stopPropagation();toggleNote('t-cal-4')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">▼</div>
-      </div>
-      <div class="task-body">
-        <div class="task-body-inner">
-          <div class="detail-block">
-            <div class="detail-row"><label>الشريك</label><span>WSLA · wsla.io</span></div>
-            <div class="detail-row"><label>الوقت</label><span>اليوم 14:00 – 14:30 (AST)</span></div>
-            <div class="detail-row"><label>رابط</label><a href="https://meet.google.com/fou-qagi-ahj" target="_blank">meet.google.com/fou-qagi-ahj</a></div>
-          </div>
-          <a class="notion-link" href="https://app.notion.com/p/355aa526244b807d938ae4a850ddd59b" target="_blank">
-            📄 فتح ميمو WSLA في Notion
-          </a>
-        </div>
-      </div>
-      <div class="note-area" id="na-t-cal-4"><div class="note-label">ملاحظة</div><textarea id="nt-t-cal-4" placeholder="اكتب ملاحظتك..." oninput="onNoteInput('t-cal-4')"></textarea><div class="note-footer"><span class="note-saved-msg" id="ns-t-cal-4">✓ تم الحفظ</span><span class="note-char-count" id="nc-t-cal-4">0</span><button class="note-save-btn" id="nsb-t-cal-4" onclick="saveNote('t-cal-4')" disabled>حفظ</button></div></div>
-    </div>
-
-    <!-- ──── GROUP: Slack List ──── -->
-    <div class="group-header">
-      <h3>📋 تذاكر الشركاء (Slack List)</h3>
-      <span class="group-count">5</span>
-      <div class="line"></div>
-    </div>
-
-    <!-- Ticket 1: رانك سيو -->
-    <div class="task-card" id="t-sl-1">
-      <div class="task-header" onclick="toggleTask('t-sl-1')">
-        <div class="task-type-icon type-slack">📋</div>
-        <div class="task-info">
-          <h4>رانك سيو</h4>
-          <div class="task-meta">
-            <span>تطبيق</span>
-            <span>•</span>
-            <span>أضيفت 21 يونيو</span>
-          </div>
-        </div>
-        <div class="task-badges">
-          <span class="badge badge-due">تسليم 24 يونيو</span>
-          <span class="badge badge-new">New</span>
-        </div>
-        <button class="note-btn" id="nb-t-sl-1" onclick="event.stopPropagation();toggleNote('t-sl-1')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">▼</div>
-      </div>
-      <div class="task-body">
-        <div class="task-body-inner">
-          <div class="detail-block">
-            <div class="detail-row"><label>الحالة</label><span>New — لم يُتخذ إجراء بعد</span></div>
-            <div class="detail-row"><label>النوع</label><span>تطبيق</span></div>
-            <div class="detail-row"><label>الموعد</label><span>الأربعاء 24 يونيو 2026</span></div>
-          </div>
-          <a class="slack-link" href="https://salla-co.slack.com/archives/C08U3P95PK5/p1782057186753989" target="_blank">
-            🔗 فتح التذكرة في Slack
-          </a>
-        </div>
-      </div>
-      <div class="note-area" id="na-t-sl-1"><div class="note-label">ملاحظة</div><textarea id="nt-t-sl-1" placeholder="اكتب ملاحظتك..." oninput="onNoteInput('t-sl-1')"></textarea><div class="note-footer"><span class="note-saved-msg" id="ns-t-sl-1">✓ تم الحفظ</span><span class="note-char-count" id="nc-t-sl-1">0</span><button class="note-save-btn" id="nsb-t-sl-1" onclick="saveNote('t-sl-1')" disabled>حفظ</button></div></div>
-    </div>
-
-    <!-- Ticket 2: محلك شي إن -->
-    <div class="task-card" id="t-sl-2">
-      <div class="task-header" onclick="toggleTask('t-sl-2')">
-        <div class="task-type-icon type-slack">📋</div>
-        <div class="task-info">
-          <h4>محلك شي إن</h4>
-          <div class="task-meta">
-            <span>تطبيق</span>
-            <span>•</span>
-            <span>أضيفت 21 يونيو</span>
-          </div>
-        </div>
-        <div class="task-badges">
-          <span class="badge badge-due">تسليم 24 يونيو</span>
-          <span class="badge badge-new">New</span>
-        </div>
-        <button class="note-btn" id="nb-t-sl-2" onclick="event.stopPropagation();toggleNote('t-sl-2')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">▼</div>
-      </div>
-      <div class="task-body">
-        <div class="task-body-inner">
-          <div class="detail-block">
-            <div class="detail-row"><label>الحالة</label><span>New — بانتظار متابعة</span></div>
-            <div class="detail-row"><label>النوع</label><span>تطبيق</span></div>
-            <div class="detail-row"><label>الموعد</label><span>الأربعاء 24 يونيو 2026</span></div>
-          </div>
-          <a class="slack-link" href="https://salla-co.slack.com/archives/C08U3P95PK5/p1782050503363079" target="_blank">
-            🔗 فتح التذكرة في Slack
-          </a>
-        </div>
-      </div>
-      <div class="note-area" id="na-t-sl-2"><div class="note-label">ملاحظة</div><textarea id="nt-t-sl-2" placeholder="اكتب ملاحظتك..." oninput="onNoteInput('t-sl-2')"></textarea><div class="note-footer"><span class="note-saved-msg" id="ns-t-sl-2">✓ تم الحفظ</span><span class="note-char-count" id="nc-t-sl-2">0</span><button class="note-save-btn" id="nsb-t-sl-2" onclick="saveNote('t-sl-2')" disabled>حفظ</button></div></div>
-    </div>
-
-    <!-- Ticket 3: ايكوم تابز -->
-    <div class="task-card" id="t-sl-3">
-      <div class="task-header" onclick="toggleTask('t-sl-3')">
-        <div class="task-type-icon type-slack">📋</div>
-        <div class="task-info">
-          <h4>ايكوم تابز</h4>
-          <div class="task-meta">
-            <span>خدمات التاجر</span>
-            <span>•</span>
-            <span>أضيفت 21 يونيو</span>
-          </div>
-        </div>
-        <div class="task-badges">
-          <span class="badge badge-new">New</span>
-        </div>
-        <button class="note-btn" id="nb-t-sl-3" onclick="event.stopPropagation();toggleNote('t-sl-3')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">▼</div>
-      </div>
-      <div class="task-body">
-        <div class="task-body-inner">
-          <div class="detail-block">
-            <div class="detail-row"><label>الحالة</label><span>New — لم يُتخذ إجراء بعد</span></div>
-            <div class="detail-row"><label>النوع</label><span>خدمات التاجر</span></div>
-          </div>
-          <a class="slack-link" href="https://salla-co.slack.com/archives/C08U3P95PK5/p1782051511837309" target="_blank">
-            🔗 فتح التذكرة في Slack
-          </a>
-        </div>
-      </div>
-      <div class="note-area" id="na-t-sl-3"><div class="note-label">ملاحظة</div><textarea id="nt-t-sl-3" placeholder="اكتب ملاحظتك..." oninput="onNoteInput('t-sl-3')"></textarea><div class="note-footer"><span class="note-saved-msg" id="ns-t-sl-3">✓ تم الحفظ</span><span class="note-char-count" id="nc-t-sl-3">0</span><button class="note-save-btn" id="nsb-t-sl-3" onclick="saveNote('t-sl-3')" disabled>حفظ</button></div></div>
-    </div>
-
-    <!-- Ticket 4: Widers whatsapp -->
-    <div class="task-card" id="t-sl-4">
-      <div class="task-header" onclick="toggleTask('t-sl-4')">
-        <div class="task-type-icon type-slack">📋</div>
-        <div class="task-info">
-          <h4>Widers Whatsapp</h4>
-          <div class="task-meta">
-            <span>تطبيق</span>
-            <span>•</span>
-            <span>أضيفت 19 يونيو</span>
-          </div>
-        </div>
-        <div class="task-badges">
-          <span class="badge badge-new">New</span>
-        </div>
-        <button class="note-btn" id="nb-t-sl-4" onclick="event.stopPropagation();toggleNote('t-sl-4')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">▼</div>
-      </div>
-      <div class="task-body">
-        <div class="task-body-inner">
-          <div class="detail-block">
-            <div class="detail-row"><label>الحالة</label><span>New — لم يُتخذ إجراء بعد</span></div>
-            <div class="detail-row"><label>النوع</label><span>تطبيق</span></div>
-          </div>
-          <a class="slack-link" href="https://salla-co.slack.com/archives/C08U3P95PK5/p1781895506323759" target="_blank">
-            🔗 فتح التذكرة في Slack
-          </a>
-        </div>
-      </div>
-      <div class="note-area" id="na-t-sl-4"><div class="note-label">ملاحظة</div><textarea id="nt-t-sl-4" placeholder="اكتب ملاحظتك..." oninput="onNoteInput('t-sl-4')"></textarea><div class="note-footer"><span class="note-saved-msg" id="ns-t-sl-4">✓ تم الحفظ</span><span class="note-char-count" id="nc-t-sl-4">0</span><button class="note-save-btn" id="nsb-t-sl-4" onclick="saveNote('t-sl-4')" disabled>حفظ</button></div></div>
-    </div>
-
-    <!-- Ticket 5: ران ميديا -->
-    <div class="task-card" id="t-sl-5">
-      <div class="task-header" onclick="toggleTask('t-sl-5')">
-        <div class="task-type-icon type-slack">📋</div>
-        <div class="task-info">
-          <h4>ران ميديا</h4>
-          <div class="task-meta">
-            <span>خدمات التاجر</span>
-            <span>•</span>
-            <span>أضيفت 14 يونيو</span>
-          </div>
-        </div>
-        <div class="task-badges">
-          <span class="badge badge-progress">In Progress (Partner)</span>
-        </div>
-        <button class="note-btn" id="nb-t-sl-5" onclick="event.stopPropagation();toggleNote('t-sl-5')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">▼</div>
-      </div>
-      <div class="task-body">
-        <div class="task-body-inner">
-          <div class="detail-block">
-            <div class="detail-row"><label>الحالة</label><span>In Progress (Partner) — الشريك قيد التنفيذ، تحتاج متابعة</span></div>
-            <div class="detail-row"><label>النوع</label><span>خدمات التاجر</span></div>
-          </div>
-          <a class="slack-link" href="https://salla-co.slack.com/archives/C08U3P95PK5/p1781426299100359" target="_blank">
-            🔗 فتح التذكرة في Slack
-          </a>
-        </div>
-      </div>
-      <div class="note-area" id="na-t-sl-5"><div class="note-label">ملاحظة</div><textarea id="nt-t-sl-5" placeholder="اكتب ملاحظتك..." oninput="onNoteInput('t-sl-5')"></textarea><div class="note-footer"><span class="note-saved-msg" id="ns-t-sl-5">✓ تم الحفظ</span><span class="note-char-count" id="nc-t-sl-5">0</span><button class="note-save-btn" id="nsb-t-sl-5" onclick="saveNote('t-sl-5')" disabled>حفظ</button></div></div>
-    </div>
-
-    <!-- ──── GROUP: Mentions ──── -->
-    <div class="group-header">
-      <h3>💬 منشنات تحتاج ردًا</h3>
-      <span class="group-count">2</span>
-      <div class="line"></div>
-    </div>
-
-    <!-- Mention 1: Atheer -->
-    <div class="task-card" id="t-mn-1">
-      <div class="task-header" onclick="toggleTask('t-mn-1')">
-        <div class="task-type-icon type-mention">💬</div>
-        <div class="task-info">
-          <h4>أثير العمري — منشن في #merchants-success-onboarding-partners</h4>
-          <div class="task-meta">
-            <span>21 يونيو 2026</span>
-          </div>
-        </div>
-        <div class="task-badges">
-          <span class="badge badge-mention">منشن</span>
-        </div>
-        <button class="note-btn" id="nb-t-mn-1" onclick="event.stopPropagation();toggleNote('t-mn-1')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">▼</div>
-      </div>
-      <div class="task-body">
-        <div class="task-body-inner">
-          <div class="summary-text">
-            "يعطيكم العافية التاجر تم التوقيع نقدر نبدأ معاه في التطبيق 🙏" — تم منشنتك مع Aya Al-Oran للتأكد من البدء مع التاجر في التطبيق.
-          </div>
-          <a class="slack-link" href="https://salla-co.slack.com/archives/C061YGRPK96/p1782044367112599?thread_ts=1776763577.372939&cid=C061YGRPK96" target="_blank">
-            🔗 فتح الثريد في Slack
-          </a>
-        </div>
-      </div>
-      <div class="note-area" id="na-t-mn-1"><div class="note-label">ملاحظة</div><textarea id="nt-t-mn-1" placeholder="اكتب ملاحظتك..." oninput="onNoteInput('t-mn-1')"></textarea><div class="note-footer"><span class="note-saved-msg" id="ns-t-mn-1">✓ تم الحفظ</span><span class="note-char-count" id="nc-t-mn-1">0</span><button class="note-save-btn" id="nsb-t-mn-1" onclick="saveNote('t-mn-1')" disabled>حفظ</button></div></div>
-    </div>
-
-    <!-- Mention 2: Sahar -->
-    <div class="task-card" id="t-mn-2">
-      <div class="task-header" onclick="toggleTask('t-mn-2')">
-        <div class="task-type-icon type-mention">💬</div>
-        <div class="task-info">
-          <h4>سحر الآغا — منشن في #partners-relations</h4>
-          <div class="task-meta">
-            <span>22 يونيو 2026</span>
-          </div>
-        </div>
-        <div class="task-badges">
-          <span class="badge badge-mention">منشن</span>
-        </div>
-        <button class="note-btn" id="nb-t-mn-2" onclick="event.stopPropagation();toggleNote('t-mn-2')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">▼</div>
-      </div>
-      <div class="task-body">
-        <div class="task-body-inner">
-          <div class="summary-text">
-            "للأمانة ما جازفت... كل الإيميلات بخليه يسولها درافت بس عشان أراجع المعلومات وأتأكد من صحتها. @Maha @m.almourki أحد منكم جرّب؟" — سؤال عن تجربة استخدام AI لكتابة إيميلات الشركاء.
-          </div>
-          <a class="slack-link" href="https://salla-co.slack.com/archives/C05NJE1HMCY/p1782130484640729?thread_ts=1782130377.198079&cid=C05NJE1HMCY" target="_blank">
-            🔗 فتح الثريد في Slack
-          </a>
-        </div>
-      </div>
-      <div class="note-area" id="na-t-mn-2"><div class="note-label">ملاحظة</div><textarea id="nt-t-mn-2" placeholder="اكتب ملاحظتك..." oninput="onNoteInput('t-mn-2')"></textarea><div class="note-footer"><span class="note-saved-msg" id="ns-t-mn-2">✓ تم الحفظ</span><span class="note-char-count" id="nc-t-mn-2">0</span><button class="note-save-btn" id="nsb-t-mn-2" onclick="saveNote('t-mn-2')" disabled>حفظ</button></div></div>
-    </div>
-
-    <!-- ──── GROUP: Emails ──── -->
-    <div class="group-header">
-      <h3>📧 إيميلات تحتاج رد</h3>
-      <span class="group-count">8</span>
-      <div class="line"></div>
-    </div>
-
-    <!-- Email 1: Hakeem Care (URGENT) -->
-    <div class="task-card" id="t-em-1">
-      <div class="task-header" onclick="toggleTask('t-em-1')">
-        <div class="task-type-icon type-email">📧</div>
-        <div class="task-info">
-          <h4>Hakeem Care — تأخر في الاستجابة (5 أشهر)</h4>
-          <div class="task-meta">
-            <span>آخر رد: 21 يونيو</span>
-          </div>
-        </div>
-        <div class="task-badges">
-          <span class="badge badge-urgent">عاجل</span>
-        </div>
-        <button class="note-btn" id="nb-t-em-1" onclick="event.stopPropagation();toggleNote('t-em-1')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">▼</div>
-      </div>
-      <div class="task-body">
-        <div class="task-body-inner">
-          <div class="summary-text">
-            الشريك يشكو من تأخير شديد في الرد على استفساراتهم، مرّ 5 أشهر ولم تكتمل عملية الربط بعد. طلبهم: دعم عاجل لإتمام التكامل في أقرب وقت ممكن.
-          </div>
-        </div>
-      </div>
-      <div class="note-area" id="na-t-em-1"><div class="note-label">ملاحظة</div><textarea id="nt-t-em-1" placeholder="اكتب ملاحظتك..." oninput="onNoteInput('t-em-1')"></textarea><div class="note-footer"><span class="note-saved-msg" id="ns-t-em-1">✓ تم الحفظ</span><span class="note-char-count" id="nc-t-em-1">0</span><button class="note-save-btn" id="nsb-t-em-1" onclick="saveNote('t-em-1')" disabled>حفظ</button></div></div>
-    </div>
-
-    <!-- Email 2: Contract -->
-    <div class="task-card" id="t-em-2">
-      <div class="task-header" onclick="toggleTask('t-em-2')">
-        <div class="task-type-icon type-email">📧</div>
-        <div class="task-info">
-          <h4>شريك يستفسر عن العقد (العنوان الوطني)</h4>
-          <div class="task-meta">
-            <span>آخر رسالة: اليوم 23 يونيو</span>
-          </div>
-        </div>
-        <div class="task-badges">
-          <span class="badge badge-urgent">عاجل</span>
-        </div>
-        <button class="note-btn" id="nb-t-em-2" onclick="event.stopPropagation();toggleNote('t-em-2')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">▼</div>
-      </div>
-      <div class="task-body">
-        <div class="task-body-inner">
-          <div class="summary-text">
-            الشريك يتابع بشكل مستمر حول حالة العقد. أرسلت أنت رد قبل يومين بأن العقد "قيد المراجعة النهائية لدى الإدارة". أحدث رسالة اليوم: يطلب التأكد من إتمام المراجعة والتوقيع اليوم إن أمكن. الشريك أرسل العنوان الوطني: EDPA7531.
-          </div>
-        </div>
-      </div>
-      <div class="note-area" id="na-t-em-2"><div class="note-label">ملاحظة</div><textarea id="nt-t-em-2" placeholder="اكتب ملاحظتك..." oninput="onNoteInput('t-em-2')"></textarea><div class="note-footer"><span class="note-saved-msg" id="ns-t-em-2">✓ تم الحفظ</span><span class="note-char-count" id="nc-t-em-2">0</span><button class="note-save-btn" id="nsb-t-em-2" onclick="saveNote('t-em-2')" disabled>حفظ</button></div></div>
-    </div>
-
-    <!-- Email 3: شكوى Tabby/Tamara -->
-    <div class="task-card" id="t-em-3">
-      <div class="task-header" onclick="toggleTask('t-em-3')">
-        <div class="task-type-icon type-email">📧</div>
-        <div class="task-info">
-          <h4>شكوى — خدمة التسجيل في تابي وتمارا</h4>
-          <div class="task-meta">
-            <span>آخر رسالة: 22 يونيو</span>
-          </div>
-        </div>
-        <div class="task-badges">
-          <span class="badge badge-urgent">شكوى</span>
-        </div>
-        <button class="note-btn" id="nb-t-em-3" onclick="event.stopPropagation();toggleNote('t-em-3')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">▼</div>
-      </div>
-      <div class="task-body">
-        <div class="task-body-inner">
-          <div class="summary-text">
-            شريك يردّ على شكوى بخصوص طلب الخدمة رقم #238660749. يوضح أن التفويض كان لموظف غير سعودي الجنسية مما أثار غضب العميل، وأن التواصل الخارجي كان فقط لسرعة الاستجابة. تم إلغاء الخدمة من طرفهم. يحتاج موقفًا واضحًا منك.
-          </div>
-        </div>
-      </div>
-      <div class="note-area" id="na-t-em-3"><div class="note-label">ملاحظة</div><textarea id="nt-t-em-3" placeholder="اكتب ملاحظتك..." oninput="onNoteInput('t-em-3')"></textarea><div class="note-footer"><span class="note-saved-msg" id="ns-t-em-3">✓ تم الحفظ</span><span class="note-char-count" id="nc-t-em-3">0</span><button class="note-save-btn" id="nsb-t-em-3" onclick="saveNote('t-em-3')" disabled>حفظ</button></div></div>
-    </div>
-
-    <!-- Email 4: CEQUENS -->
-    <div class="task-card" id="t-em-4">
-      <div class="task-header" onclick="toggleTask('t-em-4')">
-        <div class="task-type-icon type-email">📧</div>
-        <div class="task-info">
-          <h4>CEQUENS — وثيقة مطلوبة</h4>
-          <div class="task-meta">
-            <span>Sari Hweitat · 22 يونيو</span>
-          </div>
-        </div>
-        <div class="task-badges">
-          <span class="badge badge-new">جديد</span>
-        </div>
-        <button class="note-btn" id="nb-t-em-4" onclick="event.stopPropagation();toggleNote('t-em-4')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">▼</div>
-      </div>
-      <div class="task-body">
-        <div class="task-body-inner">
-          <div class="summary-text">
-            Sari Hweitat (Head of Products - CEQUENS) يرد على طلبك ويرسل وثيقة مرفقة كما طُلب. الشريك يتابع عملية الانضمام لبرنامج شركاء سلة.
-          </div>
-        </div>
-      </div>
-      <div class="note-area" id="na-t-em-4"><div class="note-label">ملاحظة</div><textarea id="nt-t-em-4" placeholder="اكتب ملاحظتك..." oninput="onNoteInput('t-em-4')"></textarea><div class="note-footer"><span class="note-saved-msg" id="ns-t-em-4">✓ تم الحفظ</span><span class="note-char-count" id="nc-t-em-4">0</span><button class="note-save-btn" id="nsb-t-em-4" onclick="saveNote('t-em-4')" disabled>حفظ</button></div></div>
-    </div>
-
-    <!-- Email 5: Pack Go -->
-    <div class="task-card" id="t-em-5">
-      <div class="task-header" onclick="toggleTask('t-em-5')">
-        <div class="task-type-icon type-email">📧</div>
-        <div class="task-info">
-          <h4>Pack Go — طلب تطبيق شحن مبرد جديد</h4>
-          <div class="task-meta">
-            <span>Samih Al-Zain · 22 يونيو</span>
-          </div>
-        </div>
-        <div class="task-badges">
-          <span class="badge badge-new">جديد</span>
-        </div>
-        <button class="note-btn" id="nb-t-em-5" onclick="event.stopPropagation();toggleNote('t-em-5')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">▼</div>
-      </div>
-      <div class="task-body">
-        <div class="task-body-inner">
-          <div class="summary-text">
-            سامح الزين من Pack Go (التطبيق رقم 1227305125) يطلب إضافة تطبيق جديد مختص بالشحن المبرد — وليس تعديلاً على التطبيق الحالي. يحتاج ردًا توجيهيًا حول إجراءات إنشاء تطبيق جديد.
-          </div>
-        </div>
-      </div>
-      <div class="note-area" id="na-t-em-5"><div class="note-label">ملاحظة</div><textarea id="nt-t-em-5" placeholder="اكتب ملاحظتك..." oninput="onNoteInput('t-em-5')"></textarea><div class="note-footer"><span class="note-saved-msg" id="ns-t-em-5">✓ تم الحفظ</span><span class="note-char-count" id="nc-t-em-5">0</span><button class="note-save-btn" id="nsb-t-em-5" onclick="saveNote('t-em-5')" disabled>حفظ</button></div></div>
-    </div>
-
-    <!-- Email 6: Mahalk Shein (old thread) -->
-    <div class="task-card" id="t-em-6">
-      <div class="task-header" onclick="toggleTask('t-em-6')">
-        <div class="task-type-icon type-email">📧</div>
-        <div class="task-info">
-          <h4>محلك شي إن — طلب إظهار التطبيق</h4>
-          <div class="task-meta">
-            <span>سلسلة قديمة · نوفمبر 2025</span>
-          </div>
-        </div>
-        <div class="task-badges">
-          <span class="badge badge-progress">متابعة</span>
-        </div>
-        <button class="note-btn" id="nb-t-em-6" onclick="event.stopPropagation();toggleNote('t-em-6')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">▼</div>
-      </div>
-      <div class="task-body">
-        <div class="task-body-inner">
-          <div class="summary-text">
-            الشريك يطالب بإظهار التطبيق في متجر التطبيقات. قدّم دليلاً على حل مشكلة العميل وتحويل مبلغ الاشتراك. السلسلة قديمة (نوفمبر 2025) — تحقق من الوضع الحالي للتطبيق هل تم نشره أم لا.
-          </div>
-        </div>
-      </div>
-      <div class="note-area" id="na-t-em-6"><div class="note-label">ملاحظة</div><textarea id="nt-t-em-6" placeholder="اكتب ملاحظتك..." oninput="onNoteInput('t-em-6')"></textarea><div class="note-footer"><span class="note-saved-msg" id="ns-t-em-6">✓ تم الحفظ</span><span class="note-char-count" id="nc-t-em-6">0</span><button class="note-save-btn" id="nsb-t-em-6" onclick="saveNote('t-em-6')" disabled>حفظ</button></div></div>
-    </div>
-
-    <!-- Email 7: Vanner meeting -->
-    <div class="task-card" id="t-em-7">
-      <div class="task-header" onclick="toggleTask('t-em-7')">
-        <div class="task-type-icon type-email">📧</div>
-        <div class="task-info">
-          <h4>دعوة اجتماع — Vanner &lt;&gt; Salla (غدًا)</h4>
-          <div class="task-meta">
-            <span>من Ghaida Alsahli · اليوم</span>
-          </div>
-        </div>
-        <div class="task-badges">
-          <span class="badge badge-due">غدًا 12:00</span>
-        </div>
-        <button class="note-btn" id="nb-t-em-7" onclick="event.stopPropagation();toggleNote('t-em-7')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">▼</div>
-      </div>
-      <div class="task-body">
-        <div class="task-body-inner">
-          <div class="summary-text">
-            دعوة اجتماع من Ghaida Alsahli لاجتماع "Vanner - salla" غدًا الأربعاء 24 يونيو 12:00–1:00م (توقيت الرياض). لم يتم قبول الدعوة بعد — تحقق من تقويمك.
-          </div>
-        </div>
-      </div>
-      <div class="note-area" id="na-t-em-7"><div class="note-label">ملاحظة</div><textarea id="nt-t-em-7" placeholder="اكتب ملاحظتك..." oninput="onNoteInput('t-em-7')"></textarea><div class="note-footer"><span class="note-saved-msg" id="ns-t-em-7">✓ تم الحفظ</span><span class="note-char-count" id="nc-t-em-7">0</span><button class="note-save-btn" id="nsb-t-em-7" onclick="saveNote('t-em-7')" disabled>حفظ</button></div></div>
-    </div>
-
-    <!-- Email 8: Quiqup -->
-    <div class="task-card" id="t-em-8">
-      <div class="task-header" onclick="toggleTask('t-em-8')">
-        <div class="task-type-icon type-email">📧</div>
-        <div class="task-info">
-          <h4>Quiqup — قبول دعوة Salla &lt;&gt; Quiqup</h4>
-          <div class="task-meta">
-            <span>Thanua Aldosary · إشعار</span>
-          </div>
-        </div>
-        <div class="task-badges">
-          <span class="badge badge-meeting">إشعار</span>
-        </div>
-        <button class="note-btn" id="nb-t-em-8" onclick="event.stopPropagation();toggleNote('t-em-8')" title="ملاحظة" aria-label="ملاحظة">📝<span class="note-dot"></span></button><div class="task-chevron">▼</div>
-      </div>
-      <div class="task-body">
-        <div class="task-body-inner">
-          <div class="summary-text">
-            Thanua Aldosary من Quiqup قبلت دعوة اجتماع Salla &lt;&gt; Quiqup. لا يحتاج رداً لكن تأكد من تحضير جدول أعمال الاجتماع.
-          </div>
-        </div>
-      </div>
-      <div class="note-area" id="na-t-em-8"><div class="note-label">ملاحظة</div><textarea id="nt-t-em-8" placeholder="اكتب ملاحظتك..." oninput="onNoteInput('t-em-8')"></textarea><div class="note-footer"><span class="note-saved-msg" id="ns-t-em-8">✓ تم الحفظ</span><span class="note-char-count" id="nc-t-em-8">0</span><button class="note-save-btn" id="nsb-t-em-8" onclick="saveNote('t-em-8')" disabled>حفظ</button></div></div>
-    </div>
-
-  </div><!-- /tasks-list -->
+  <div class="tasks-list"><div style="text-align:center;padding:40px;color:var(--text-muted)">جاري التحميل...</div></div><!-- /tasks-list -->
 
   </div><!-- /todayView -->
 
@@ -2322,44 +1735,165 @@
 </script>
 
 <script>
-/* START SECTION UPDATER */
+/* ═══ DYNAMIC RENDERER — v3 FINAL ═══ */
 (function(){
-  var d = new Date();
-  var SAT = new Date(d.getTime() + 3*3600000).toISOString().slice(0,10);
-  function updateStart(){
-    firebase.database().ref('days/' + SAT).once('value', function(snap){
-      var data = snap.val() || {};
-      var tasks = data.tasks || {};
-      var actions = data.actions || {};
-      var allIds = Object.keys(tasks).sort();
-      var uncompleted = allIds.filter(function(id){ return !actions[id]; });
-      var startEl = document.querySelector('.start-section');
-      if(!startEl) return;
-      if(!allIds.length) return;
-      var q = "'";
-      if(!uncompleted.length){
-        startEl.innerHTML = '<div class="section-title">⚡ ابدأ بهذا</div><div class="start-card" style="text-align:center;font-size:22px;padding:30px">🎉 أنجزت كل مهامك اليوم!</div>';
-        return;
-      }
-      var sid = uncompleted[0];
-      var t = tasks[sid];
-      var ic = t.type === 'اجتماع' ? '🗓️' : '📧';
-      var sub = t.type === 'اجتماع'
-        ? 'اجتماعك الأول اليوم · تأكد من مراجعة الملاحظات قبل الدخول'
-        : (t.summary || 'تحقق من هذا الإيميل وأجب عليه');
-      var time = t.time ? '<span class="time-badge">' + t.time + '</span>' : '';
-      startEl.innerHTML = '<div class="section-title">⚡ ابدأ بهذا</div>' +
-        '<div class="start-card" onclick="toggleTask(' + q + sid + q + ')">' +
-        '<div class="start-card-inner"><div class="start-icon">' + ic + '</div>' +
-        '<div class="start-body"><div class="start-title">' + t.title + '</div>' +
-        '<div class="start-sub">' + sub + '</div></div>' +
-        time + '</div></div>';
+  var AM=['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+  var AD=['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
+
+  function saudiToday(){
+    var d=new Date();
+    return new Date(d.getTime()+3*3600000).toISOString().slice(0,10);
+  }
+
+  function arDate(iso){
+    var p=iso.split('-').map(Number);
+    var dt=new Date(p[0],p[1]-1,p[2]);
+    return AD[dt.getDay()]+'، '+p[2]+' '+AM[p[1]-1]+' '+p[0];
+  }
+
+  function grpHdr(ic,lb,n){
+    return '<div class="group-header"><h3>'+ic+' '+lb+'</h3><span class="group-count">'+n+'</span><div class="line"></div></div>';
+  }
+
+  function buildCard(id,t,done){
+    var ic=t.type==='اجتماع'?'🗓️':(t.isUrgent?'⚠️':'📧');
+    var typeClass=t.type==='اجتماع'?'calendar':'email';
+    var badge=t.badge?'<span class="badge badge-urgent">'+t.badge+'</span>':'';
+    var time=t.time?'<span class="time-badge">'+t.time+'</span>':'';
+    var plat=t.platform?'<span class="platform-tag">'+t.platform+(t.isOrganizer===false?' 📍':'')+'</span>':'';
+    var summ=t.summary?'<div class="task-note">'+t.summary+'</div>':'';
+    var att=t.attendees?'<div class="task-detail"><span class="detail-label">المشاركون</span><span>'+t.attendees+'</span></div>':'';
+    var par=t.partner?'<div class="task-detail"><span class="detail-label">الشريك</span><span>'+t.partner+'</span></div>':'';
+    var lnk=t.link?'<a class="task-link" href="'+t.link+'" target="_blank">🔗 فتح رابط الاجتماع</a>':'';
+    var dc=done?' done':'';
+    var chk=done?'✅':'⬜';
+    var q="'";
+    return '<div class="task-card'+dc+'" id="'+id+'" onclick="toggleTask('+q+id+q+')">'+
+      '<div class="task-header">'+
+        '<div class="task-type-icon type-'+typeClass+'">'+ic+'</div>'+
+        '<div class="task-info">'+
+          '<div class="task-title">'+t.title+'</div>'+
+          '<div class="task-meta">'+time+plat+'</div>'+
+        '</div>'+
+        '<div class="task-actions">'+
+          badge+
+          '<button class="note-btn" onclick="event.stopPropagation();toggleNote('+q+id+q+')" title="ملاحظة">📝</button>'+
+          '<button class="check-btn'+(done?' checked':'') +'" onclick="event.stopPropagation();checkTask('+q+id+q+')" title="تم">'+chk+'</button>'+
+        '</div>'+
+      '</div>'+
+      '<div class="task-body" id="body-'+id+'">'+
+        summ+att+par+lnk+
+      '</div>'+
+      '<div class="note-area" id="note-'+id+'">'+
+        '<textarea class="note-input" placeholder="أضف ملاحظة..."></textarea>'+
+      '</div>'+
+    '</div>';
+  }
+
+  function buildStartCard(id,t){
+    var ic=t.type==='اجتماع'?'🗓️':'📧';
+    var sub=t.type==='اجتماع'
+      ?'اجتماعك القادم · تأكد من مراجعة الملاحظات قبل الدخول'
+      :(t.summary||'تحقق من هذا الإيميل وأجب عليه');
+    var time=t.time?'<span class="time-badge">'+t.time+'</span>':'';
+    var q="'";
+    return '<div class="start-card" onclick="toggleTask('+q+id+q+')">'+
+      '<div class="start-card-inner">'+
+        '<div class="start-icon">'+ic+'</div>'+
+        '<div class="start-body">'+
+          '<div class="start-title">'+t.title+'</div>'+
+          '<div class="start-sub">'+sub+'</div>'+
+        '</div>'+
+        time+
+      '</div>'+
+    '</div>';
+  }
+
+  function render(){
+    var TODAY=saudiToday();
+
+    var dateEl=document.querySelector('.header-date');
+    if(dateEl) dateEl.textContent=arDate(TODAY);
+
+    var list=document.querySelector('#todayView .tasks-list');
+    if(!list) return;
+    list.innerHTML='<div style="text-align:center;padding:40px;color:var(--text-muted);font-size:14px">جاري التحميل...</div>';
+
+    firebase.database().ref('days/'+TODAY+'/tasks').once('value',function(tSnap){
+      firebase.database().ref('days/'+TODAY+'/actions').once('value',function(aSnap){
+        var tasks=tSnap.val()||{};
+        var actions=aSnap.val()||{};
+
+        if(!Object.keys(tasks).length){
+          list.innerHTML='<div style="text-align:center;padding:40px;color:var(--text-muted);font-size:14px">لا توجد مهام لهذا اليوم</div>';
+          var se=document.querySelector('.start-section');
+          if(se) se.innerHTML='';
+          return;
+        }
+
+        var meetings=[],urgent=[],normal=[];
+        Object.keys(tasks).sort().forEach(function(id){
+          var t=tasks[id];
+          if(t.type==='اجتماع') meetings.push(id);
+          else if(t.isUrgent) urgent.push(id);
+          else normal.push(id);
+        });
+
+        var html='';
+        if(meetings.length){ html+=grpHdr('🗓️','اجتماعات اليوم',meetings.length); meetings.forEach(function(id){html+=buildCard(id,tasks[id],!!actions[id]);}); }
+        if(urgent.length){   html+=grpHdr('⚠️','عاجل',urgent.length);             urgent.forEach(function(id){html+=buildCard(id,tasks[id],!!actions[id]);}); }
+        if(normal.length){   html+=grpHdr('📧','إيميلات تحتاج رد',normal.length); normal.forEach(function(id){html+=buildCard(id,tasks[id],!!actions[id]);}); }
+
+        list.innerHTML=html;
+
+        // Restore saved notes from Firebase
+        firebase.database().ref('days/'+TODAY+'/notes').once('value',function(nSnap){
+          var notes=nSnap.val()||{};
+          Object.keys(notes).forEach(function(id){
+            var ta=document.querySelector('#note-'+id+' .note-input');
+            if(ta) ta.value=notes[id];
+          });
+        });
+
+        // Progress bar
+        var allIds=meetings.concat(urgent).concat(normal);
+        var doneCount=allIds.filter(function(id){return !!actions[id];}).length;
+        var pct=allIds.length?Math.round(doneCount/allIds.length*100):0;
+        var bar=document.querySelector('.progress-fill,.progress-bar-fill');
+        var pctEl=document.querySelector('.progress-percent,.progress-text');
+        if(bar) bar.style.width=pct+'%';
+        if(pctEl) pctEl.textContent=pct+'%';
+
+        // Start section
+        var uncompleted=allIds.filter(function(id){return !actions[id];});
+        var se=document.querySelector('.start-section');
+        if(se){
+          if(!uncompleted.length){
+            se.innerHTML='<div class="section-title">⚡ ابدأ بهذا</div><div class="start-card" style="text-align:center;font-size:22px;padding:30px">🎉 أنجزت كل مهامك اليوم!</div>';
+          } else {
+            var sid=uncompleted[0];
+            se.innerHTML='<div class="section-title">⚡ ابدأ بهذا</div>'+buildStartCard(sid,tasks[sid]);
+          }
+        }
+      });
     });
   }
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', updateStart);
+
+  // Note save handler — wired via event delegation
+  document.addEventListener('change',function(e){
+    if(e.target.classList.contains('note-input')){
+      var noteArea=e.target.closest('.note-area');
+      if(!noteArea) return;
+      var id=noteArea.id.replace('note-','');
+      var TODAY=saudiToday();
+      firebase.database().ref('days/'+TODAY+'/notes/'+id).set(e.target.value);
+    }
+  });
+
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',render);
   } else {
-    updateStart();
+    render();
   }
 })();
 </script></body>
