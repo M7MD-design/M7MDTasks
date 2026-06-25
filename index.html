@@ -2320,5 +2320,59 @@
   }
 
 </script>
-</body>
+
+<script>
+/* ═══ DYNAMIC TASK RENDERER ═══ */
+(function(){
+  var AM=['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+  var AD=['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
+  function arDate(y,m,d){var dt=new Date(y,m-1,d);return AD[dt.getDay()]+'، '+d+' '+AM[m-1]+' '+y;}
+  function grpHdr(ic,lb,n){return '<div class="group-header"><h3>'+ic+' '+lb+'</h3><span class="group-count">'+n+'</span><div class="line"></div></div>';}
+  function noteArea(id){return '<div class="note-area" id="note-'+id+'" style="display:none"><textarea class="note-input" placeholder="أضف ملاحظة..."></textarea><div class="note-actions"><button class="note-save-btn" onclick="saveNote(\''+id+'\')">حفظ</button></div></div>';}
+  function meetCard(id,t,done){
+    var time=t.time||'',plat=t.platform||'',link=t.link||'',partner=t.partner||'';
+    var det='';
+    if(partner)det+='<div class="detail-row"><span class="detail-label">الشريك</span><span>'+partner+'</span></div>';
+    if(time)det+='<div class="detail-row"><span class="detail-label">الوقت</span><span>اليوم '+time+' (AST)</span></div>';
+    if(link)det+='<a class="notion-link" href="'+link+'" target="_blank">🔗 انضم للاجتماع</a>';
+    return '<div class="task-card'+(done?' done':'')+'" onclick="toggleTask(\''+id+'\')"><div class="task-header"><div class="task-type-icon type-calendar">🗓️</div><div class="task-info"><div class="task-title">'+t.title+'</div>'+(plat?'<div class="task-meta">📍 '+plat+'</div>':'')+'</div><div class="task-badges">'+time+'</div><button class="note-btn" onclick="event.stopPropagation();toggleNote(\''+id+'\')">📝</button><div class="task-chevron">▼</div><button class="check-btn" onclick="event.stopPropagation();checkTask(\''+id+'\')">✓</button></div><div class="task-body" id="body-'+id+'" style="display:none"><div class="task-body-inner"><div class="detail-block">'+det+'</div></div></div>'+noteArea(id)+'</div>';
+  }
+  function emailCard(id,t,done){
+    var isUrg=t.isUrgent||t.badge==='urgent',badge=t.badge||'new';
+    var labels={urgent:'عاجل',new:'جديد',due:'متأخر',mention:'منشن'};
+    var tc='type-email',ic='📧';
+    if(id.indexOf('t-mn')===0){tc='type-mention';ic='💬';}
+    var sum=t.summary||'';
+    return '<div class="task-card'+(done?' done':'')+'" onclick="toggleTask(\''+id+'\')"><div class="task-header"><div class="task-type-icon '+tc+'">'+ic+'</div><div class="task-info"><div class="task-title">'+t.title+'</div>'+(sum?'<div class="task-meta">'+sum.substring(0,80)+'</div>':'')+'</div><div class="task-badges"><span class="badge '+(isUrg?'urgent':badge)+'">'+(labels[badge]||badge)+'</span></div><button class="note-btn" onclick="event.stopPropagation();toggleNote(\''+id+'\')">📝</button><div class="task-chevron">▼</div><button class="check-btn" onclick="event.stopPropagation();checkTask(\''+id+'\')">✓</button></div><div class="task-body" id="body-'+id+'" style="display:none"><div class="task-body-inner">'+(sum?'<p>'+sum+'</p>':'')+'</div></div>'+noteArea(id)+'</div>';
+  }
+  function renderDay(){
+    var parts=TODAY.split('-').map(Number);
+    var hd=document.querySelector('.header-date');
+    if(hd)hd.textContent=arDate(parts[0],parts[1],parts[2]);
+    var list=document.querySelector('#todayView .tasks-list');
+    if(!list)return;
+    list.innerHTML='<p style="text-align:center;padding:20px;color:var(--text-muted)">جاري التحميل...</p>';
+    firebase.database().ref('days/'+TODAY+'/tasks').once('value',function(snap){
+      var tasks=snap.val()||{};
+      firebase.database().ref('days/'+TODAY+'/actions').once('value',function(aSnap){
+        var actions=aSnap.val()||{};
+        var entries=Object.entries(tasks);
+        var meets=entries.filter(function(e){return e[0].indexOf('t-cal')===0;}).sort(function(a,b){return a[0]<b[0]?-1:1;});
+        var urg=entries.filter(function(e){return e[0].indexOf('t-cal')!==0&&(e[1].isUrgent||e[1].badge==='urgent');});
+        var norm=entries.filter(function(e){return e[0].indexOf('t-cal')!==0&&!e[1].isUrgent&&e[1].badge!=='urgent';});
+        var html='';
+        if(meets.length){html+=grpHdr('🗓️','اجتماعات اليوم',meets.length);meets.forEach(function(e){html+=meetCard(e[0],e[1],actions[e[0]]);});}
+        if(urg.length){html+=grpHdr('⚠️','عاجل',urg.length);urg.forEach(function(e){html+=emailCard(e[0],e[1],actions[e[0]]);});}
+        if(norm.length){html+=grpHdr('📧','إيميلات',norm.length);norm.forEach(function(e){html+=emailCard(e[0],e[1],actions[e[0]]);});}
+        if(!entries.length)html='<p style="text-align:center;padding:40px;color:var(--text-muted)">لا توجد مهام اليوم</p>';
+        list.innerHTML=html;
+        var fm=meets.find(function(e){return !actions[e[0]];});
+        var ss=document.querySelector('.start-section');
+        if(ss&&fm){var fId=fm[0],fT=fm[1];ss.innerHTML='<div class="section-title">⚡ ابدأ بهذا</div><div class="start-card" onclick="toggleTask(\''+fId+'\')"><div class="start-card-inner"><div class="start-icon">🗓️</div><div class="start-info"><div class="start-title">'+fT.title+'</div><div class="start-meta">اجتماع '+(fT.time?'الساعة '+fT.time:'اليوم')+(fT.platform?' · '+fT.platform:'')+'</div></div><div class="start-time">'+(fT.time||'')+'</div></div></div>';}
+      });
+    });
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',renderDay);}else{renderDay();}
+})();
+</script></body>
 </html>
