@@ -180,6 +180,9 @@
       user-select: none;
     }
 
+    .task-title { user-select: text; cursor: text; }
+    .task-info  { user-select: text; }
+
     .task-type-icon {
       width: 36px; height: 36px;
       border-radius: 10px;
@@ -1762,12 +1765,14 @@
     var time=t.time?'<span class="time-badge">'+t.time+'</span>':'';
     var plat=t.platform?'<span class="platform-tag">'+t.platform+(t.isOrganizer===false?' 📍':'')+'</span>':'';
     var summ=t.summary?'<div class="task-note">'+t.summary+'</div>':'';
-    var att=t.attendees?'<div class="task-detail"><span class="detail-label">المشاركون</span><span>'+t.attendees+'</span></div>':'';
     var par=t.partner?'<div class="task-detail"><span class="detail-label">الشريك</span><span>'+t.partner+'</span></div>':'';
+    var em=t.email?'<div class="task-detail"><span class="detail-label">الإيميل</span><a class="detail-link" href="mailto:'+t.email+'">'+t.email+'</a></div>':'';
+    var att=t.attendees?'<div class="task-detail"><span class="detail-label">المشاركون</span><span>'+t.attendees+'</span></div>':'';
     var lnk=t.link?'<a class="task-link" href="'+t.link+'" target="_blank">🔗 فتح رابط الاجتماع</a>':'';
     var dc=done?' done':'';
     var chk=done?'✅':'⬜';
     var q="'";
+    var hasBody = summ||par||em||att||lnk;
     return '<div class="task-card'+dc+'" id="'+id+'" onclick="toggleTask('+q+id+q+')">'+
       '<div class="task-header">'+
         '<div class="task-type-icon type-'+typeClass+'">'+ic+'</div>'+
@@ -1781,9 +1786,7 @@
           '<button class="check-btn'+(done?' checked':'') +'" onclick="event.stopPropagation();checkTask('+q+id+q+')" title="تم">'+chk+'</button>'+
         '</div>'+
       '</div>'+
-      '<div class="task-body" id="body-'+id+'">'+
-        summ+att+par+lnk+
-      '</div>'+
+      (hasBody?'<div class="task-body" id="body-'+id+'">'+summ+par+em+att+lnk+'</div>':'')+
       '<div class="note-area" id="note-'+id+'">'+
         '<textarea class="note-input" placeholder="أضف ملاحظة..."></textarea>'+
       '</div>'+
@@ -1811,26 +1814,19 @@
 
   function render(){
     var TODAY=saudiToday();
-
     var dateEl=document.querySelector('.header-date');
     if(dateEl) dateEl.textContent=arDate(TODAY);
-
     var list=document.querySelector('#todayView .tasks-list');
     if(!list) return;
     list.innerHTML='<div style="text-align:center;padding:40px;color:var(--text-muted);font-size:14px">جاري التحميل...</div>';
-
     firebase.database().ref('days/'+TODAY+'/tasks').once('value',function(tSnap){
       firebase.database().ref('days/'+TODAY+'/actions').once('value',function(aSnap){
         var tasks=tSnap.val()||{};
         var actions=aSnap.val()||{};
-
         if(!Object.keys(tasks).length){
           list.innerHTML='<div style="text-align:center;padding:40px;color:var(--text-muted);font-size:14px">لا توجد مهام لهذا اليوم</div>';
-          var se=document.querySelector('.start-section');
-          if(se) se.innerHTML='';
-          return;
+          var se=document.querySelector('.start-section'); if(se) se.innerHTML=''; return;
         }
-
         var meetings=[],urgent=[],normal=[];
         Object.keys(tasks).sort().forEach(function(id){
           var t=tasks[id];
@@ -1838,15 +1834,11 @@
           else if(t.isUrgent) urgent.push(id);
           else normal.push(id);
         });
-
         var html='';
         if(meetings.length){ html+=grpHdr('🗓️','اجتماعات اليوم',meetings.length); meetings.forEach(function(id){html+=buildCard(id,tasks[id],!!actions[id]);}); }
         if(urgent.length){   html+=grpHdr('⚠️','عاجل',urgent.length);             urgent.forEach(function(id){html+=buildCard(id,tasks[id],!!actions[id]);}); }
         if(normal.length){   html+=grpHdr('📧','إيميلات تحتاج رد',normal.length); normal.forEach(function(id){html+=buildCard(id,tasks[id],!!actions[id]);}); }
-
         list.innerHTML=html;
-
-        // Restore saved notes from Firebase
         firebase.database().ref('days/'+TODAY+'/notes').once('value',function(nSnap){
           var notes=nSnap.val()||{};
           Object.keys(notes).forEach(function(id){
@@ -1854,17 +1846,12 @@
             if(ta) ta.value=notes[id];
           });
         });
-
-        // Progress bar
         var allIds=meetings.concat(urgent).concat(normal);
         var doneCount=allIds.filter(function(id){return !!actions[id];}).length;
         var pct=allIds.length?Math.round(doneCount/allIds.length*100):0;
         var bar=document.querySelector('.progress-fill,.progress-bar-fill');
         var pctEl=document.querySelector('.progress-percent,.progress-text');
-        if(bar) bar.style.width=pct+'%';
-        if(pctEl) pctEl.textContent=pct+'%';
-
-        // Start section
+        if(bar) bar.style.width=pct+'%'; if(pctEl) pctEl.textContent=pct+'%';
         var uncompleted=allIds.filter(function(id){return !actions[id];});
         var se=document.querySelector('.start-section');
         if(se){
@@ -1879,22 +1866,16 @@
     });
   }
 
-  // Note save handler — wired via event delegation
   document.addEventListener('change',function(e){
     if(e.target.classList.contains('note-input')){
-      var noteArea=e.target.closest('.note-area');
-      if(!noteArea) return;
-      var id=noteArea.id.replace('note-','');
+      var na=e.target.closest('.note-area'); if(!na) return;
+      var id=na.id.replace('note-','');
       var TODAY=saudiToday();
       firebase.database().ref('days/'+TODAY+'/notes/'+id).set(e.target.value);
     }
   });
 
-  if(document.readyState==='loading'){
-    document.addEventListener('DOMContentLoaded',render);
-  } else {
-    render();
-  }
+  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',render); } else { render(); }
 })();
 </script></body>
 </html>
