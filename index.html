@@ -2322,91 +2322,45 @@
 </script>
 
 <script>
-/* DYNAMIC TASK RENDERER v2 */
+/* START SECTION UPDATER */
 (function(){
-  var AM=['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
-  var AD=['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
-  function arDate(iso){var p=iso.split('-').map(Number);var dt=new Date(p[0],p[1]-1,p[2]);return AD[dt.getDay()]+'، '+p[2]+' '+AM[p[1]-1]+' '+p[0];}
-  function grpHdr(ic,lb,n){return '<div class="group-header"><h3>'+ic+' '+lb+'</h3><span class="group-count">'+n+'</span><div class="line"></div></div>';}
-  function taskCard(id,t,done){
-    var ic=t.type==='اجتماع'?'🗓️':(t.isUrgent?'⚠️':'📧');
-    var badge=t.badge?'<span class="badge badge-urgent">'+t.badge+'</span>':'';
-    var time=t.time?'<span class="time-badge">'+t.time+'</span>':'';
-    var plat=t.platform?'<span class="platform-tag">'+t.platform+(t.isOrganizer===false?' 📍':'')+'</span>':'';
-    var summ=t.summary?'<p class="task-summary">'+t.summary+'</p>':'';
-    var att=t.attendees?'<p class="task-detail-row"><span>المشاركون:</span> '+t.attendees+'</p>':'';
-    var lnk=t.link?'<a class="task-link" href="'+t.link+'" target="_blank">فتح الرابط</a>':'';
-    var par=t.partner?'<p class="task-detail-row"><span>الشريك:</span> '+t.partner+'</p>':'';
-    var dc=done?' done':'';
-    var q="'";
-    return '<div class="task-card'+dc+'" id="'+id+'" onclick="toggleTask('+q+id+q+')">'+
-      '<div class="task-main">'+
-        '<div class="task-type-icon type-'+(t.type==='اجتماع'?'calendar':'email')+'">'+ic+'</div>'+
-        '<div class="task-info"><div class="task-title">'+t.title+'</div><div class="task-meta">'+time+plat+'</div></div>'+
-        '<div class="task-badges">'+badge+'</div>'+
-        '<button class="note-btn" onclick="event.stopPropagation();toggleNote('+q+id+q+')">📝</button>'+
-        '<button class="check-btn'+(done?' checked':'') +'" onclick="event.stopPropagation();checkTask('+q+id+q+')">'+(done?'✅':'⬜')+'</button>'+
-      '</div>'+
-      '<div class="task-body" id="body-'+id+'" style="display:none">'+summ+att+par+lnk+'</div>'+
-      '<div class="note-area" id="note-'+id+'" style="display:none">'+
-        '<textarea class="note-input" placeholder="أضف ملاحظة..." onchange="saveNote('+q+id+q+',this.value)"></textarea>'+
-      '</div>'+
-    '</div>';
-  }
-  function startCard(id,t){
-    var ic=t.type==='اجتماع'?'🗓️':'📧';
-    var sub=t.type==='اجتماع'?'اجتماعك الأول اليوم · تأكد من مراجعة الملاحظات قبل الدخول':(t.summary||'تحقق من هذا الإيميل وأجب عليه في أقرب وقت');
-    var time=t.time?'<span class="time-badge">'+t.time+'</span>':'';
-    var q="'";
-    return '<div class="start-card" onclick="toggleTask('+q+id+q+')">'+
-      '<div class="start-card-inner"><div class="start-icon">'+ic+'</div>'+
-      '<div class="start-body"><div class="start-title">'+t.title+'</div><div class="start-sub">'+sub+'</div></div>'+
-      time+'</div></div>';
-  }
-  function renderDay(){
-    var TODAY=window.TODAY;
-    var dateEl=document.querySelector('.header-date');
-    if(dateEl) dateEl.textContent=arDate(TODAY);
-    var list=document.querySelector('#todayView .tasks-list');
-    if(!list) return;
-    list.innerHTML='<div style="text-align:center;padding:40px;color:var(--text-muted)">جاري التحميل...</div>';
-    firebase.database().ref('days/'+TODAY+'/tasks').once('value',function(tSnap){
-      firebase.database().ref('days/'+TODAY+'/actions').once('value',function(aSnap){
-        var tasks=tSnap.val()||{};
-        var actions=aSnap.val()||{};
-        if(!Object.keys(tasks).length){list.innerHTML='<div style="text-align:center;padding:40px;color:var(--text-muted)">لا توجد مهام لهذا اليوم</div>';return;}
-        var meetings=[],urgent=[],normal=[];
-        Object.keys(tasks).sort().forEach(function(id){var t=tasks[id];if(t.type==='اجتماع')meetings.push(id);else if(t.isUrgent)urgent.push(id);else normal.push(id);});
-        var html='';
-        if(meetings.length){html+=grpHdr('🗓️','اجتماعات اليوم',meetings.length);meetings.forEach(function(id){html+=taskCard(id,tasks[id],!!actions[id]);});}
-        if(urgent.length){html+=grpHdr('⚠️','عاجل',urgent.length);urgent.forEach(function(id){html+=taskCard(id,tasks[id],!!actions[id]);});}
-        if(normal.length){html+=grpHdr('📧','إيميلات تحتاج رد',normal.length);normal.forEach(function(id){html+=taskCard(id,tasks[id],!!actions[id]);});}
-        list.innerHTML=html;
-        Object.keys(tasks).forEach(function(id){var saved=localStorage.getItem('note_'+TODAY+'_'+id);if(saved){var ta=document.querySelector('#note-'+id+' .note-input');if(ta)ta.value=saved;}});
-        var allIds=meetings.concat(urgent).concat(normal);
-        var uncompleted=allIds.filter(function(id){return !actions[id];});
-        var startEl=document.querySelector('.start-section');
-        if(startEl){
-          if(uncompleted.length){var sid=uncompleted[0];startEl.innerHTML='<div class="section-title">⚡ ابدأ بهذا</div>'+startCard(sid,tasks[sid]);}
-          else{startEl.innerHTML='<div class="section-title">⚡ ابدأ بهذا</div><div class="start-card" style="text-align:center;font-size:22px;padding:30px">🎉 أنجزت كل مهامك اليوم!</div>';}
-        }
-        var total=allIds.length,done=allIds.filter(function(id){return !!actions[id];}).length,pct=total?Math.round(done/total*100):0;
-        var bar=document.querySelector('.progress-fill,.progress-bar-fill');var pctEl=document.querySelector('.progress-percent,.progress-text');
-        if(bar)bar.style.width=pct+'%';if(pctEl)pctEl.textContent=pct+'%';
-      });
+  var d = new Date();
+  var SAT = new Date(d.getTime() + 3*3600000).toISOString().slice(0,10);
+  function updateStart(){
+    firebase.database().ref('days/' + SAT).once('value', function(snap){
+      var data = snap.val() || {};
+      var tasks = data.tasks || {};
+      var actions = data.actions || {};
+      var allIds = Object.keys(tasks).sort();
+      var uncompleted = allIds.filter(function(id){ return !actions[id]; });
+      var startEl = document.querySelector('.start-section');
+      if(!startEl) return;
+      if(!allIds.length) return;
+      var q = "'";
+      if(!uncompleted.length){
+        startEl.innerHTML = '<div class="section-title">⚡ ابدأ بهذا</div><div class="start-card" style="text-align:center;font-size:22px;padding:30px">🎉 أنجزت كل مهامك اليوم!</div>';
+        return;
+      }
+      var sid = uncompleted[0];
+      var t = tasks[sid];
+      var ic = t.type === 'اجتماع' ? '🗓️' : '📧';
+      var sub = t.type === 'اجتماع'
+        ? 'اجتماعك الأول اليوم · تأكد من مراجعة الملاحظات قبل الدخول'
+        : (t.summary || 'تحقق من هذا الإيميل وأجب عليه');
+      var time = t.time ? '<span class="time-badge">' + t.time + '</span>' : '';
+      startEl.innerHTML = '<div class="section-title">⚡ ابدأ بهذا</div>' +
+        '<div class="start-card" onclick="toggleTask(' + q + sid + q + ')">' +
+        '<div class="start-card-inner"><div class="start-icon">' + ic + '</div>' +
+        '<div class="start-body"><div class="start-title">' + t.title + '</div>' +
+        '<div class="start-sub">' + sub + '</div></div>' +
+        time + '</div></div>';
     });
   }
-  window.checkTask=function(id){
-    var TODAY=window.TODAY,ref=firebase.database().ref('days/'+TODAY+'/actions/'+id);
-    ref.once('value',function(snap){
-      var card=document.getElementById(id);
-      if(snap.val()){ref.remove();if(card){card.classList.remove('done');var b=card.querySelector('.check-btn');if(b){b.textContent='⬜';b.classList.remove('checked');}}}
-      else{ref.set(true);if(card){card.classList.add('done');var b=card.querySelector('.check-btn');if(b){b.textContent='✅';b.classList.add('checked');}}}
-      setTimeout(renderDay,400);
-    });
-  };
-  window.saveNote=function(id,val){var TODAY=window.TODAY;localStorage.setItem('note_'+TODAY+'_'+id,val);firebase.database().ref('days/'+TODAY+'/notes/'+id).set(val);};
-  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',renderDay);}else{renderDay();}
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', updateStart);
+  } else {
+    updateStart();
+  }
 })();
 </script></body>
 </html>
