@@ -2322,56 +2322,90 @@
 </script>
 
 <script>
-/* ═══ DYNAMIC TASK RENDERER ═══ */
+/* DYNAMIC TASK RENDERER v2 */
 (function(){
   var AM=['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
   var AD=['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
-  function arDate(y,m,d){var dt=new Date(y,m-1,d);return AD[dt.getDay()]+'، '+d+' '+AM[m-1]+' '+y;}
+  function arDate(iso){var p=iso.split('-').map(Number);var dt=new Date(p[0],p[1]-1,p[2]);return AD[dt.getDay()]+'، '+p[2]+' '+AM[p[1]-1]+' '+p[0];}
   function grpHdr(ic,lb,n){return '<div class="group-header"><h3>'+ic+' '+lb+'</h3><span class="group-count">'+n+'</span><div class="line"></div></div>';}
-  function noteArea(id){return '<div class="note-area" id="note-'+id+'" style="display:none"><textarea class="note-input" placeholder="أضف ملاحظة..."></textarea><div class="note-actions"><button class="note-save-btn" onclick="saveNote(\''+id+'\')">حفظ</button></div></div>';}
-  function meetCard(id,t,done){
-    var time=t.time||'',plat=t.platform||'',link=t.link||'',partner=t.partner||'';
-    var det='';
-    if(partner)det+='<div class="detail-row"><span class="detail-label">الشريك</span><span>'+partner+'</span></div>';
-    if(time)det+='<div class="detail-row"><span class="detail-label">الوقت</span><span>اليوم '+time+' (AST)</span></div>';
-    if(link)det+='<a class="notion-link" href="'+link+'" target="_blank">🔗 انضم للاجتماع</a>';
-    return '<div class="task-card'+(done?' done':'')+'" onclick="toggleTask(\''+id+'\')"><div class="task-header"><div class="task-type-icon type-calendar">🗓️</div><div class="task-info"><div class="task-title">'+t.title+'</div>'+(plat?'<div class="task-meta">📍 '+plat+'</div>':'')+'</div><div class="task-badges">'+time+'</div><button class="note-btn" onclick="event.stopPropagation();toggleNote(\''+id+'\')">📝</button><div class="task-chevron">▼</div><button class="check-btn" onclick="event.stopPropagation();checkTask(\''+id+'\')">✓</button></div><div class="task-body" id="body-'+id+'" style="display:none"><div class="task-body-inner"><div class="detail-block">'+det+'</div></div></div>'+noteArea(id)+'</div>';
+  function taskCard(id,t,done){
+    var ic=t.type==='اجتماع'?'🗓️':(t.isUrgent?'⚠️':'📧');
+    var badge=t.badge?'<span class="badge badge-urgent">'+t.badge+'</span>':'';
+    var time=t.time?'<span class="time-badge">'+t.time+'</span>':'';
+    var plat=t.platform?'<span class="platform-tag">'+t.platform+(t.isOrganizer===false?' 📍':'')+'</span>':'';
+    var summ=t.summary?'<p class="task-summary">'+t.summary+'</p>':'';
+    var att=t.attendees?'<p class="task-detail-row"><span>المشاركون:</span> '+t.attendees+'</p>':'';
+    var lnk=t.link?'<a class="task-link" href="'+t.link+'" target="_blank">فتح الرابط</a>':'';
+    var par=t.partner?'<p class="task-detail-row"><span>الشريك:</span> '+t.partner+'</p>':'';
+    var dc=done?' done':'';
+    var q="'";
+    return '<div class="task-card'+dc+'" id="'+id+'" onclick="toggleTask('+q+id+q+')">'+
+      '<div class="task-main">'+
+        '<div class="task-type-icon type-'+(t.type==='اجتماع'?'calendar':'email')+'">'+ic+'</div>'+
+        '<div class="task-info"><div class="task-title">'+t.title+'</div><div class="task-meta">'+time+plat+'</div></div>'+
+        '<div class="task-badges">'+badge+'</div>'+
+        '<button class="note-btn" onclick="event.stopPropagation();toggleNote('+q+id+q+')">📝</button>'+
+        '<button class="check-btn'+(done?' checked':'') +'" onclick="event.stopPropagation();checkTask('+q+id+q+')">'+(done?'✅':'⬜')+'</button>'+
+      '</div>'+
+      '<div class="task-body" id="body-'+id+'" style="display:none">'+summ+att+par+lnk+'</div>'+
+      '<div class="note-area" id="note-'+id+'" style="display:none">'+
+        '<textarea class="note-input" placeholder="أضف ملاحظة..." onchange="saveNote('+q+id+q+',this.value)"></textarea>'+
+      '</div>'+
+    '</div>';
   }
-  function emailCard(id,t,done){
-    var isUrg=t.isUrgent||t.badge==='urgent',badge=t.badge||'new';
-    var labels={urgent:'عاجل',new:'جديد',due:'متأخر',mention:'منشن'};
-    var tc='type-email',ic='📧';
-    if(id.indexOf('t-mn')===0){tc='type-mention';ic='💬';}
-    var sum=t.summary||'';
-    return '<div class="task-card'+(done?' done':'')+'" onclick="toggleTask(\''+id+'\')"><div class="task-header"><div class="task-type-icon '+tc+'">'+ic+'</div><div class="task-info"><div class="task-title">'+t.title+'</div>'+(sum?'<div class="task-meta">'+sum.substring(0,80)+'</div>':'')+'</div><div class="task-badges"><span class="badge '+(isUrg?'urgent':badge)+'">'+(labels[badge]||badge)+'</span></div><button class="note-btn" onclick="event.stopPropagation();toggleNote(\''+id+'\')">📝</button><div class="task-chevron">▼</div><button class="check-btn" onclick="event.stopPropagation();checkTask(\''+id+'\')">✓</button></div><div class="task-body" id="body-'+id+'" style="display:none"><div class="task-body-inner">'+(sum?'<p>'+sum+'</p>':'')+'</div></div>'+noteArea(id)+'</div>';
+  function startCard(id,t){
+    var ic=t.type==='اجتماع'?'🗓️':'📧';
+    var sub=t.type==='اجتماع'?'اجتماعك الأول اليوم · تأكد من مراجعة الملاحظات قبل الدخول':(t.summary||'تحقق من هذا الإيميل وأجب عليه في أقرب وقت');
+    var time=t.time?'<span class="time-badge">'+t.time+'</span>':'';
+    var q="'";
+    return '<div class="start-card" onclick="toggleTask('+q+id+q+')">'+
+      '<div class="start-card-inner"><div class="start-icon">'+ic+'</div>'+
+      '<div class="start-body"><div class="start-title">'+t.title+'</div><div class="start-sub">'+sub+'</div></div>'+
+      time+'</div></div>';
   }
   function renderDay(){
-    var parts=TODAY.split('-').map(Number);
-    var hd=document.querySelector('.header-date');
-    if(hd)hd.textContent=arDate(parts[0],parts[1],parts[2]);
+    var TODAY=window.TODAY;
+    var dateEl=document.querySelector('.header-date');
+    if(dateEl) dateEl.textContent=arDate(TODAY);
     var list=document.querySelector('#todayView .tasks-list');
-    if(!list)return;
-    list.innerHTML='<p style="text-align:center;padding:20px;color:var(--text-muted)">جاري التحميل...</p>';
-    firebase.database().ref('days/'+TODAY+'/tasks').once('value',function(snap){
-      var tasks=snap.val()||{};
+    if(!list) return;
+    list.innerHTML='<div style="text-align:center;padding:40px;color:var(--text-muted)">جاري التحميل...</div>';
+    firebase.database().ref('days/'+TODAY+'/tasks').once('value',function(tSnap){
       firebase.database().ref('days/'+TODAY+'/actions').once('value',function(aSnap){
+        var tasks=tSnap.val()||{};
         var actions=aSnap.val()||{};
-        var entries=Object.entries(tasks);
-        var meets=entries.filter(function(e){return e[0].indexOf('t-cal')===0;}).sort(function(a,b){return a[0]<b[0]?-1:1;});
-        var urg=entries.filter(function(e){return e[0].indexOf('t-cal')!==0&&(e[1].isUrgent||e[1].badge==='urgent');});
-        var norm=entries.filter(function(e){return e[0].indexOf('t-cal')!==0&&!e[1].isUrgent&&e[1].badge!=='urgent';});
+        if(!Object.keys(tasks).length){list.innerHTML='<div style="text-align:center;padding:40px;color:var(--text-muted)">لا توجد مهام لهذا اليوم</div>';return;}
+        var meetings=[],urgent=[],normal=[];
+        Object.keys(tasks).sort().forEach(function(id){var t=tasks[id];if(t.type==='اجتماع')meetings.push(id);else if(t.isUrgent)urgent.push(id);else normal.push(id);});
         var html='';
-        if(meets.length){html+=grpHdr('🗓️','اجتماعات اليوم',meets.length);meets.forEach(function(e){html+=meetCard(e[0],e[1],actions[e[0]]);});}
-        if(urg.length){html+=grpHdr('⚠️','عاجل',urg.length);urg.forEach(function(e){html+=emailCard(e[0],e[1],actions[e[0]]);});}
-        if(norm.length){html+=grpHdr('📧','إيميلات',norm.length);norm.forEach(function(e){html+=emailCard(e[0],e[1],actions[e[0]]);});}
-        if(!entries.length)html='<p style="text-align:center;padding:40px;color:var(--text-muted)">لا توجد مهام اليوم</p>';
+        if(meetings.length){html+=grpHdr('🗓️','اجتماعات اليوم',meetings.length);meetings.forEach(function(id){html+=taskCard(id,tasks[id],!!actions[id]);});}
+        if(urgent.length){html+=grpHdr('⚠️','عاجل',urgent.length);urgent.forEach(function(id){html+=taskCard(id,tasks[id],!!actions[id]);});}
+        if(normal.length){html+=grpHdr('📧','إيميلات تحتاج رد',normal.length);normal.forEach(function(id){html+=taskCard(id,tasks[id],!!actions[id]);});}
         list.innerHTML=html;
-        var fm=meets.find(function(e){return !actions[e[0]];});
-        var ss=document.querySelector('.start-section');
-        if(ss&&fm){var fId=fm[0],fT=fm[1];ss.innerHTML='<div class="section-title">⚡ ابدأ بهذا</div><div class="start-card" onclick="toggleTask(\''+fId+'\')"><div class="start-card-inner"><div class="start-icon">🗓️</div><div class="start-info"><div class="start-title">'+fT.title+'</div><div class="start-meta">اجتماع '+(fT.time?'الساعة '+fT.time:'اليوم')+(fT.platform?' · '+fT.platform:'')+'</div></div><div class="start-time">'+(fT.time||'')+'</div></div></div>';}
+        Object.keys(tasks).forEach(function(id){var saved=localStorage.getItem('note_'+TODAY+'_'+id);if(saved){var ta=document.querySelector('#note-'+id+' .note-input');if(ta)ta.value=saved;}});
+        var allIds=meetings.concat(urgent).concat(normal);
+        var uncompleted=allIds.filter(function(id){return !actions[id];});
+        var startEl=document.querySelector('.start-section');
+        if(startEl){
+          if(uncompleted.length){var sid=uncompleted[0];startEl.innerHTML='<div class="section-title">⚡ ابدأ بهذا</div>'+startCard(sid,tasks[sid]);}
+          else{startEl.innerHTML='<div class="section-title">⚡ ابدأ بهذا</div><div class="start-card" style="text-align:center;font-size:22px;padding:30px">🎉 أنجزت كل مهامك اليوم!</div>';}
+        }
+        var total=allIds.length,done=allIds.filter(function(id){return !!actions[id];}).length,pct=total?Math.round(done/total*100):0;
+        var bar=document.querySelector('.progress-fill,.progress-bar-fill');var pctEl=document.querySelector('.progress-percent,.progress-text');
+        if(bar)bar.style.width=pct+'%';if(pctEl)pctEl.textContent=pct+'%';
       });
     });
   }
+  window.checkTask=function(id){
+    var TODAY=window.TODAY,ref=firebase.database().ref('days/'+TODAY+'/actions/'+id);
+    ref.once('value',function(snap){
+      var card=document.getElementById(id);
+      if(snap.val()){ref.remove();if(card){card.classList.remove('done');var b=card.querySelector('.check-btn');if(b){b.textContent='⬜';b.classList.remove('checked');}}}
+      else{ref.set(true);if(card){card.classList.add('done');var b=card.querySelector('.check-btn');if(b){b.textContent='✅';b.classList.add('checked');}}}
+      setTimeout(renderDay,400);
+    });
+  };
+  window.saveNote=function(id,val){var TODAY=window.TODAY;localStorage.setItem('note_'+TODAY+'_'+id,val);firebase.database().ref('days/'+TODAY+'/notes/'+id).set(val);};
   if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',renderDay);}else{renderDay();}
 })();
 </script></body>
