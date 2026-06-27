@@ -1227,6 +1227,7 @@
       initRef();
       return;
     }
+    document.getElementById('btnRef')?.classList.remove('active');
     document.getElementById('todayView').style.display   = view==='today'   ? 'block' : 'none';
     document.getElementById('historyView').style.display = view==='history' ? 'block' : 'none';
     document.getElementById('reviewsView').style.display = view==='reviews' ? 'block' : 'none';
@@ -1458,7 +1459,7 @@
   // ══════════════════════════════════════════
   document.getElementById('headerDate').textContent = arabicDate();
   document.getElementById('lastUpdate').textContent = nowTime();
-  document.getElementById('t-cal-1').classList.add('open');
+  document.getElementById('t-cal-1')?.classList.add('open');
   injectCheckButtons();
   loadNotes();
     loadPersonalTasks();
