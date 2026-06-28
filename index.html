@@ -1177,6 +1177,9 @@
     if (!card) return;
     setFbStatus('saving');
     const nowDone = !card.classList.contains('done');
+    card.classList.toggle('done', nowDone);
+    const checkBtn = card.querySelector('.check-btn');
+    if (checkBtn) checkBtn.textContent = nowDone ? '✅' : '☐';
     actionsRef.child(id).set(nowDone ? true : null)
       .then(() => setFbStatus('connected'));
   }
@@ -1792,7 +1795,7 @@
         '<div class="task-actions">'+
           badge+
           '<button class="note-btn" id="nb-'+id+'" onclick="event.stopPropagation();toggleNote('+q+id+q+')" title="ملاحظة">📝</button>'+
-          '<button class="check-btn'+(done?' checked':'') +'" onclick="event.stopPropagation();checkTask('+q+id+q+')" title="تم">'+chk+'</button>'+
+          '<button class="check-btn'+(done?' checked':'') +'" onclick="checkTask(event,'+q+id+q+')" title="تم">'+chk+'</button>'+
         '</div>'+
       '</div>'+
       (hasBody?'<div class="task-body" id="body-'+id+'">'+summ+par+em+att+lnk+'</div>':'')+
