@@ -221,6 +221,14 @@
     /* ─── Task Body (accordion) ─── */
     .task-body { display: none; padding: 0 18px 16px; border-top: 1px solid var(--border); }
     .task-card.open .task-body { display: block; }
+        .note-area { display: none; }
+        .note-area.open { display: block; }
+        .view-btn:focus { outline: none; }
+        .note-footer { display:flex; gap:8px; align-items:center; padding:6px 0 2px; font-size:12px; color:var(--text-muted); }
+        .note-save-btn { padding:3px 12px; border-radius:6px; border:none; background:var(--primary); color:#fff; font-size:12px; cursor:pointer; }
+        .note-save-btn:disabled { opacity:0.4; cursor:default; }
+        .note-saved { color:#4ade80; font-size:11px; }
+        .note-saved.show { display:inline; } .note-saved { display:none; }
 
     .task-body-inner { padding-top: 14px; }
     .detail-block { background: var(--surface2); border-radius: 10px; padding: 14px; margin-bottom: 10px; }
@@ -1466,7 +1474,7 @@
 
   // ─── Notes ───
   function toggleNote(id) {
-    const na = document.getElementById('na-' + id);
+    const na = document.getElementById('note-' + id);
     na.classList.toggle('open');
     if (na.classList.contains('open')) document.getElementById('nt-' + id).focus();
   }
@@ -1783,14 +1791,18 @@
         '</div>'+
         '<div class="task-actions">'+
           badge+
-          '<button class="note-btn" onclick="event.stopPropagation();toggleNote('+q+id+q+')" title="ملاحظة">📝</button>'+
+          '<button class="note-btn" id="nb-'+id+'" onclick="event.stopPropagation();toggleNote('+q+id+q+')" title="ملاحظة">📝</button>'+
           '<button class="check-btn'+(done?' checked':'') +'" onclick="event.stopPropagation();checkTask('+q+id+q+')" title="تم">'+chk+'</button>'+
         '</div>'+
       '</div>'+
       (hasBody?'<div class="task-body" id="body-'+id+'">'+summ+par+em+att+lnk+'</div>':'')+
       '<div class="note-area" id="note-'+id+'">'+
-        '<textarea class="note-input" placeholder="أضف ملاحظة..."></textarea>'+
-      '</div>'+
+        '<textarea class="note-input" id="nt-'+id+'" placeholder="أضف ملاحظة..." oninput="onNoteInput('+q+id+q+')"></textarea>'+
+        '<div class="note-footer">'+
+        '<span class="note-count" id="nc-'+id+'">0</span> حرف '+
+        '<button class="note-save-btn" id="nsb-'+id+'" onclick="saveNote('+q+id+q+')" disabled>حفظ</button>'+
+        '<span class="note-saved" id="ns-'+id+'"></span>'+
+        '</div>'+
     '</div>';
   }
 
@@ -1876,7 +1888,7 @@
     }
   });
 
-  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',render); } else { render(); }
+  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',function(){ switchView('today'); render(); }); } else { switchView('today'); render(); }
 })();
 </script></body>
 </html>
