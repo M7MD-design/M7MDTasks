@@ -293,14 +293,15 @@
     .check-btn {
       width: 28px; height: 28px;
       border-radius: 50%;
-      border: 2px solid rgba(167,139,250,0.35);
+      border: 2px solid rgba(167,139,250,0.4);
       background: transparent;
       cursor: pointer;
       flex-shrink: 0;
       display: flex; align-items: center; justify-content: center;
       transition: border-color 0.2s, background 0.2s, transform 0.15s;
-      font-size: 14px;
-      color: transparent;
+      font-size: 13px;
+      font-weight: 700;
+      color: rgba(167,139,250,0.5);
       line-height: 1;
     }
     .check-btn:hover {
@@ -1519,10 +1520,19 @@
     var par=t.partner?'<div style="font-size:12px;color:var(--text-muted);padding:4px 0"><b>الشريك:</b> '+t.partner+'</div>':'';
     var lnk=t.link?'<a style="display:inline-flex;align-items:center;gap:6px;color:var(--primary-light);font-size:12px;margin-top:8px" href="'+t.link+'" target="_blank">🔗 فتح رابط الاجتماع</a>':'';
     var dc=done?' done':'';
-    var chk=done?'✅':'⬜';
+    var chk=done?'✓':'';
     var q="'";
-    var hasBody=!!(summ||par||lnk);
-    /* FIX: note-btn stopPropagation keeps accordion state intact when clicking note icon */
+    /* Always build a body — show type chip + time + any extras from Firebase */
+    var typeAr=t.type||'مهمة';
+    var bodyContent=
+      '<div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 0 6px">'+
+        '<span style="font-size:12px;background:var(--surface3);border:1px solid var(--border);color:var(--text-muted);padding:3px 10px;border-radius:99px">'+typeAr+'</span>'+
+        (t.time?'<span style="font-size:12px;color:var(--text-muted)">⏰ '+t.time+'</span>':'')+
+      '</div>'+
+      (summ?summ:'')+
+      (par?par:'')+
+      (lnk?lnk:'')+
+      (!summ&&!par&&!lnk?'<div style="font-size:12px;color:var(--text-dim);padding:2px 0 8px">لا توجد تفاصيل إضافية · استخدم أيقونة الملاحظة لإضافة ملاحظاتك</div>':'');
     return (
       '<div class="task-card'+dc+'" id="'+id+'">' +
         '<div class="task-header" onclick="toggleTask('+q+id+q+')">' +
@@ -1537,7 +1547,7 @@
             '<button class="check-btn" onclick="event.stopPropagation();checkTask(event,'+q+id+q+')" title="تم">'+chk+'</button>' +
           '</div>' +
         '</div>' +
-        (hasBody ? '<div class="task-body" id="body-'+id+'">'+summ+par+lnk+'</div>' : '') +
+        '<div class="task-body" id="body-'+id+'">'+bodyContent+'</div>' +
         /* FIX: note area is a sibling of task-body, NOT wrapped by it.
            It shows/hides via its own .open class independently of the accordion. */
         '<div class="note-area" id="note-'+id+'">' +
