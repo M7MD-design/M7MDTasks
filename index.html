@@ -1512,27 +1512,85 @@
      Notes work independently without needing accordion open
   ───────────────────────────────────────────────────── */
   function buildCard(id,t,done){
-    var ic=t.type==='اجتماع'?'🗓️':(t.isUrgent?'⚠️':'📧');
-    var typeClass=t.type==='اجتماع'?'calendar':'email';
+    var isMeeting=t.type==='اجتماع';
+    var isSlack=t.type==='منشن';
+    var isEmail=t.type==='إيميل';
+    var ic=isMeeting?'🗓️':(isSlack?'💬':(t.isUrgent?'⚠️':'📧'));
+    var typeClass=isMeeting?'calendar':(isSlack?'slack':'email');
     var badge=t.badge?'<span class="badge badge-'+t.badge+'">'+t.badge+'</span>':'';
     var time=t.time?'<span style="font-size:11px;color:var(--text-muted)">'+t.time+'</span>':'';
-    var summ=t.summary?'<div style="font-size:13px;color:var(--text);line-height:1.6;padding:8px 0">'+t.summary+'</div>':'';
-    var par=t.partner?'<div style="font-size:12px;color:var(--text-muted);padding:4px 0"><b>الشريك:</b> '+t.partner+'</div>':'';
-    var lnk=t.link?'<a style="display:inline-flex;align-items:center;gap:6px;color:var(--primary-light);font-size:12px;margin-top:8px" href="'+t.link+'" target="_blank">🔗 فتح رابط الاجتماع</a>':'';
     var dc=done?' done':'';
     var chk=done?'✓':'';
     var q="'";
-    /* Always build a body — show type chip + time + any extras from Firebase */
-    var typeAr=t.type||'مهمة';
-    var bodyContent=
-      '<div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 0 6px">'+
-        '<span style="font-size:12px;background:var(--surface3);border:1px solid var(--border);color:var(--text-muted);padding:3px 10px;border-radius:99px">'+typeAr+'</span>'+
-        (t.time?'<span style="font-size:12px;color:var(--text-muted)">⏰ '+t.time+'</span>':'')+
-      '</div>'+
-      (summ?summ:'')+
-      (par?par:'')+
-      (lnk?lnk:'')+
-      (!summ&&!par&&!lnk?'<div style="font-size:12px;color:var(--text-dim);padding:2px 0 8px">لا توجد تفاصيل إضافية · استخدم أيقونة الملاحظة لإضافة ملاحظاتك</div>':'');
+
+    /* ── body content: type-aware ── */
+    var bodyContent='';
+
+    if(isMeeting){
+      /* Header chips: time + partner notion status */
+      var notionChip='';
+      if(t.notionStatus){
+        var nc=t.notionStatus==='جديد'
+          ?'background:rgba(59,130,246,0.2);border:1px solid rgba(59,130,246,0.4);color:#93C5FD'
+          :'background:rgba(16,185,129,0.2);border:1px solid rgba(16,185,129,0.4);color:#6EE7B7';
+        notionChip='<span style="font-size:11px;padding:2px 9px;border-radius:99px;'+nc+'">'+t.notionStatus+' في نوشن</span>';
+      }
+      bodyContent+=
+        '<div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 0 8px">'+
+          '<span style="font-size:12px;background:var(--surface3);border:1px solid var(--border);color:var(--text-muted);padding:3px 10px;border-radius:99px">🗓️ اجتماع</span>'+
+          (t.time?'<span style="font-size:12px;color:var(--text-muted)">⏰ '+t.time+'</span>':'')+
+          (t.partner?'<span style="font-size:12px;color:var(--text-muted)">🤝 '+t.partner+'</span>':'')+
+          notionChip+
+        '</div>';
+      if(t.summary){
+        bodyContent+='<div style="font-size:13px;color:var(--text);line-height:1.7;background:var(--surface2);border-right:3px solid var(--primary);padding:10px 12px;border-radius:0 8px 8px 0;margin-bottom:8px">'+t.summary+'</div>';
+      }
+      if(t.lastNote){
+        bodyContent+='<div style="font-size:12px;color:var(--text-muted);background:var(--surface2);border-radius:8px;padding:8px 12px;margin-bottom:8px"><span style="color:var(--primary-light);font-weight:600">📋 آخر نوت:</span> '+t.lastNote+'</div>';
+      }
+      if(t.link){
+        bodyContent+='<a style="display:inline-flex;align-items:center;gap:6px;color:var(--primary-light);font-size:12px;background:rgba(124,58,237,0.12);border:1px solid rgba(124,58,237,0.3);padding:5px 12px;border-radius:8px;text-decoration:none" href="'+t.link+'" target="_blank">🔗 رابط الاجتماع</a>';
+      }
+      if(!t.summary&&!t.lastNote){
+        bodyContent+='<div style="font-size:12px;color:var(--text-dim);padding:4px 0 8px">لم يتم تحميل تفاصيل هذا الاجتماع بعد · سيتم التحديث في جلسة Claude القادمة</div>';
+      }
+
+    }else if(isSlack){
+      bodyContent+=
+        '<div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 0 8px">'+
+          '<span style="font-size:12px;background:rgba(74,21,134,0.3);border:1px solid rgba(167,139,250,0.3);color:var(--primary-light);padding:3px 10px;border-radius:99px">💬 منشن سلاك</span>'+
+          (t.isUrgent?'<span style="font-size:12px;background:rgba(239,68,68,0.2);border:1px solid rgba(239,68,68,0.4);color:#FCA5A5;padding:3px 10px;border-radius:99px">⚠️ عاجل</span>':'')+
+        '</div>';
+      if(t.summary){
+        bodyContent+='<div style="font-size:13px;color:var(--text);line-height:1.7;background:var(--surface2);border-right:3px solid #7C3AED;padding:10px 12px;border-radius:0 8px 8px 0;margin-bottom:8px">'+t.summary+'</div>';
+      }
+      if(t.link){
+        bodyContent+='<a style="display:inline-flex;align-items:center;gap:6px;color:var(--primary-light);font-size:12px;background:rgba(74,21,134,0.2);border:1px solid rgba(167,139,250,0.3);padding:6px 14px;border-radius:8px;text-decoration:none" href="'+t.link+'" target="_blank">🔗 فتح المنشن في سلاك</a>';
+      }
+      if(!t.summary){
+        bodyContent+='<div style="font-size:12px;color:var(--text-dim);padding:4px 0 8px">لا توجد تفاصيل · سيتم التحديث في الجلسة القادمة</div>';
+      }
+
+    }else{
+      /* Email / other */
+      var daysLabel='';
+      if(t.daysSince!==undefined){
+        daysLabel=t.daysSince===0?'اليوم':(t.daysSince===1?'منذ أمس':'منذ '+t.daysSince+' أيام');
+      }
+      bodyContent+=
+        '<div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 0 8px">'+
+          '<span style="font-size:12px;background:var(--surface3);border:1px solid var(--border);color:var(--text-muted);padding:3px 10px;border-radius:99px">📧 إيميل</span>'+
+          (t.emailFrom?'<span style="font-size:12px;color:var(--text-muted)">من: '+t.emailFrom+'</span>':'')+
+          (daysLabel?'<span style="font-size:12px;background:rgba(245,158,11,0.15);border:1px solid rgba(245,158,11,0.3);color:#FCD34D;padding:2px 8px;border-radius:99px">'+daysLabel+'</span>':'')+
+          (t.isUrgent?'<span style="font-size:12px;background:rgba(239,68,68,0.2);border:1px solid rgba(239,68,68,0.4);color:#FCA5A5;padding:2px 8px;border-radius:99px">⚠️ عاجل</span>':'')+
+        '</div>';
+      if(t.summary){
+        bodyContent+='<div style="font-size:13px;color:var(--text);line-height:1.7;background:var(--surface2);border-right:3px solid var(--yellow);padding:10px 12px;border-radius:0 8px 8px 0;margin-bottom:8px">'+t.summary+'</div>';
+      }
+      if(!t.summary){
+        bodyContent+='<div style="font-size:12px;color:var(--text-dim);padding:4px 0 8px">لا توجد تفاصيل · سيتم التحديث في الجلسة القادمة</div>';
+      }
+    }
     return (
       '<div class="task-card'+dc+'" id="'+id+'">' +
         '<div class="task-header" onclick="toggleTask('+q+id+q+')">' +
