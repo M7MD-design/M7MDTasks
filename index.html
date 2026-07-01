@@ -8,7 +8,6 @@
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;600;700;800&display=swap');
-
     :root {
       --primary: #7C3AED;
       --primary-light: #A78BFA;
@@ -32,9 +31,7 @@
       --radius: 16px;
       --shadow: 0 8px 32px rgba(124,58,237,0.2);
     }
-
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     body {
       font-family: 'Tajawal', sans-serif;
       background: var(--bg);
@@ -42,7 +39,6 @@
       min-height: 100vh;
       direction: rtl;
     }
-
     /* ─── Header ─── */
     .header {
       background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--secondary) 100%);
@@ -69,7 +65,6 @@
     .brand-text h1 { font-size: 20px; font-weight: 700; color: #fff; }
     .brand-text p { font-size: 13px; color: rgba(255,255,255,0.75); margin-top: 2px; }
     .header-date { font-size: 14px; color: rgba(255,255,255,0.85); background: rgba(255,255,255,0.15); padding: 8px 16px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.2); }
-
     /* ─── Greeting ─── */
     .greeting-bar {
       background: var(--surface);
@@ -80,14 +75,11 @@
     .greeting-bar .wave { font-size: 22px; }
     .greeting-bar h2 { font-size: 16px; font-weight: 600; color: var(--text); }
     .greeting-bar span { font-size: 14px; color: var(--text-muted); }
-
     /* ─── Container ─── */
     .container { max-width: 960px; margin: 0 auto; padding: 24px 20px; }
-
     /* ─── Stats ─── */
     .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
     @media(max-width: 640px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
-
     .stat-card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -101,7 +93,6 @@
     .stat-card.time .stat-num { color: var(--yellow); }
     .stat-card.done .stat-num { color: var(--green); }
     .stat-card.pending .stat-num { color: var(--orange); }
-
     /* ─── Progress Bar ─── */
     .progress-section {
       background: var(--surface);
@@ -120,7 +111,6 @@
       border-radius: 99px;
       transition: width 1s ease;
     }
-
     /* ─── Start This ─── */
     .start-section { margin-bottom: 24px; }
     .section-title {
@@ -132,7 +122,6 @@
       margin-bottom: 10px;
       padding-right: 4px;
     }
-
     .start-card {
       background: linear-gradient(135deg, var(--primary-dark), var(--primary));
       border: 1px solid var(--primary);
@@ -157,10 +146,8 @@
       white-space: nowrap;
       flex-shrink: 0;
     }
-
     /* ─── Task List ─── */
     .tasks-list { display: flex; flex-direction: column; gap: 10px; }
-
     .task-card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -170,7 +157,6 @@
     }
     .task-card:hover { border-color: rgba(167,139,250,0.4); }
     .task-card.open { border-color: rgba(167,139,250,0.5); }
-
     .task-header {
       display: flex;
       align-items: center;
@@ -179,10 +165,8 @@
       cursor: pointer;
       user-select: none;
     }
-
     .task-title { user-select: text; cursor: text; }
     .task-info  { user-select: text; }
-
     .task-type-icon {
       width: 36px; height: 36px;
       border-radius: 10px;
@@ -194,12 +178,10 @@
     .type-mention  { background: rgba(59,130,246,0.2); }
     .type-calendar { background: rgba(16,185,129,0.2); }
     .type-email    { background: rgba(245,158,11,0.2); }
-
     .task-info { flex: 1; min-width: 0; }
     .task-info h4 { font-size: 14px; font-weight: 600; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .task-info .task-meta { display: flex; align-items: center; gap: 8px; margin-top: 3px; flex-wrap: wrap; }
     .task-info .task-meta span { font-size: 11px; color: var(--text-muted); }
-
     .task-badges { display: flex; gap: 6px; flex-shrink: 0; align-items: center; }
     .badge {
       font-size: 11px;
@@ -214,10 +196,8 @@
     .badge-due      { background: rgba(245,158,11,0.2); color: #FCD34D; border: 1px solid rgba(245,158,11,0.3); }
     .badge-meeting  { background: rgba(16,185,129,0.2); color: #6EE7B7; border: 1px solid rgba(16,185,129,0.3); }
     .badge-mention  { background: rgba(59,130,246,0.15); color: #93C5FD; border: 1px solid rgba(59,130,246,0.3); }
-
     .task-chevron { font-size: 12px; color: var(--text-dim); transition: transform 0.3s; flex-shrink: 0; }
     .task-card.open .task-chevron { transform: rotate(180deg); }
-
     /* ─── Task Body (accordion) ─── */
     .task-body { display: none; padding: 0 18px 16px; border-top: 1px solid var(--border); }
     .task-card.open .task-body { display: block; }
@@ -229,7 +209,6 @@
         .note-save-btn:disabled { opacity:0.4; cursor:default; }
         .note-saved { color:#4ade80; font-size:11px; }
         .note-saved.show { display:inline; } .note-saved { display:none; }
-
     .task-body-inner { padding-top: 14px; }
     .detail-block { background: var(--surface2); border-radius: 10px; padding: 14px; margin-bottom: 10px; }
     .detail-block:last-child { margin-bottom: 0; }
@@ -239,7 +218,6 @@
     .detail-row span  { color: var(--text); line-height: 1.5; }
     .detail-row a { color: var(--primary-light); text-decoration: none; }
     .detail-row a:hover { text-decoration: underline; }
-
     .notion-link {
       display: inline-flex;
       align-items: center;
@@ -255,7 +233,6 @@
       transition: background 0.2s;
     }
     .notion-link:hover { background: rgba(124,58,237,0.3); }
-
     .no-notion {
       display: inline-flex;
       align-items: center;
@@ -268,7 +245,6 @@
       font-size: 12px;
       margin-top: 8px;
     }
-
     .slack-link {
       display: inline-flex;
       align-items: center;
@@ -284,7 +260,6 @@
       transition: background 0.2s;
     }
     .slack-link:hover { background: rgba(74,21,134,0.4); }
-
     .summary-text {
       font-size: 13px;
       color: var(--text);
@@ -295,7 +270,6 @@
       border-radius: 0 8px 8px 0;
       margin-top: 8px;
     }
-
     /* ─── Section headers in task list ─── */
     .group-header {
       display: flex;
@@ -315,7 +289,6 @@
       border-radius: 99px;
     }
     .group-header .line { flex: 1; height: 1px; background: var(--border); }
-
     /* ─── Check Button ─── */
     .check-btn {
       width: 28px; height: 28px;
@@ -353,7 +326,6 @@
     .task-card.done .task-info .task-meta span { opacity: 0.5; }
     .task-card.done .task-badges { opacity: 0.4; }
     .task-card.done .task-chevron { opacity: 0.35; }
-
     /* ─── View Toggle ─── */
     .view-toggle {
       display: flex;
@@ -381,7 +353,6 @@
       background: var(--primary);
       color: #fff;
     }
-
     /* ─── Firebase status dot ─── */
     .fb-status {
       display: inline-flex;
@@ -402,11 +373,9 @@
     }
     .fb-dot.connected { background: var(--green); }
     .fb-dot.saving { background: var(--yellow); }
-
     /* ─── History Panel ─── */
     #historyView { display: none; }
     #todayView { display: block; }
-
     .history-empty {
       text-align: center;
       padding: 48px 20px;
@@ -414,7 +383,6 @@
       font-size: 14px;
     }
     .history-empty .icon { font-size: 36px; margin-bottom: 12px; }
-
     .day-card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -444,7 +412,6 @@
     .day-card.open .day-tasks { display: block; }
     .day-card.open .day-header .day-chevron { transform: rotate(180deg); }
     .day-chevron { font-size: 11px; color: var(--text-dim); transition: transform 0.3s; }
-
     .hist-task {
       display: flex;
       align-items: center;
@@ -466,10 +433,8 @@
     .hist-task-title { flex: 1; color: var(--text); }
     .hist-task-title.done { color: var(--text-muted); text-decoration: line-through; }
     .hist-type { font-size: 11px; color: var(--text-dim); }
-
     /* ─── Reviews Tracker ─── */
     #reviewsView { display: none; }
-
     .reviews-top {
       display: flex;
       align-items: center;
@@ -480,7 +445,6 @@
     }
     .reviews-top h2 { font-size: 16px; font-weight: 700; color: var(--text); }
     .reviews-top .reviews-date { font-size: 13px; color: var(--text-muted); }
-
     .reviews-actions { display: flex; gap: 8px; }
     .btn-save {
       background: var(--primary);
@@ -508,10 +472,8 @@
       transition: all 0.2s;
     }
     .btn-copy:hover { border-color: var(--primary-light); color: var(--primary-light); }
-
     .reviews-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
     @media(max-width: 640px) { .reviews-grid { grid-template-columns: 1fr; } }
-
     .rv-card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -520,7 +482,6 @@
       transition: border-color 0.2s;
     }
     .rv-card:hover { border-color: rgba(167,139,250,0.35); }
-
     .rv-card-header {
       display: flex;
       align-items: center;
@@ -537,7 +498,6 @@
       flex-shrink: 0;
     }
     .rv-card-header h3 { font-size: 15px; font-weight: 700; color: var(--text); }
-
     .rv-type-block { margin-bottom: 14px; }
     .rv-type-block:last-child { margin-bottom: 0; }
     .rv-type-label {
@@ -578,7 +538,6 @@
       background: var(--surface3);
     }
     .rv-input-group input.changed { border-color: var(--yellow); }
-
     /* Save indicator */
     .save-indicator {
       display: inline-flex;
@@ -594,7 +553,6 @@
     }
     .save-indicator.saved { border-color: rgba(16,185,129,0.4); color: var(--green); }
     .save-indicator.saving { border-color: rgba(245,158,11,0.4); color: var(--yellow); }
-
     /* Summary card */
     .rv-summary {
       background: var(--surface);
@@ -635,7 +593,6 @@
     }
     .rv-sum-item.green .rv-sum-num { color: var(--green); }
     .rv-sum-item.yellow .rv-sum-num { color: var(--yellow); }
-
     /* ─── Footer ─── */
     footer {
       text-align: center;
@@ -646,7 +603,6 @@
       margin-top: 32px;
     }
     footer span { color: var(--primary-light); }
-
     /* ─── Note Feature ─── */
     .note-btn {
       width: 28px; height: 28px; border-radius: 8px;
@@ -659,6 +615,8 @@
     .note-btn.has-note { border-color: var(--primary); color: var(--primary-light); }
     .note-dot { position: absolute; top: 3px; right: 3px; width: 5px; height: 5px; border-radius: 50%; background: var(--primary-light); display: none; }
     .note-btn.has-note .note-dot { display: block; }
+    /* FIX: note area visibility is controlled only by its own .open class,
+       not by whether the card accordion is open */
     .note-area { display: none; border-top: 1px solid var(--border); padding: 12px 18px; background: var(--surface2); }
     .note-area.open { display: block; }
     .note-label { font-size: 11px; color: var(--text-muted); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.05em; }
@@ -672,8 +630,6 @@
     .note-save-btn:disabled { opacity: 0.4; cursor: default; }
     .note-saved-msg { font-size: 11px; color: var(--green); display: none; }
     .note-saved-msg.show { display: inline; }
-    .task-card:not(.open) .note-area { display: none !important; }
-
     /* ─── Ref View ─── */
     .ref-block { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; margin-bottom: 20px; }
     .ref-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
@@ -739,7 +695,6 @@
   </style>
 </head>
 <body>
-
 <!-- ═══ HEADER ═══ -->
 <div class="header">
   <div class="header-inner">
@@ -753,17 +708,14 @@
     <div class="header-date" id="headerDate">الثلاثاء، ٢٣ يونيو ٢٠٢٦</div>
   </div>
 </div>
-
 <!-- ═══ GREETING ═══ -->
 <div class="greeting-bar">
   <span class="wave">☀️</span>
   <h2>صباح الخير يا محمد!</h2>
   <span>لديك اجتماعات متتالية اليوم وتذاكر تحتاج متابعة عاجلة.</span>
 </div>
-
 <!-- ═══ MAIN CONTENT ═══ -->
 <div class="container">
-
   <!-- View Toggle -->
   <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; flex-wrap:wrap; gap:10px;">
     <div class="view-toggle">
@@ -777,7 +729,6 @@
       <span id="fbLabel">جاري الاتصال...</span>
     </div>
   </div>
-
   <!-- TODAY VIEW -->
   <div id="todayView">
     <!-- Personal Tasks -->
@@ -805,11 +756,10 @@
       </div>
       <div id="personalTasksList"><div class="ref-empty" style="padding:10px 0 4px">لا توجد مهام شخصية</div></div>
     </div>
-
   <!-- Stats -->
   <div class="stats-grid">
     <div class="stat-card total">
-      <div class="stat-num">19</div>
+      <div class="stat-num" id="statTotal">—</div>
       <div class="stat-label">إجمالي المهام</div>
     </div>
     <div class="stat-card time">
@@ -817,15 +767,14 @@
       <div class="stat-label">الوقت المتوقع</div>
     </div>
     <div class="stat-card done">
-      <div class="stat-num">0</div>
+      <div class="stat-num" id="statDone">0</div>
       <div class="stat-label">منجز اليوم</div>
     </div>
     <div class="stat-card pending">
-      <div class="stat-num">19</div>
+      <div class="stat-num" id="statPending">—</div>
       <div class="stat-label">متبقي</div>
     </div>
   </div>
-
   <!-- Progress Bar -->
   <div class="progress-section">
     <div class="progress-header">
@@ -836,18 +785,13 @@
       <div class="progress-fill" id="progressFill" style="width: 0%"></div>
     </div>
   </div>
-
   <!-- ★ START WITH THIS -->
   <div class="start-section"></div>
-
   <!-- ════ TASK LIST ════ -->
   <div class="tasks-list"><div style="text-align:center;padding:40px;color:var(--text-muted)">جاري التحميل...</div></div><!-- /tasks-list -->
-
   </div><!-- /todayView -->
-
   <!-- REVIEWS VIEW -->
   <div id="reviewsView">
-
     <div class="reviews-top">
       <div>
         <h2>📊 تسجيل المراجعات</h2>
@@ -859,9 +803,7 @@
         <button class="btn-save" onclick="saveReviews()">💾 حفظ</button>
       </div>
     </div>
-
     <div class="reviews-grid">
-
       <!-- Services -->
       <div class="rv-card">
         <div class="rv-card-header">
@@ -895,7 +837,6 @@
           </div>
         </div>
       </div>
-
       <!-- Verf -->
       <div class="rv-card">
         <div class="rv-card-header">
@@ -915,7 +856,6 @@
           </div>
         </div>
       </div>
-
       <!-- Affiliates -->
       <div class="rv-card">
         <div class="rv-card-header">
@@ -949,7 +889,6 @@
           </div>
         </div>
       </div>
-
       <!-- Ready Stores -->
       <div class="rv-card">
         <div class="rv-card-header">
@@ -983,7 +922,6 @@
           </div>
         </div>
       </div>
-
       <!-- Influencers -->
       <div class="rv-card">
         <div class="rv-card-header">
@@ -1017,9 +955,7 @@
           </div>
         </div>
       </div>
-
     </div><!-- /reviews-grid -->
-
     <!-- Summary -->
     <div class="rv-summary">
       <div class="rv-summary-title">📈 ملخص اليوم</div>
@@ -1038,13 +974,9 @@
         </div>
       </div>
     </div>
-
   </div><!-- /reviewsView -->
-
-
   <!-- REF VIEW -->
   <div id="refView" style="display:none">
-
     <!-- Links -->
     <div class="ref-block">
       <div class="ref-header">
@@ -1054,7 +986,6 @@
       <div id="refLinksList"><div class="ref-empty">جاري التحميل...</div></div>
     </div>
   </div>
-
   <!-- HISTORY VIEW -->
   <div id="historyView">
     <div id="historyList">
@@ -1064,14 +995,11 @@
       </div>
     </div>
   </div>
-
 </div><!-- /container -->
-
 <!-- ═══ FOOTER ═══ -->
 <footer>
   <p>تم توليد هذه الصفحة بواسطة <span>كلود</span> · آخر تحديث: <span id="lastUpdate"></span></p>
 </footer>
-
 <script>
   // ══════════════════════════════════════════
   //  FIREBASE INIT
@@ -1087,87 +1015,54 @@
   };
   firebase.initializeApp(firebaseConfig);
   const db = firebase.database();
-
   // ══════════════════════════════════════════
   //  CONSTANTS
   // ══════════════════════════════════════════
   const TODAY = (() => { const d = new Date(); return new Date(d.getTime() + 3*3600000).toISOString().slice(0,10); })();
-  const TOTAL = 19;
-  let completedCount = 0;
-
-  // Task metadata to save in Firebase for history
-  const tasksMeta = [
-    { id:"t-cal-1", title:"Salla <> Journify",        type:"اجتماع" },
-    { id:"t-cal-2", title:"Salla <> Digital Plus ERP", type:"اجتماع" },
-    { id:"t-cal-3", title:"Salla <> Actan (D365)",     type:"اجتماع" },
-    { id:"t-cal-4", title:"Salla <> WSLA",             type:"اجتماع" },
-    { id:"t-sl-1",  title:"رانك سيو",                  type:"تذكرة"  },
-    { id:"t-sl-2",  title:"محلك شي إن",                type:"تذكرة"  },
-    { id:"t-sl-3",  title:"ايكوم تابز",                type:"تذكرة"  },
-    { id:"t-sl-4",  title:"Widers Whatsapp",           type:"تذكرة"  },
-    { id:"t-sl-5",  title:"ران ميديا",                 type:"تذكرة"  },
-    { id:"t-mn-1",  title:"منشن – أثير العمري",        type:"منشن"   },
-    { id:"t-mn-2",  title:"منشن – سحر الآغا",          type:"منشن"   },
-    { id:"t-em-1",  title:"Hakeem Care – تأخر 5 أشهر", type:"إيميل" },
-    { id:"t-em-2",  title:"عقد الشريك – متابعة",       type:"إيميل" },
-    { id:"t-em-3",  title:"شكوى تابي وتمارا",          type:"إيميل" },
-    { id:"t-em-4",  title:"CEQUENS – وثيقة",           type:"إيميل" },
-    { id:"t-em-5",  title:"Pack Go – تطبيق جديد",      type:"إيميل" },
-    { id:"t-em-6",  title:"محلك شي إن – إظهار تطبيق", type:"إيميل" },
-    { id:"t-em-7",  title:"دعوة Vanner (غدًا)",        type:"إيميل" },
-    { id:"t-em-8",  title:"Quiqup – قبول دعوة",        type:"إيميل" },
-  ];
-
   // ══════════════════════════════════════════
   //  FIREBASE STATUS UI
   // ══════════════════════════════════════════
   function setFbStatus(state) {
     const dot = document.getElementById('fbDot');
     const lbl = document.getElementById('fbLabel');
-    if (state === 'connected')  { dot.className='fb-dot connected'; lbl.textContent='متصل بـ Firebase'; }
-    else if (state === 'saving') { dot.className='fb-dot saving';   lbl.textContent='جاري الحفظ...'; }
-    else                         { dot.className='fb-dot';          lbl.textContent='غير متصل'; }
+    if (state === 'connected')   { dot.className='fb-dot connected'; lbl.textContent='متصل بـ Firebase'; }
+    else if (state === 'saving') { dot.className='fb-dot saving';    lbl.textContent='جاري الحفظ...'; }
+    else                         { dot.className='fb-dot';           lbl.textContent='غير متصل'; }
   }
-
   db.ref('.info/connected').on('value', snap => {
     setFbStatus(snap.val() ? 'connected' : 'offline');
   });
-
   // ══════════════════════════════════════════
-  //  SAVE TODAY'S TASKS METADATA (once)
+  //  STATS — driven by actual DOM cards
+  // ══════════════════════════════════════════
+  function updateStatsFromDOM() {
+    const allCards = document.querySelectorAll('#todayView .tasks-list .task-card[id]');
+    if (!allCards.length) return; // not rendered yet
+    const total = allCards.length;
+    const done  = document.querySelectorAll('#todayView .tasks-list .task-card[id].done').length;
+    const pct   = Math.round((done / total) * 100);
+    document.getElementById('statTotal').textContent   = total;
+    document.getElementById('statDone').textContent    = done;
+    document.getElementById('statPending').textContent = total - done;
+    document.getElementById('progressPct').textContent = pct + '%';
+    document.getElementById('progressFill').style.width = pct + '%';
+  }
+  // ══════════════════════════════════════════
+  //  FIREBASE REFS
   // ══════════════════════════════════════════
   const dayRef     = db.ref(`days/${TODAY}`);
   const actionsRef = db.ref(`days/${TODAY}/actions`);
-
-  dayRef.child('meta').once('value', snap => {
-    if (!snap.exists()) {
-      // First time today → save task list
-      const meta = {};
-      tasksMeta.forEach(t => { meta[t.id] = { title: t.title, type: t.type }; });
-      dayRef.child('tasks').set(meta);
-      dayRef.child('meta').set({ date: TODAY, generatedAt: new Date().toISOString() });
-    }
-  });
-
   // ══════════════════════════════════════════
-  //  LOAD & LISTEN TO ACTIONS (real-time)
+  //  REAL-TIME ACTIONS LISTENER
+  //  Updates done state for all rendered cards
   // ══════════════════════════════════════════
   actionsRef.on('value', snap => {
     const actions = snap.val() || {};
-    completedCount = 0;
-    tasksMeta.forEach(t => {
-      const card = document.getElementById(t.id);
-      if (!card) return;
-      if (actions[t.id]) {
-        card.classList.add('done');
-        completedCount++;
-      } else {
-        card.classList.remove('done');
-      }
+    document.querySelectorAll('#todayView .tasks-list .task-card[id]').forEach(card => {
+      card.classList.toggle('done', !!actions[card.id]);
     });
-    updateStats();
+    updateStatsFromDOM();
   });
-
   // ══════════════════════════════════════════
   //  CHECK / UNCHECK
   // ══════════════════════════════════════════
@@ -1178,23 +1073,10 @@
     setFbStatus('saving');
     const nowDone = !card.classList.contains('done');
     card.classList.toggle('done', nowDone);
-    const checkBtn = card.querySelector('.check-btn');
-    if (checkBtn) checkBtn.textContent = nowDone ? '✅' : '☐';
+    updateStatsFromDOM();
     actionsRef.child(id).set(nowDone ? true : null)
       .then(() => setFbStatus('connected'));
   }
-
-  // ══════════════════════════════════════════
-  //  STATS + PROGRESS BAR
-  // ══════════════════════════════════════════
-  function updateStats() {
-    const pct = Math.round((completedCount / TOTAL) * 100);
-    document.querySelector('.stat-card.done .stat-num').textContent = completedCount;
-    document.querySelector('.stat-card.pending .stat-num').textContent = TOTAL - completedCount;
-    document.getElementById('progressPct').textContent = pct + '%';
-    document.getElementById('progressFill').style.width = pct + '%';
-  }
-
   // ══════════════════════════════════════════
   //  TOGGLE ACCORDION
   // ══════════════════════════════════════════
@@ -1203,25 +1085,8 @@
     if (!card) return;
     card.classList.toggle('open');
   }
-
   // ══════════════════════════════════════════
-  //  INJECT CHECK BUTTONS
-  // ══════════════════════════════════════════
-  function injectCheckButtons() {
-    document.querySelectorAll('.task-card[id]').forEach(card => {
-      const header = card.querySelector('.task-header');
-      if (!header || header.querySelector('.check-btn')) return;
-      const btn = document.createElement('button');
-      btn.className = 'check-btn';
-      btn.innerHTML = '✓';
-      btn.title = 'تمّ';
-      btn.onclick = (e) => checkTask(e, card.id);
-      header.appendChild(btn);
-    });
-  }
-
-  // ══════════════════════════════════════════
-  //  VIEW TOGGLE (Today / History)
+  //  VIEW TOGGLE
   // ══════════════════════════════════════════
   function switchView(view) {
     const _rv = document.getElementById('refView');
@@ -1248,24 +1113,20 @@
     if (view === 'history') loadHistory();
     if (view === 'reviews') initReviews();
   }
-
   // ══════════════════════════════════════════
   //  HISTORY
   // ══════════════════════════════════════════
   function loadHistory() {
     const container = document.getElementById('historyList');
     container.innerHTML = '<div class="history-empty"><div class="icon">⏳</div><p>جاري التحميل...</p></div>';
-
     db.ref('days').once('value', snap => {
       const data = snap.val();
       if (!data) {
         container.innerHTML = '<div class="history-empty"><div class="icon">🗂️</div><p>لا توجد أيام سابقة بعد</p></div>';
         return;
       }
-
-      const days = Object.keys(data).sort().reverse(); // newest first
+      const days = Object.keys(data).sort().reverse();
       container.innerHTML = '';
-
       days.forEach(date => {
         const dayData = data[date];
         const tasks   = dayData.tasks   || {};
@@ -1274,20 +1135,15 @@
         const doneCount = ids.filter(id => actions[id]).length;
         const total     = ids.length;
         const allDone   = total > 0 && doneCount === total;
-
-        // Format date label
         const d = new Date(date + 'T12:00:00');
         const days_ar = ['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
         const months_ar = ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
         const label = `${days_ar[d.getDay()]}، ${d.getDate()} ${months_ar[d.getMonth()]} ${d.getFullYear()}`;
-
         const card = document.createElement('div');
         card.className = 'day-card';
         card.innerHTML = `
           <div class="day-header" onclick="this.parentElement.classList.toggle('open')">
-            <div>
-              <div class="day-title">${label}</div>
-            </div>
+            <div><div class="day-title">${label}</div></div>
             <div class="day-meta">
               <span class="day-stat ${allDone?'all-done':''}">${doneCount} / ${total} مكتمل</span>
               <span class="day-chevron">▼</span>
@@ -1299,8 +1155,8 @@
               const done = !!actions[id];
               return `<div class="hist-task">
                 <div class="hist-check ${done?'done':'pending'}">${done?'✓':''}</div>
-                <div class="hist-task-title ${done?'done':''}">${t.title}</div>
-                <div class="hist-type">${t.type}</div>
+                <div class="hist-task-title ${done?'done':''}">${t.title||id}</div>
+                <div class="hist-type">${t.type||''}</div>
               </div>`;
             }).join('')}
           </div>`;
@@ -1308,66 +1164,52 @@
       });
     });
   }
-
   // ══════════════════════════════════════════
   //  REVIEWS TRACKER
   // ══════════════════════════════════════════
-
-  // All input IDs and their Firebase path mapping
   const RV_FIELDS = [
-    { id: 'svc-new-r', path: 'services/new/r', label: 'Services New Reviewed' },
-    { id: 'svc-new-a', path: 'services/new/a', label: 'Services New Approved' },
-    { id: 'svc-upd-r', path: 'services/upd/r', label: 'Services Update Reviewed' },
-    { id: 'svc-upd-a', path: 'services/upd/a', label: 'Services Update Approved' },
-    { id: 'verf-r',    path: 'verf/r',          label: 'Verf Reviewed' },
-    { id: 'verf-a',    path: 'verf/a',           label: 'Verf Approved' },
-    { id: 'aff-new-r', path: 'affiliates/new/r', label: 'Affiliates New Reviewed' },
-    { id: 'aff-new-a', path: 'affiliates/new/a', label: 'Affiliates New Approved' },
-    { id: 'aff-upd-r', path: 'affiliates/upd/r', label: 'Affiliates Update Reviewed' },
-    { id: 'aff-upd-a', path: 'affiliates/upd/a', label: 'Affiliates Update Approved' },
-    { id: 'rs-new-r',  path: 'readyStores/new/r', label: 'Ready Stores New Reviewed' },
-    { id: 'rs-new-a',  path: 'readyStores/new/a', label: 'Ready Stores New Approved' },
-    { id: 'rs-upd-r',  path: 'readyStores/upd/r', label: 'Ready Stores Update Reviewed' },
-    { id: 'rs-upd-a',  path: 'readyStores/upd/a', label: 'Ready Stores Update Approved' },
-    { id: 'inf-new-r', path: 'influencers/new/r', label: 'Influencers New Reviewed' },
-    { id: 'inf-new-a', path: 'influencers/new/a', label: 'Influencers New Approved' },
-    { id: 'inf-upd-r', path: 'influencers/upd/r', label: 'Influencers Update Reviewed' },
-    { id: 'inf-upd-a', path: 'influencers/upd/a', label: 'Influencers Update Approved' },
+    { id: 'svc-new-r', path: 'services/new/r' },
+    { id: 'svc-new-a', path: 'services/new/a' },
+    { id: 'svc-upd-r', path: 'services/upd/r' },
+    { id: 'svc-upd-a', path: 'services/upd/a' },
+    { id: 'verf-r',    path: 'verf/r'          },
+    { id: 'verf-a',    path: 'verf/a'           },
+    { id: 'aff-new-r', path: 'affiliates/new/r' },
+    { id: 'aff-new-a', path: 'affiliates/new/a' },
+    { id: 'aff-upd-r', path: 'affiliates/upd/r' },
+    { id: 'aff-upd-a', path: 'affiliates/upd/a' },
+    { id: 'rs-new-r',  path: 'readyStores/new/r' },
+    { id: 'rs-new-a',  path: 'readyStores/new/a' },
+    { id: 'rs-upd-r',  path: 'readyStores/upd/r' },
+    { id: 'rs-upd-a',  path: 'readyStores/upd/a' },
+    { id: 'inf-new-r', path: 'influencers/new/r' },
+    { id: 'inf-new-a', path: 'influencers/new/a' },
+    { id: 'inf-upd-r', path: 'influencers/upd/r' },
+    { id: 'inf-upd-a', path: 'influencers/upd/a' },
   ];
-
   const rvRef = db.ref(`days/${TODAY}/reviews`);
   let rvLoaded = false;
-
   function setRvStatus(state) {
     const el = document.getElementById('rvSaveIndicator');
     if (!el) return;
-    if (state === 'saved')  { el.className='save-indicator saved';  el.innerHTML='✓ &nbsp;محفوظ'; }
+    if (state === 'saved')       { el.className='save-indicator saved';  el.innerHTML='✓ &nbsp;محفوظ'; }
     else if (state === 'saving') { el.className='save-indicator saving'; el.innerHTML='⬤ &nbsp;جاري الحفظ...'; }
     else                         { el.className='save-indicator';        el.innerHTML='⬤ &nbsp;Firebase'; }
   }
-
   function initReviews() {
-    // Set date label
     const el = document.getElementById('reviewsDateLabel');
     if (el) el.textContent = arabicDate();
-
     if (rvLoaded) { updateRvSummary(); return; }
-
-    // Load from Firebase
     rvRef.once('value', snap => {
       const data = snap.val();
       if (data) {
         RV_FIELDS.forEach(f => {
           const inp = document.getElementById(f.id);
           if (!inp) return;
-          // Navigate nested path
           const parts = f.path.split('/');
           let val = data;
           for (const p of parts) val = val?.[p];
-          if (val !== undefined && val !== null) {
-            inp.value = val;
-            inp.classList.remove('changed');
-          }
+          if (val !== undefined && val !== null) { inp.value = val; inp.classList.remove('changed'); }
         });
       }
       rvLoaded = true;
@@ -1375,72 +1217,48 @@
       setRvStatus('saved');
     });
   }
-
-  function onRvChange(input) {
-    input.classList.add('changed');
-    updateRvSummary();
-    setRvStatus('');
-  }
-
-  function getNum(id) {
-    return parseInt(document.getElementById(id)?.value || '0', 10) || 0;
-  }
-
+  function onRvChange(input) { input.classList.add('changed'); updateRvSummary(); setRvStatus(''); }
+  function getNum(id) { return parseInt(document.getElementById(id)?.value || '0', 10) || 0; }
   function updateRvSummary() {
-    const totalR = ['svc-new-r','svc-upd-r','verf-r','aff-new-r','aff-upd-r','rs-new-r','rs-upd-r','inf-new-r','inf-upd-r']
-      .reduce((s,id) => s + getNum(id), 0);
-    const totalA = ['svc-new-a','svc-upd-a','verf-a','aff-new-a','aff-upd-a','rs-new-a','rs-upd-a','inf-new-a','inf-upd-a']
-      .reduce((s,id) => s + getNum(id), 0);
+    const totalR = ['svc-new-r','svc-upd-r','verf-r','aff-new-r','aff-upd-r','rs-new-r','rs-upd-r','inf-new-r','inf-upd-r'].reduce((s,id) => s + getNum(id), 0);
+    const totalA = ['svc-new-a','svc-upd-a','verf-a','aff-new-a','aff-upd-a','rs-new-a','rs-upd-a','inf-new-a','inf-upd-a'].reduce((s,id) => s + getNum(id), 0);
     const rate = totalR > 0 ? Math.round((totalA / totalR) * 100) + '%' : '—';
     document.getElementById('sum-total-r').textContent = totalR;
     document.getElementById('sum-total-a').textContent = totalA;
     document.getElementById('sum-approval-rate').textContent = rate;
   }
-
   function saveReviews() {
     setRvStatus('saving');
-    // Build nested object from flat fields
     const payload = {};
     RV_FIELDS.forEach(f => {
       const val = getNum(f.id);
       const parts = f.path.split('/');
       let cur = payload;
-      for (let i = 0; i < parts.length - 1; i++) {
-        cur[parts[i]] = cur[parts[i]] || {};
-        cur = cur[parts[i]];
-      }
+      for (let i = 0; i < parts.length - 1; i++) { cur[parts[i]] = cur[parts[i]] || {}; cur = cur[parts[i]]; }
       cur[parts[parts.length - 1]] = val;
     });
     rvRef.set(payload).then(() => {
       setRvStatus('saved');
-      // Remove changed highlight from all inputs
       RV_FIELDS.forEach(f => document.getElementById(f.id)?.classList.remove('changed'));
     }).catch(() => setRvStatus(''));
   }
-
   function copyReviewsSummary() {
     const lines = [
-      `📊 مراجعات ${arabicDate()}`,
-      '',
+      `📊 مراجعات ${arabicDate()}`, '',
       `⚙️ Services`,
-      `  New      — Reviewed: ${getNum('svc-new-r')}  |  Approved: ${getNum('svc-new-a')}`,
-      `  Update   — Reviewed: ${getNum('svc-upd-r')}  |  Approved: ${getNum('svc-upd-a')}`,
-      '',
+      `  New    — Reviewed: ${getNum('svc-new-r')}  |  Approved: ${getNum('svc-new-a')}`,
+      `  Update — Reviewed: ${getNum('svc-upd-r')}  |  Approved: ${getNum('svc-upd-a')}`, '',
       `✅ Verf`,
-      `  Reviewed: ${getNum('verf-r')}  |  Approved: ${getNum('verf-a')}`,
-      '',
+      `  Reviewed: ${getNum('verf-r')}  |  Approved: ${getNum('verf-a')}`, '',
       `🤝 Affiliates`,
-      `  New      — Reviewed: ${getNum('aff-new-r')}  |  Approved: ${getNum('aff-new-a')}`,
-      `  Update   — Reviewed: ${getNum('aff-upd-r')}  |  Approved: ${getNum('aff-upd-a')}`,
-      '',
+      `  New    — Reviewed: ${getNum('aff-new-r')}  |  Approved: ${getNum('aff-new-a')}`,
+      `  Update — Reviewed: ${getNum('aff-upd-r')}  |  Approved: ${getNum('aff-upd-a')}`, '',
       `🏪 Ready Stores`,
-      `  New      — Reviewed: ${getNum('rs-new-r')}  |  Approved: ${getNum('rs-new-a')}`,
-      `  Update   — Reviewed: ${getNum('rs-upd-r')}  |  Approved: ${getNum('rs-upd-a')}`,
-      '',
+      `  New    — Reviewed: ${getNum('rs-new-r')}  |  Approved: ${getNum('rs-new-a')}`,
+      `  Update — Reviewed: ${getNum('rs-upd-r')}  |  Approved: ${getNum('rs-upd-a')}`, '',
       `⭐ Influencers`,
-      `  New      — Reviewed: ${getNum('inf-new-r')}  |  Approved: ${getNum('inf-new-a')}`,
-      `  Update   — Reviewed: ${getNum('inf-upd-r')}  |  Approved: ${getNum('inf-upd-a')}`,
-      '',
+      `  New    — Reviewed: ${getNum('inf-new-r')}  |  Approved: ${getNum('inf-new-a')}`,
+      `  Update — Reviewed: ${getNum('inf-upd-r')}  |  Approved: ${getNum('inf-upd-a')}`, '',
       `📈 الإجمالي: Reviewed ${document.getElementById('sum-total-r').textContent}  |  Approved ${document.getElementById('sum-total-a').textContent}  |  نسبة القبول ${document.getElementById('sum-approval-rate').textContent}`,
     ];
     navigator.clipboard.writeText(lines.join('\n')).then(() => {
@@ -1450,87 +1268,76 @@
       setTimeout(() => { btn.textContent = orig; }, 2000);
     });
   }
-
   // ══════════════════════════════════════════
   //  DATE HELPERS
   // ══════════════════════════════════════════
   function arabicDate() {
-    const d = new Date('2026-06-23');
+    const d = new Date(TODAY + 'T12:00:00');
     const days = ['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
     const months = ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
     return `${days[d.getDay()]}، ${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
   }
   function nowTime() {
-    const n = new Date();
-    return n.toLocaleTimeString('ar-SA', { hour:'2-digit', minute:'2-digit' });
+    return new Date().toLocaleTimeString('ar-SA', { hour:'2-digit', minute:'2-digit' });
   }
-
+  // ══════════════════════════════════════════
+  //  NOTES
+  // ══════════════════════════════════════════
+  function toggleNote(id) {
+    const na = document.getElementById('note-' + id);
+    if (!na) return;
+    na.classList.toggle('open');
+    if (na.classList.contains('open')) {
+      const ta = document.getElementById('nt-' + id);
+      if (ta) ta.focus();
+    }
+  }
+  function onNoteInput(id) {
+    const ta = document.getElementById('nt-' + id);
+    const nc = document.getElementById('nc-' + id);
+    const nsb = document.getElementById('nsb-' + id);
+    const ns = document.getElementById('ns-' + id);
+    if (nc) nc.textContent = ta.value.length;
+    if (nsb) nsb.disabled = (ta.value === (ta.dataset.saved || ''));
+    if (ns) ns.classList.remove('show');
+  }
+  function saveNote(id) {
+    const ta = document.getElementById('nt-' + id);
+    const btn = document.getElementById('nb-' + id);
+    const saveBtn = document.getElementById('nsb-' + id);
+    const savedMsg = document.getElementById('ns-' + id);
+    if (!ta || !saveBtn) return;
+    saveBtn.disabled = true;
+    saveBtn.textContent = '...';
+    db.ref('days/' + TODAY + '/notes/' + id).set(ta.value.trim() || null).then(() => {
+      ta.dataset.saved = ta.value;
+      if (btn) btn.classList.toggle('has-note', !!ta.value.trim());
+      if (savedMsg) { savedMsg.classList.add('show'); setTimeout(() => savedMsg.classList.remove('show'), 2000); }
+      saveBtn.textContent = 'حفظ';
+    });
+  }
   // ══════════════════════════════════════════
   //  INIT
   // ══════════════════════════════════════════
   document.getElementById('headerDate').textContent = arabicDate();
   document.getElementById('lastUpdate').textContent = nowTime();
-  document.getElementById('t-cal-1')?.classList.add('open');
-  injectCheckButtons();
-  loadNotes();
-    loadPersonalTasks();
-
-  // ─── Notes ───
-  function toggleNote(id) {
-    const na = document.getElementById('note-' + id);
-    na.classList.toggle('open');
-    if (na.classList.contains('open')) document.getElementById('nt-' + id).focus();
-  }
-  function onNoteInput(id) {
-    const ta = document.getElementById('nt-' + id);
-    document.getElementById('nc-' + id).textContent = ta.value.length;
-    document.getElementById('nsb-' + id).disabled = (ta.value === (ta.dataset.saved || ''));
-    document.getElementById('ns-' + id).classList.remove('show');
-  }
-  function saveNote(id) {
-    const ta=document.getElementById('nt-'+id), btn=document.getElementById('nb-'+id);
-    const saveBtn=document.getElementById('nsb-'+id), savedMsg=document.getElementById('ns-'+id);
-    saveBtn.disabled=true; saveBtn.textContent='...';
-    db.ref('days/'+TODAY+'/notes/'+id).set(ta.value.trim()||null).then(()=>{
-      ta.dataset.saved=ta.value;
-      btn.classList.toggle('has-note',!!ta.value.trim());
-      savedMsg.classList.add('show'); saveBtn.textContent='حفظ';
-      setTimeout(()=>savedMsg.classList.remove('show'),2000);
-    });
-  }
-  function loadNotes() {
-    db.ref('days/'+TODAY+'/notes').once('value').then(snap=>{
-      const notes=snap.val()||{};
-      Object.entries(notes).forEach(([id,note])=>{
-        if(!note) return;
-        const ta=document.getElementById('nt-'+id), btn=document.getElementById('nb-'+id);
-        if(ta){ta.value=note;ta.dataset.saved=note;const nc=document.getElementById('nc-'+id);if(nc)nc.textContent=note.length;const nsb=document.getElementById('nsb-'+id);if(nsb)nsb.disabled=true;}
-        if(btn)btn.classList.add('has-note');
-      });
-    });
-  }
-
-
-
+  loadPersonalTasks();
   // ─── REF TAB ───────────────────────────────────────────────
   let _refLoaded = false;
-
   function initRef() {
     if (_refLoaded) return;
     _refLoaded = true;
     loadRefLinks();
   }
-
   // ── Personal Tasks ──
   function toggleAddTaskForm() {
     const f = document.getElementById('addTaskForm');
     f.style.display = f.style.display === 'none' ? 'block' : 'none';
     if (f.style.display === 'block') {
       document.getElementById('ptTitle').focus();
-      const d = new Date(); document.getElementById('ptDate').value = d.toISOString().slice(0,10);
+      document.getElementById('ptDate').value = new Date().toISOString().slice(0,10);
     }
   }
-
   function addPersonalTask() {
     const title = document.getElementById('ptTitle').value.trim();
     if (!title) { document.getElementById('ptTitle').focus(); return; }
@@ -1538,25 +1345,20 @@
     const date = document.getElementById('ptDate').value;
     const comment = document.getElementById('ptComment').value.trim();
     const id = 'pt_' + Date.now();
-    const task = { id, title, status, date, comment, createdAt: Date.now() };
-    db.ref('reference/tasks/' + id).set(task).then(() => {
+    db.ref('reference/tasks/' + id).set({ id, title, status, date, comment, createdAt: Date.now() }).then(() => {
       document.getElementById('ptTitle').value = '';
       document.getElementById('ptComment').value = '';
       document.getElementById('addTaskForm').style.display = 'none';
       loadPersonalTasks();
     });
   }
-
   function deletePersonalTask(id) {
     db.ref('reference/tasks/' + id).remove().then(() => loadPersonalTasks());
   }
-
   function updateTaskStatus(id, status) {
     db.ref('reference/tasks/' + id + '/status').set(status).then(() => loadPersonalTasks());
   }
-
   const STATUS_LABELS = { new: '🔵 New', progress: '🟠 In Progress', done: '🟢 Done', blocked: '🔴 Blocked' };
-
   function loadPersonalTasks() {
     db.ref('reference/tasks').once('value').then(snap => {
       const data = snap.val() || {};
@@ -1578,80 +1380,44 @@
       `).join('');
     });
   }
-
   // ── Links ──
   const INIT_LINKS = [
     { id:'trackers', name:'My Trackers', items:[
-      {id:'tr1',name:'Partners follow up',url:''},
-      {id:'tr2',name:'Main sheet',url:''},
-      {id:'tr3',name:'Email template arabic',url:''},
-      {id:'tr4',name:'Special live apps',url:''},
-      {id:'tr5',name:'Quick tasks',url:''},
-      {id:'tr6',name:'Vacation request',url:''},
-      {id:'tr7',name:'Suggestions',url:''},
-      {id:'tr8',name:'Jera Tasks',url:''}
-    ]},
+      {id:'tr1',name:'Partners follow up',url:''},{id:'tr2',name:'Main sheet',url:''},
+      {id:'tr3',name:'Email template arabic',url:''},{id:'tr4',name:'Special live apps',url:''},
+      {id:'tr5',name:'Quick tasks',url:''},{id:'tr6',name:'Vacation request',url:''},
+      {id:'tr7',name:'Suggestions',url:''},{id:'tr8',name:'Jera Tasks',url:''}]},
     { id:'contracts', name:'Partners Contract Links', items:[
-      {id:'co1',name:'Task for legal team',url:''},
-      {id:'co2',name:'Contracts sheets',url:''},
-      {id:'co3',name:'Signed contracts folder',url:''},
-      {id:'co4',name:'Drop it app Legal',url:''}
-    ]},
+      {id:'co1',name:'Task for legal team',url:''},{id:'co2',name:'Contracts sheets',url:''},
+      {id:'co3',name:'Signed contracts folder',url:''},{id:'co4',name:'Drop it app Legal',url:''}]},
     { id:'services', name:'Services | الخدمات', items:[
-      {id:'sv1',name:'ملف ملاحظات الخدمات',url:''},
-      {id:'sv2',name:'ملف تتبع مزودين',url:''},
-      {id:'sv3',name:'إدارة شكاوى خدمات',url:''}
-    ]},
+      {id:'sv1',name:'ملف ملاحظات الخدمات',url:''},{id:'sv2',name:'ملف تتبع مزودين',url:''},
+      {id:'sv3',name:'إدارة شكاوى خدمات',url:''}]},
     { id:'affiliate', name:'Affiliate Marketing', items:[
-      {id:'af1',name:'دليل الأسئلة',url:''},
-      {id:'af2',name:'شروط قبول',url:''},
-      {id:'af3',name:'برنامج الشركاء',url:''},
-      {id:'af4',name:'قائمة الروابط المنتهية',url:''}
-    ]},
-    { id:'finance', name:'Finance Sheets', items:[
-      {id:'fi1',name:'ملف المدفوعات',url:''}
-    ]},
-    { id:'cs', name:'CS Sheets', items:[
-      {id:'cs1',name:'ملف المتاجر ومدراء الحسابات',url:''}
-    ]},
+      {id:'af1',name:'دليل الأسئلة',url:''},{id:'af2',name:'شروط قبول',url:''},
+      {id:'af3',name:'برنامج الشركاء',url:''},{id:'af4',name:'قائمة الروابط المنتهية',url:''}]},
+    { id:'finance', name:'Finance Sheets', items:[{id:'fi1',name:'ملف المدفوعات',url:''}]},
+    { id:'cs', name:'CS Sheets', items:[{id:'cs1',name:'ملف المتاجر ومدراء الحسابات',url:''}]},
     { id:'shipping', name:'Shipping', items:[
-      {id:'sh1',name:'Agreement tracker',url:''},
-      {id:'sh2',name:'App Store Logistic',url:''},
-      {id:'sh3',name:'Asana Tasks',url:''},
-      {id:'sh4',name:'Asana Forms',url:''},
-      {id:'sh5',name:'فورم قسم الشحن',url:''},
-      {id:'sh6',name:'تاسك الشحن',url:''}
-    ]},
+      {id:'sh1',name:'Agreement tracker',url:''},{id:'sh2',name:'App Store Logistic',url:''},
+      {id:'sh3',name:'Asana Tasks',url:''},{id:'sh4',name:'Asana Forms',url:''},
+      {id:'sh5',name:'فورم قسم الشحن',url:''},{id:'sh6',name:'تاسك الشحن',url:''}]},
     { id:'integration', name:'Integration Documents', items:[
-      {id:'in1',name:'Hold management system',url:''},
-      {id:'in2',name:'Salla HMS',url:''}
-    ]},
+      {id:'in1',name:'Hold management system',url:''},{id:'in2',name:'Salla HMS',url:''}]},
     { id:'verification', name:'Verification', items:[
-      {id:'ve1',name:'Verification reasons',url:''},
-      {id:'ve2',name:'ZATCA lookup',url:''},
-      {id:'ve3',name:'توثيق المؤثرين',url:''}
-    ]},
-    { id:'ready', name:'Ready Stores', items:[
-      {id:'rs1',name:'قايد المراجعة',url:''}
-    ]},
-    { id:'jira', name:'Jira Account', items:[
-      {id:'ji1',name:'For you - Jira',url:''}
-    ]},
+      {id:'ve1',name:'Verification reasons',url:''},{id:'ve2',name:'ZATCA lookup',url:''},
+      {id:'ve3',name:'توثيق المؤثرين',url:''}]},
+    { id:'ready', name:'Ready Stores', items:[{id:'rs1',name:'قايد المراجعة',url:''}]},
+    { id:'jira', name:'Jira Account', items:[{id:'ji1',name:'For you - Jira',url:''}]},
     { id:'policy', name:'Policy', items:[
-      {id:'po1',name:'متطلبات ضريبة القيمة المضافة',url:''},
-      {id:'po2',name:'Salla policy',url:''}
-    ]},
+      {id:'po1',name:'متطلبات ضريبة القيمة المضافة',url:''},{id:'po2',name:'Salla policy',url:''}]},
     { id:'tasks', name:'Tasks', items:[
-      {id:'ta1',name:'Shipping calling task',url:''},
-      {id:'ta2',name:'ERP TASK',url:''}
-    ]}
+      {id:'ta1',name:'Shipping calling task',url:''},{id:'ta2',name:'ERP TASK',url:''}]}
   ];
-
   function loadRefLinks() {
     db.ref('reference/links').once('value').then(snap => {
       let data = snap.val();
       if (!data) {
-        // Push initial data
         const toSave = {};
         INIT_LINKS.forEach(cat => {
           toSave[cat.id] = { name: cat.name, items: {} };
@@ -1663,7 +1429,6 @@
       }
     });
   }
-
   function renderRefLinks(data) {
     const el = document.getElementById('refLinksList');
     const cats = Object.entries(data).map(([id,cat]) => ({ id, name: cat.name, items: Object.entries(cat.items||{}).map(([iid,it]) => ({...it,id:iid})) }));
@@ -1700,134 +1465,110 @@
       </div>
     `).join('');
   }
-
-  function toggleLinkEdit(catId, linkId) {
-    const form = document.getElementById('lef-'+catId+'-'+linkId);
-    form.classList.toggle('open');
-  }
-
+  function toggleLinkEdit(catId, linkId) { document.getElementById('lef-'+catId+'-'+linkId).classList.toggle('open'); }
   function saveLinkEdit(catId, linkId) {
     const name = document.getElementById('len-'+catId+'-'+linkId).value.trim();
-    const url = document.getElementById('leu-'+catId+'-'+linkId).value.trim();
+    const url  = document.getElementById('leu-'+catId+'-'+linkId).value.trim();
     if (!name) return;
     db.ref('reference/links/'+catId+'/items/'+linkId).update({ name, url }).then(() => loadRefLinks());
   }
-
-  function saveCatName(catId, name) {
-    db.ref('reference/links/' + catId + '/name').set(name);
-  }
-
-  function saveLinkName(catId, linkId, name) {
-    db.ref('reference/links/' + catId + '/items/' + linkId + '/name').set(name);
-  }
-
-  function saveLinkUrl(catId, linkId, url) {
-    db.ref('reference/links/' + catId + '/items/' + linkId + '/url').set(url).then(() => {
-      // Refresh open link button
-      loadRefLinks();
-    });
-  }
-
+  function saveCatName(catId, name) { db.ref('reference/links/' + catId + '/name').set(name); }
   function deleteCategory(catId) {
     if (!confirm('حذف هذا التصنيف وكل روابطه؟')) return;
     db.ref('reference/links/' + catId).remove().then(() => loadRefLinks());
   }
-
   function deleteLink(catId, linkId) {
     db.ref('reference/links/' + catId + '/items/' + linkId).remove().then(() => loadRefLinks());
   }
-
   function addRefLink(catId) {
     const id = 'lk_' + Date.now();
     db.ref('reference/links/' + catId + '/items/' + id).set({ name: 'رابط جديد', url: '' }).then(() => loadRefLinks());
   }
-
   function addRefCategory() {
     const id = 'cat_' + Date.now();
     db.ref('reference/links/' + id).set({ name: 'تصنيف جديد', items: {} }).then(() => loadRefLinks());
   }
-
 </script>
-
 <script>
-/* ═══ DYNAMIC RENDERER — v3 FINAL ═══ */
+/* ═══ DYNAMIC RENDERER — v4 FIXED ═══ */
 (function(){
   var AM=['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
   var AD=['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
-
   function saudiToday(){
     var d=new Date();
     return new Date(d.getTime()+3*3600000).toISOString().slice(0,10);
   }
-
   function arDate(iso){
     var p=iso.split('-').map(Number);
     var dt=new Date(p[0],p[1]-1,p[2]);
     return AD[dt.getDay()]+'، '+p[2]+' '+AM[p[1]-1]+' '+p[0];
   }
-
   function grpHdr(ic,lb,n){
     return '<div class="group-header"><h3>'+ic+' '+lb+'</h3><span class="group-count">'+n+'</span><div class="line"></div></div>';
   }
-
+  /* ─────────────────────────────────────────────────────
+     buildCard: FIXED — task-card div is properly closed
+     Notes work independently without needing accordion open
+  ───────────────────────────────────────────────────── */
   function buildCard(id,t,done){
     var ic=t.type==='اجتماع'?'🗓️':(t.isUrgent?'⚠️':'📧');
     var typeClass=t.type==='اجتماع'?'calendar':'email';
-    var badge=t.badge?'<span class="badge badge-urgent">'+t.badge+'</span>':'';
-    var time=t.time?'<span class="time-badge">'+t.time+'</span>':'';
-    var plat=t.platform?'<span class="platform-tag">'+t.platform+(t.isOrganizer===false?' 📍':'')+'</span>':'';
-    var summ=t.summary?'<div class="task-note">'+t.summary+'</div>':'';
-    var par=t.partner?'<div class="task-detail"><span class="detail-label">الشريك</span><span>'+t.partner+'</span></div>':'';
-    var em=t.email?'<div class="task-detail"><span class="detail-label">الإيميل</span><a class="detail-link" href="mailto:'+t.email+'">'+t.email+'</a></div>':'';
-    var att=t.attendees?'<div class="task-detail"><span class="detail-label">المشاركون</span><span>'+t.attendees+'</span></div>':'';
-    var lnk=t.link?'<a class="task-link" href="'+t.link+'" target="_blank">🔗 فتح رابط الاجتماع</a>':'';
+    var badge=t.badge?'<span class="badge badge-'+t.badge+'">'+t.badge+'</span>':'';
+    var time=t.time?'<span style="font-size:11px;color:var(--text-muted)">'+t.time+'</span>':'';
+    var summ=t.summary?'<div style="font-size:13px;color:var(--text);line-height:1.6;padding:8px 0">'+t.summary+'</div>':'';
+    var par=t.partner?'<div style="font-size:12px;color:var(--text-muted);padding:4px 0"><b>الشريك:</b> '+t.partner+'</div>':'';
+    var lnk=t.link?'<a style="display:inline-flex;align-items:center;gap:6px;color:var(--primary-light);font-size:12px;margin-top:8px" href="'+t.link+'" target="_blank">🔗 فتح رابط الاجتماع</a>':'';
     var dc=done?' done':'';
     var chk=done?'✅':'⬜';
     var q="'";
-    var hasBody = summ||par||em||att||lnk;
-    return '<div class="task-card'+dc+'" id="'+id+'" onclick="toggleTask('+q+id+q+')">'+
-      '<div class="task-header">'+
-        '<div class="task-type-icon type-'+typeClass+'">'+ic+'</div>'+
-        '<div class="task-info">'+
-          '<div class="task-title">'+t.title+'</div>'+
-          '<div class="task-meta">'+time+plat+'</div>'+
-        '</div>'+
-        '<div class="task-actions">'+
-          badge+
-          '<button class="note-btn" id="nb-'+id+'" onclick="event.stopPropagation();toggleNote('+q+id+q+')" title="ملاحظة">📝</button>'+
-          '<button class="check-btn'+(done?' checked':'') +'" onclick="checkTask(event,'+q+id+q+')" title="تم">'+chk+'</button>'+
-        '</div>'+
-      '</div>'+
-      (hasBody?'<div class="task-body" id="body-'+id+'">'+summ+par+em+att+lnk+'</div>':'')+
-      '<div class="note-area" id="note-'+id+'">'+
-        '<textarea class="note-input" id="nt-'+id+'" placeholder="أضف ملاحظة..." oninput="onNoteInput('+q+id+q+')"></textarea>'+
-        '<div class="note-footer">'+
-        '<span class="note-count" id="nc-'+id+'">0</span> حرف '+
-        '<button class="note-save-btn" id="nsb-'+id+'" onclick="saveNote('+q+id+q+')" disabled>حفظ</button>'+
-        '<span class="note-saved" id="ns-'+id+'"></span>'+
-        '</div>'+
-    '</div>';
+    var hasBody=!!(summ||par||lnk);
+    /* FIX: note-btn stopPropagation keeps accordion state intact when clicking note icon */
+    return (
+      '<div class="task-card'+dc+'" id="'+id+'">' +
+        '<div class="task-header" onclick="toggleTask('+q+id+q+')">' +
+          '<div class="task-type-icon type-'+typeClass+'">'+ic+'</div>' +
+          '<div class="task-info">' +
+            '<div class="task-title" style="font-size:14px;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+t.title+'</div>' +
+            '<div class="task-meta">'+time+'</div>' +
+          '</div>' +
+          '<div style="display:flex;gap:6px;align-items:center;flex-shrink:0">' +
+            badge +
+            '<button class="note-btn" id="nb-'+id+'" onclick="event.stopPropagation();toggleNote('+q+id+q+')" title="ملاحظة">📝<span class="note-dot"></span></button>' +
+            '<button class="check-btn" onclick="event.stopPropagation();checkTask(event,'+q+id+q+')" title="تم">'+chk+'</button>' +
+          '</div>' +
+        '</div>' +
+        (hasBody ? '<div class="task-body" id="body-'+id+'">'+summ+par+lnk+'</div>' : '') +
+        /* FIX: note area is a sibling of task-body, NOT wrapped by it.
+           It shows/hides via its own .open class independently of the accordion. */
+        '<div class="note-area" id="note-'+id+'">' +
+          '<div class="note-label">ملاحظة</div>' +
+          '<textarea id="nt-'+id+'" placeholder="أضف ملاحظة..." oninput="onNoteInput('+q+id+q+')"></textarea>' +
+          '<div class="note-footer">' +
+            '<span style="font-size:11px;color:var(--text-dim)"><span id="nc-'+id+'">0</span> حرف</span>' +
+            /* FIX: stopPropagation prevents save click from closing the accordion */
+            '<button class="note-save-btn" id="nsb-'+id+'" onclick="event.stopPropagation();saveNote('+q+id+q+')" disabled>حفظ</button>' +
+            '<span class="note-saved-msg" id="ns-'+id+'">✓ محفوظ</span>' +
+          '</div>' +
+        '</div>' +
+      '</div>'  /* FIX: this closes the task-card div — was missing before, causing all bugs */
+    );
   }
-
   function buildStartCard(id,t){
     var ic=t.type==='اجتماع'?'🗓️':'📧';
-    var sub=t.type==='اجتماع'
-      ?'اجتماعك القادم · تأكد من مراجعة الملاحظات قبل الدخول'
-      :(t.summary||'تحقق من هذا الإيميل وأجب عليه');
-    var time=t.time?'<span class="time-badge">'+t.time+'</span>':'';
+    var sub=t.type==='اجتماع'?'اجتماعك القادم · تأكد من مراجعة الملاحظات قبل الدخول':(t.summary||'تحقق من هذا الإيميل وأجب عليه');
+    var time=t.time?'<span style="background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.3);color:#fff;font-size:11px;padding:4px 10px;border-radius:99px;white-space:nowrap;flex-shrink:0">'+t.time+'</span>':'';
     var q="'";
     return '<div class="start-card" onclick="toggleTask('+q+id+q+')">'+
       '<div class="start-card-inner">'+
         '<div class="start-icon">'+ic+'</div>'+
         '<div class="start-body">'+
-          '<div class="start-title">'+t.title+'</div>'+
-          '<div class="start-sub">'+sub+'</div>'+
+          '<h3 style="font-size:16px;font-weight:700;color:#fff">'+t.title+'</h3>'+
+          '<p style="font-size:13px;color:rgba(255,255,255,0.75);margin-top:4px">'+sub+'</p>'+
         '</div>'+
         time+
       '</div>'+
     '</div>';
   }
-
   function render(){
     var TODAY=saudiToday();
     var dateEl=document.querySelector('.header-date');
@@ -1841,7 +1582,8 @@
         var actions=aSnap.val()||{};
         if(!Object.keys(tasks).length){
           list.innerHTML='<div style="text-align:center;padding:40px;color:var(--text-muted);font-size:14px">لا توجد مهام لهذا اليوم</div>';
-          var se=document.querySelector('.start-section'); if(se) se.innerHTML=''; return;
+          var se=document.querySelector('.start-section'); if(se) se.innerHTML='';
+          return;
         }
         var meetings=[],urgent=[],normal=[];
         Object.keys(tasks).sort().forEach(function(id){
@@ -1855,43 +1597,43 @@
         if(urgent.length){   html+=grpHdr('⚠️','عاجل',urgent.length);             urgent.forEach(function(id){html+=buildCard(id,tasks[id],!!actions[id]);}); }
         if(normal.length){   html+=grpHdr('📧','إيميلات تحتاج رد',normal.length); normal.forEach(function(id){html+=buildCard(id,tasks[id],!!actions[id]);}); }
         list.innerHTML=html;
+        /* Load saved notes */
         firebase.database().ref('days/'+TODAY+'/notes').once('value',function(nSnap){
           var notes=nSnap.val()||{};
           Object.keys(notes).forEach(function(id){
-            var ta=document.querySelector('#note-'+id+' .note-input');
-            if(ta) ta.value=notes[id];
+            var note=notes[id]; if(!note) return;
+            var ta=document.getElementById('nt-'+id);
+            var btn=document.getElementById('nb-'+id);
+            var nc=document.getElementById('nc-'+id);
+            var nsb=document.getElementById('nsb-'+id);
+            if(ta){ ta.value=note; ta.dataset.saved=note; }
+            if(nc) nc.textContent=note.length;
+            if(nsb) nsb.disabled=true;
+            if(btn) btn.classList.add('has-note');
           });
         });
+        /* FIX: update stats from actual rendered task count, not hardcoded TOTAL */
+        updateStatsFromDOM();
+        /* Update "start with this" */
         var allIds=meetings.concat(urgent).concat(normal);
-        var doneCount=allIds.filter(function(id){return !!actions[id];}).length;
-        var pct=allIds.length?Math.round(doneCount/allIds.length*100):0;
-        var bar=document.querySelector('.progress-fill,.progress-bar-fill');
-        var pctEl=document.querySelector('.progress-percent,.progress-text');
-        if(bar) bar.style.width=pct+'%'; if(pctEl) pctEl.textContent=pct+'%';
         var uncompleted=allIds.filter(function(id){return !actions[id];});
         var se=document.querySelector('.start-section');
         if(se){
           if(!uncompleted.length){
             se.innerHTML='<div class="section-title">⚡ ابدأ بهذا</div><div class="start-card" style="text-align:center;font-size:22px;padding:30px">🎉 أنجزت كل مهامك اليوم!</div>';
           } else {
-            var sid=uncompleted[0];
-            se.innerHTML='<div class="section-title">⚡ ابدأ بهذا</div>'+buildStartCard(sid,tasks[sid]);
+            se.innerHTML='<div class="section-title">⚡ ابدأ بهذا</div>'+buildStartCard(uncompleted[0],tasks[uncompleted[0]]);
           }
         }
       });
     });
   }
-
-  document.addEventListener('change',function(e){
-    if(e.target.classList.contains('note-input')){
-      var na=e.target.closest('.note-area'); if(!na) return;
-      var id=na.id.replace('note-','');
-      var TODAY=saudiToday();
-      firebase.database().ref('days/'+TODAY+'/notes/'+id).set(e.target.value);
-    }
-  });
-
-  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',function(){ switchView('today'); render(); }); } else { switchView('today'); render(); }
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',function(){ switchView('today'); render(); });
+  } else {
+    switchView('today'); render();
+  }
 })();
-</script></body>
+</script>
+</body>
 </html>
